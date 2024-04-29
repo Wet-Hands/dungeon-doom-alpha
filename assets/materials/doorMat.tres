@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bkkqw3fxpgnke"]
+
+[ext_resource type="Texture2D" uid="uid://cmofjhxf4jgxh" path="res://assets/textures/tiles2/woodTile2.png" id="1_mxbgh"]
+[ext_resource type="Texture2D" uid="uid://byiewcgfm20v4" path="res://assets/textures/wood_n.png" id="2_j7cld"]
+
+[resource]
+albedo_texture = ExtResource("1_mxbgh")
+metallic_specular = 1.0
+normal_enabled = true
+normal_scale = 0.0
+normal_texture = ExtResource("2_j7cld")
+uv1_scale = Vector3(2, 3, 1)

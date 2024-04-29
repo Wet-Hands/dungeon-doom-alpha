@@ -1,0 +1,334 @@
+[gd_scene load_steps=36 format=3 uid="uid://ddeeqorg2q5j7"]
+
+[ext_resource type="Script" path="res://levels/level1/level_1.gd" id="1_yg06m"]
+[ext_resource type="PackedScene" uid="uid://378kl0b07lmb" path="res://scenes/player.tscn" id="2_r62gd"]
+[ext_resource type="MeshLibrary" uid="uid://dpo45qi73nv28" path="res://assets/tileset/tileset2.tres" id="2_tmao0"]
+[ext_resource type="PackedScene" uid="uid://hyrnu4vwj65t" path="res://scenes/door.tscn" id="3_7lckg"]
+[ext_resource type="PackedScene" uid="uid://cavtxc7hw0rjj" path="res://scenes/chest.tscn" id="4_28i4l"]
+[ext_resource type="PackedScene" uid="uid://dhhjd0v7u8svu" path="res://scenes/skeleton.tscn" id="5_xv45q"]
+[ext_resource type="Texture2D" uid="uid://d3584a82vy3m8" path="res://assets/skeleton_character_psx/textures/skeleton_baseColor.png" id="7_y6lop"]
+[ext_resource type="PackedScene" uid="uid://6skxxgqvb10x" path="res://scenes/end_door.tscn" id="8_qtt45"]
+[ext_resource type="PackedScene" uid="uid://b5ovx6awnnt4s" path="res://scenes/spike_floor_trap.tscn" id="9_a55bw"]
+[ext_resource type="PackedScene" uid="uid://co543lyt6iucd" path="res://scenes/spike_wall_trap.tscn" id="9_qic3y"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gkmab"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_xnvtf"]
+sky_material = SubResource("ProceduralSkyMaterial_gkmab")
+
+[sub_resource type="Environment" id="Environment_b426l"]
+sky = SubResource("Sky_xnvtf")
+ambient_light_energy = 0.5
+tonemap_mode = 2
+ssil_enabled = true
+ssil_intensity = 1.86
+sdfgi_read_sky_light = false
+fog_enabled = true
+fog_light_color = Color(0.321569, 0.34902, 0.396078, 1)
+fog_light_energy = 0.05
+fog_density = 0.3139
+volumetric_fog_density = 0.6684
+adjustment_enabled = true
+adjustment_brightness = 0.5
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_yskki"]
+vertices = PackedVector3Array(0.1862, 2.22488, -8.33228, -3.0638, 2.22488, -8.33228, -3.0638, 2.22488, -6.58228, 0.4362, 2.22488, -6.58228, 2.4362, 2.22488, -13.8323, 8.4362, 2.22488, -14.0823, 6.1862, 2.22488, -15.8323, 0.6862, 2.22488, -15.8323, 0.6862, 2.22488, -8.83228, 0.1862, 2.22488, -8.33228, 0.4362, 2.22488, -6.58228, 0.4362, 2.22488, -6.58228, 0.6862, 2.22488, -3.08228, 2.4362, 2.22488, -2.83228, 2.4362, 2.22488, -13.8323, 0.6862, 2.22488, -8.83228, 8.4362, 2.22488, -20.5823, 6.6862, 2.22488, -20.5823, 6.6862, 2.22488, -16.3323, 8.4362, 2.22488, -14.0823, 2.4362, 2.22488, -13.8323, 0.6862, 2.22488, -15.8323, 0.6862, 2.22488, -8.83228, 8.4362, 2.22488, -14.0823, 6.6862, 2.22488, -16.3323, 6.1862, 2.22488, -15.8323, -3.0638, 2.22488, -6.58228, -3.0638, 2.22488, -8.33228, -5.0638, 2.22488, -8.58228, -5.0638, 2.22488, -6.33228, -5.0638, 2.22488, -8.58228, -12.8138, 2.22488, -12.8323, -12.8138, 2.22488, -2.08228, -5.0638, 2.22488, -6.33228, -5.0638, 2.22488, -8.58228, -5.0638, 2.22488, -12.8323, -12.8138, 2.22488, -12.8323, -12.8138, 2.22488, -2.08228, -5.0638, 2.22488, -2.08228, -5.0638, 2.22488, -6.33228, 11.1862, 2.22488, 0.167721, 12.9362, 2.22488, 0.417721, 13.1862, 2.22488, -2.08228, 11.1862, 2.22488, -3.83228, 18.9362, 2.22488, -9.33228, 23.4362, 2.22488, -9.58228, 23.4362, 2.22488, -11.3323, 17.1862, 2.22488, -11.3323, 16.6862, 2.22488, -3.83228, 11.1862, 2.22488, -3.83228, 13.1862, 2.22488, -2.08228, 18.9362, 2.22488, -2.08228, 18.9362, 2.22488, -9.33228, 17.1862, 2.22488, -11.3323, 17.1862, 2.22488, -4.33228, 18.9362, 2.22488, -2.08228, 17.1862, 2.22488, -4.33228, 16.6862, 2.22488, -3.83228, 18.9362, 2.22488, -2.08228, 2.4362, 2.22488, -2.83228, 0.6862, 2.22488, -3.08228, 0.6862, 2.22488, -1.33228, 2.4362, 2.22488, -1.08228, 0.1862, 2.22488, -0.832279, 3.9362, 2.22488, 2.66772, 4.1862, 2.22488, 0.667721, 3.9362, 2.22488, -0.832279, 2.4362, 2.22488, -1.08228, 0.6862, 2.22488, -1.33228, 0.1862, 2.22488, -0.832279, -2.3138, 2.22488, -0.832279, -2.3138, 2.22488, 5.41772, 3.9362, 2.22488, 5.41772, 3.9362, 2.22488, 2.66772, 5.9362, 2.22488, 2.41772, 5.9362, 2.22488, 0.667721, 4.1862, 2.22488, 0.667721, 3.9362, 2.22488, 2.66772, 12.9362, 2.22488, 0.417721, 11.1862, 2.22488, 0.167721, 10.6862, 2.22488, 0.667721, 10.9362, 2.22488, 2.41772, 21.4362, 2.22488, 6.91772, 21.6862, 2.22488, 9.66772, 23.4362, 2.22488, 9.66772, 23.4362, 2.22488, 5.16772, 13.1862, 2.22488, 5.16772, 12.9362, 2.22488, 0.417721, 10.9362, 2.22488, 2.41772, 11.1862, 2.22488, 6.91772, 10.6862, 2.22488, 0.667721, 5.9362, 2.22488, 0.667721, 5.9362, 2.22488, 2.41772, 10.9362, 2.22488, 2.41772, 21.4362, 2.22488, 6.91772, 23.4362, 2.22488, 5.16772, 13.1862, 2.22488, 5.16772, 11.1862, 2.22488, 6.91772)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(10, 9, 8), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 15), PackedInt32Array(13, 15, 14), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19), PackedInt32Array(22, 21, 20), PackedInt32Array(25, 24, 23), PackedInt32Array(26, 29, 27), PackedInt32Array(27, 29, 28), PackedInt32Array(33, 32, 30), PackedInt32Array(30, 32, 31), PackedInt32Array(36, 35, 34), PackedInt32Array(39, 38, 37), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(49, 48, 50), PackedInt32Array(50, 48, 51), PackedInt32Array(53, 52, 54), PackedInt32Array(54, 52, 55), PackedInt32Array(58, 57, 56), PackedInt32Array(62, 61, 59), PackedInt32Array(59, 61, 60), PackedInt32Array(68, 67, 63), PackedInt32Array(63, 67, 66), PackedInt32Array(63, 66, 65), PackedInt32Array(63, 65, 64), PackedInt32Array(69, 73, 70), PackedInt32Array(70, 73, 72), PackedInt32Array(70, 72, 71), PackedInt32Array(75, 74, 76), PackedInt32Array(76, 74, 77), PackedInt32Array(79, 78, 80), PackedInt32Array(80, 78, 81), PackedInt32Array(83, 82, 84), PackedInt32Array(84, 82, 85), PackedInt32Array(89, 88, 86), PackedInt32Array(86, 88, 87), PackedInt32Array(91, 90, 92), PackedInt32Array(92, 90, 93), PackedInt32Array(97, 96, 94), PackedInt32Array(94, 96, 95)]
+
+[sub_resource type="VisualShaderNodeStep" id="VisualShaderNodeStep_ysll0"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 5
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_50v64"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ld2ph"]
+noise = SubResource("FastNoiseLite_50v64")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_xc200"]
+expanded_output_ports = [0]
+texture = SubResource("NoiseTexture2D_ld2ph")
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_aot8i"]
+operator = 1
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_01ply"]
+parameter_name = "LightColor"
+default_value_enabled = true
+default_value = Color(0, 0.831373, 0, 1)
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_vil7w"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0.5, 0.5, 0.5, 0.5)]
+op_type = 5
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ipcrw"]
+parameter_name = "LightStrength"
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_4t0np"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_tsjqv"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_wyp7d"]
+parameter_name = "ShaderTime"
+default_value_enabled = true
+default_value = 4.5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_dkhgw"]
+parameter_name = "Texture"
+texture_type = 1
+color_default = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_mi2xr"]
+expanded_output_ports = [0]
+source = 5
+texture = ExtResource("7_y6lop")
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_snyas"]
+function = 0
+
+[sub_resource type="VisualShaderNodeRemap" id="VisualShaderNodeRemap_5aq83"]
+default_input_values = [1, -1.0, 2, 1.0, 3, 0.0, 4, 1.0]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_mgncx"]
+parameter_name = "Speed"
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_kbp6h"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_gynv2"]
+default_input_values = [0, 0.0, 1, 0.1]
+
+[sub_resource type="VisualShader" id="VisualShader_mp37i"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D Texture : source_color, hint_default_transparent;
+uniform sampler2D tex_frg_11;
+uniform float LightStrength = 1;
+uniform vec4 LightColor : source_color = vec4(0.000000, 0.831373, 0.000000, 1.000000);
+uniform float ShaderTime = 4.5;
+uniform float Speed = 1;
+
+
+
+void fragment() {
+	vec4 n_out3p0;
+// Texture2D:3
+	n_out3p0 = texture(Texture, UV);
+	float n_out3p4 = n_out3p0.a;
+
+
+// Texture2D:11
+	vec4 n_out11p0 = texture(tex_frg_11, UV);
+	float n_out11p1 = n_out11p0.r;
+
+
+// FloatOp:12
+	float n_out12p0 = n_out3p4 - n_out11p0.x;
+
+
+// FloatParameter:15
+	float n_out15p0 = LightStrength;
+
+
+// VectorCompose:16
+	vec3 n_out16p0 = vec3(n_out15p0, n_out15p0, n_out15p0);
+
+
+// ColorParameter:13
+	vec4 n_out13p0 = LightColor;
+
+
+// FloatParameter:18
+	float n_out18p0 = ShaderTime;
+
+
+// FloatParameter:7
+	float n_out7p0 = Speed;
+
+
+// FloatOp:8
+	float n_out8p0 = n_out18p0 * n_out7p0;
+
+
+// FloatFunc:5
+	float n_out5p0 = sin(n_out8p0);
+
+
+	float n_out6p0;
+// Remap:6
+	float n_in6p1 = -1.00000;
+	float n_in6p2 = 1.00000;
+	float n_in6p3 = 0.00000;
+	float n_in6p4 = 1.00000;
+	{
+		float __input_range = n_in6p2 - n_in6p1;
+		float __output_range = n_in6p4 - n_in6p3;
+		n_out6p0 = n_in6p3 + __output_range * ((n_out5p0 - n_in6p1) / __input_range);
+	}
+
+
+// FloatOp:9
+	float n_in9p1 = 0.10000;
+	float n_out9p0 = n_out6p0 + n_in9p1;
+
+
+// Mix:14
+	vec4 n_in14p0 = vec4(0.00000, 0.00000, 0.00000, 0.00000);
+	vec4 n_out14p0 = mix(n_in14p0, n_out13p0, vec4(n_out9p0));
+
+
+// Step:10
+	vec4 n_out10p0 = step(vec4(n_out11p1), n_out14p0);
+
+
+// VectorOp:17
+	vec3 n_out17p0 = n_out16p0 * vec3(n_out10p0.xyz);
+
+
+// Output:0
+	ALBEDO = vec3(n_out3p0.xyz);
+	ALPHA = n_out12p0;
+	EMISSION = n_out17p0;
+	ALPHA_SCISSOR_THRESHOLD = n_out6p0;
+
+
+}
+"
+nodes/fragment/0/position = Vector2(1580, 60)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_dkhgw")
+nodes/fragment/2/position = Vector2(180, -180)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_mi2xr")
+nodes/fragment/3/position = Vector2(600, -100)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatFunc_snyas")
+nodes/fragment/5/position = Vector2(320, 800)
+nodes/fragment/6/node = SubResource("VisualShaderNodeRemap_5aq83")
+nodes/fragment/6/position = Vector2(200, 560)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatParameter_mgncx")
+nodes/fragment/7/position = Vector2(-160, 840)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatOp_kbp6h")
+nodes/fragment/8/position = Vector2(120, 740)
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatOp_gynv2")
+nodes/fragment/9/position = Vector2(480, 640)
+nodes/fragment/10/node = SubResource("VisualShaderNodeStep_ysll0")
+nodes/fragment/10/position = Vector2(980, 400)
+nodes/fragment/11/node = SubResource("VisualShaderNodeTexture_xc200")
+nodes/fragment/11/position = Vector2(500, 180)
+nodes/fragment/12/node = SubResource("VisualShaderNodeFloatOp_aot8i")
+nodes/fragment/12/position = Vector2(1020, 120)
+nodes/fragment/13/node = SubResource("VisualShaderNodeColorParameter_01ply")
+nodes/fragment/13/position = Vector2(160, 920)
+nodes/fragment/14/node = SubResource("VisualShaderNodeMix_vil7w")
+nodes/fragment/14/position = Vector2(700, 660)
+nodes/fragment/15/node = SubResource("VisualShaderNodeFloatParameter_ipcrw")
+nodes/fragment/15/position = Vector2(1020, 680)
+nodes/fragment/16/node = SubResource("VisualShaderNodeVectorCompose_4t0np")
+nodes/fragment/16/position = Vector2(1280, 620)
+nodes/fragment/17/node = SubResource("VisualShaderNodeVectorOp_tsjqv")
+nodes/fragment/17/position = Vector2(1400, 300)
+nodes/fragment/18/node = SubResource("VisualShaderNodeFloatParameter_wyp7d")
+nodes/fragment/18/position = Vector2(-160, 560)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 3, 0, 0, 0, 6, 0, 0, 19, 5, 0, 6, 0, 7, 0, 8, 1, 8, 0, 5, 0, 6, 0, 9, 0, 11, 1, 10, 0, 13, 0, 14, 1, 9, 0, 14, 2, 14, 0, 10, 1, 3, 4, 12, 0, 15, 0, 16, 0, 15, 0, 16, 1, 15, 0, 16, 2, 10, 0, 17, 1, 16, 0, 17, 0, 17, 0, 0, 5, 12, 0, 0, 1, 11, 0, 12, 1, 18, 0, 8, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7ickg"]
+load_path = "res://.godot/imported/skeleton_baseColor.png-f72a803020b7c39c5ed4cecbb5a3b91a.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0meqg"]
+render_priority = 0
+shader = SubResource("VisualShader_mp37i")
+shader_parameter/LightStrength = 1.0
+shader_parameter/LightColor = Color(0.796078, 0.121569, 0.988235, 1)
+shader_parameter/ShaderTime = 4.5
+shader_parameter/Speed = 1.0
+shader_parameter/Texture = SubResource("CompressedTexture2D_7ickg")
+
+[node name="Level1" type="Node3D"]
+script = ExtResource("1_yg06m")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b426l")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_yskki")
+
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.0638003, 0.974878, -0.0822794)
+mesh_library = ExtResource("2_tmao0")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(2, 0, 3, 65535, 3, 655360, 0, 3, 655360, 1, 3, 655360, 65534, 2, 1048576, 65534, 0, 1048576, 65535, 65535, 0, 2, 65535, 1, 1, 0, 655362, 0, 0, 655362, 65535, 0, 655362, 65535, 1, 655362, 65535, 2, 655362, 0, 2, 655362, 1, 2, 655362, 2, 1, 1441795, 1, 1, 655362, 0, 1, 655362, 65534, 3, 655361, 65534, 65535, 1048577, 1, 65535, 3, 0, 65534, 1048576, 0, 65533, 1048576, 1, 65533, 1441792, 1, 65532, 1441792, 1, 65534, 1441792, 0, 65532, 1048576, 0, 65531, 655363, 1, 65531, 1441792, 65532, 65531, 1441795, 1, 65530, 1441792, 65535, 65531, 655360, 65535, 65530, 0, 65534, 65531, 655360, 65533, 65531, 655360, 65532, 65532, 1441792, 65534, 65530, 0, 65533, 65530, 0, 65532, 65530, 3, 65531, 65531, 1441794, 65531, 65530, 1441794, 65530, 65532, 1441794, 65530, 65530, 1441794, 65530, 65531, 1441794, 3, 0, 0, 3, 1, 655360, 2, 2, 1441792, 2, 3, 1441793, 4, 0, 0, 5, 0, 0, 4, 1, 655360, 5, 1, 655360, 6, 0, 0, 6, 1, 655360, 7, 0, 1048579, 7, 1, 655363, 7, 65535, 1048576, 7, 2, 1048576, 7, 3, 1048576, 7, 65534, 1048576, 8, 4, 655360, 8, 65533, 0, 9, 65533, 0, 10, 65533, 0, 9, 4, 655360, 10, 4, 655360, 7, 65533, 1048577, 7, 4, 655361, 9, 3, 0, 10, 3, 0, 9, 65534, 655360, 10, 65534, 655360, 8, 3, 3, 8, 65534, 1441795, 8, 65535, 1441792, 8, 0, 1441792, 8, 1, 1441792, 8, 2, 1441792, 11, 4, 655360, 12, 4, 655360, 13, 4, 655360, 11, 3, 0, 12, 3, 0, 13, 3, 0, 14, 3, 0, 15, 3, 1, 15, 4, 1441792, 15, 5, 1441792, 14, 4, 655363, 14, 5, 1048576, 14, 6, 655361, 15, 6, 1441793, 12, 65534, 1441793, 11, 65534, 655360, 12, 65533, 1441792, 12, 65532, 1441792, 12, 65531, 1441792, 13, 65529, 655360, 14, 65529, 655360, 15, 65529, 1441793, 15, 65528, 1, 12, 65530, 1441792, 12, 65529, 1441795, 14, 65528, 0, 13, 65528, 0, 12, 65528, 0, 11, 65529, 1048576, 11, 65532, 1048576, 11, 65531, 1048576, 11, 65530, 1048576, 11, 65533, 1048579, 11, 65528, 1048577, 65534, 1, 1048576, 1, 65529, 1441792, 1, 65528, 1441792, 1, 65527, 1441792, 0, 65530, 1048579, 0, 65529, 1048576, 0, 65528, 1048576, 0, 65527, 1048576, 0, 65526, 1048576, 0, 65525, 1048577, 1, 65526, 1441795, 1, 65525, 0, 2, 65525, 0, 2, 65526, 655360, 3, 65526, 655360, 3, 65525, 0, 4, 65526, 655360, 4, 65525, 1048579, 5, 65526, 1441793, 5, 65525, 1441792, 5, 65524, 1441792, 5, 65523, 1441792, 4, 65524, 1048576, 4, 65523, 1048576, 4, 65522, 1048576, 5, 65522, 1441792, 65531, 65533, 1441794, 65530, 65533, 1441794, 65531, 65529, 1441794, 65530, 65529, 1441794, 65531, 65528, 1441794, 65530, 65528, 1441794, 65529, 65528, 1441794, 65529, 65529, 1441794, 65529, 65530, 1441794, 65529, 65531, 1441794, 65529, 65533, 1441794, 65529, 65532, 1441794, 65528, 65533, 1441794, 65528, 65532, 1441794, 65528, 65531, 1441794, 65528, 65530, 1441794, 65528, 65529, 1441794, 65528, 65528, 1441794, 65532, 65529, 1441792, 65532, 65528, 1441792, 65532, 65533, 1441792, 65531, 65532, 1441794, 65532, 65527, 1, 65531, 65527, 0, 65530, 65527, 0, 65528, 65527, 0, 65529, 65527, 0, 65527, 65527, 1048577, 65527, 65528, 1048576, 65527, 65529, 1048576, 65527, 65530, 1048576, 65527, 65531, 1048576, 65527, 65532, 1048576, 65527, 65533, 1048576, 65527, 65534, 655361, 65528, 65534, 655360, 65530, 65534, 655360, 65531, 65534, 655360, 65529, 65534, 655360, 65532, 65534, 1441793, 0, 65535, 1048579, 5, 65521, 1, 4, 65521, 1048577)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_r62gd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 3.25)
+
+[node name="Door1" parent="." instance=ExtResource("3_7lckg")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -0.75, 3.25, -6.75)
+key = "blue"
+
+[node name="Door2" parent="." instance=ExtResource("3_7lckg")]
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 5, 3.25, 0.75)
+locked = false
+
+[node name="Chest2" parent="." instance=ExtResource("4_28i4l")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -9.25, 1.75, -7)
+chestItem = "red"
+
+[node name="Chest" parent="." instance=ExtResource("4_28i4l")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 23, 1.75, -10.5)
+chestItem = "blue"
+
+[node name="Skeleton2" parent="." instance=ExtResource("5_xv45q")]
+transform = Transform3D(0.865927, -0.000273721, -0.50017, 0.000190844, 1, -0.000216873, 0.50017, 9.23694e-05, 0.865928, -11.25, 2.75, -4)
+
+[node name="Skeleton3D" parent="Skeleton2/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4" index="0"]
+bones/1/rotation = Quaternion(0.779791, 7.46298e-08, 9.29583e-08, 0.62604)
+bones/2/rotation = Quaternion(-0.231343, 1.24205e-14, -5.51564e-08, 0.972872)
+bones/3/rotation = Quaternion(0.114741, -1.48404e-14, 2.73564e-08, 0.993396)
+bones/4/rotation = Quaternion(0.139696, -3.1881e-15, 3.33061e-08, 0.990194)
+bones/5/rotation = Quaternion(-0.130254, -5.81433e-15, -3.10549e-08, 0.991481)
+bones/6/rotation = Quaternion(0.92388, 1.23893e-14, 2.2027e-07, 0.382683)
+bones/8/rotation = Quaternion(-0.565441, -0.413367, -0.421552, 0.575933)
+bones/9/rotation = Quaternion(-0.362895, 0.60875, -0.515263, 0.481907)
+bones/10/rotation = Quaternion(0.170513, -0.0555375, -0.0135281, 0.983696)
+bones/11/rotation = Quaternion(-0.0195293, 0.0124777, -0.00852691, 0.999695)
+bones/13/rotation = Quaternion(-0.565441, 0.413367, 0.421552, 0.575933)
+bones/14/rotation = Quaternion(-0.369189, -0.619501, 0.505861, 0.473312)
+bones/15/rotation = Quaternion(0.170621, 0.056656, 0.0144522, 0.9836)
+bones/16/rotation = Quaternion(-0.0192053, -0.0114637, 0.00921148, 0.999707)
+bones/18/rotation = Quaternion(0.991423, -5.8733e-09, 1.16907e-07, 0.130692)
+bones/19/rotation = Quaternion(0.0293642, 2.87502e-10, 9.78617e-09, 0.999569)
+bones/20/rotation = Quaternion(-0.539657, 0.0001258, 0.000239667, 0.841885)
+bones/21/rotation = Quaternion(1.17789e-08, 0.973581, -0.228342, 1.97228e-07)
+bones/23/rotation = Quaternion(0.99429, -0.0177776, -0.0226483, 0.102756)
+bones/24/rotation = Quaternion(-0.00161821, 0.029165, 0.0133313, 0.999484)
+bones/25/rotation = Quaternion(-0.53975, 0.000475172, 0.000475172, 0.841825)
+bones/26/rotation = Quaternion(-1.17789e-08, 0.973581, -0.228342, -1.97228e-07)
+
+[node name="Object_34" parent="Skeleton2/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4/Skeleton3D" index="0"]
+material_override = SubResource("ShaderMaterial_0meqg")
+
+[node name="Skeleton" parent="." instance=ExtResource("5_xv45q")]
+transform = Transform3D(-0.500085, -4.61913e-05, -0.865976, 9.54271e-05, 1, -0.000108432, 0.865976, -0.000136858, -0.500085, -11.5, 2.75, -10)
+
+[node name="EndDoor" parent="." instance=ExtResource("8_qtt45")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 6.69, 3.15, -19.7)
+key = "red"
+
+[node name="SpikeFloorTrap" parent="." instance=ExtResource("9_a55bw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.75, 0)
+visible = false
+
+[node name="SpikeWallTrap" parent="." instance=ExtResource("9_qic3y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.75, -1.5)
+
+[editable path="Skeleton2"]
+[editable path="Skeleton2/Sketchfab_Scene"]

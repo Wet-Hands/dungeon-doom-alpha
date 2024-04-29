@@ -1,0 +1,14 @@
+CollisionShape3D
+Area3D
+AudioStreamPlayer3D
+AnimationPlayer
+Timer
+AudioStreamPlayer
+RichTextLabel
+Label
+Control
+Camera3D
+MeshInstance3D
+Node3D
+Node
+HSlider

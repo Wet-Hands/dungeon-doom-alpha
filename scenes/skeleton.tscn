@@ -1,0 +1,118 @@
+[gd_scene load_steps=13 format=3 uid="uid://dhhjd0v7u8svu"]
+
+[ext_resource type="Script" path="res://scripts/skeleton.gd" id="1_owd63"]
+[ext_resource type="PackedScene" uid="uid://cvjj3e4cd54fk" path="res://scenes/sketchfab_scene.tscn" id="2_t8h8n"]
+[ext_resource type="Shader" uid="uid://c8tvxq5apnsv5" path="res://shaders/dissolve.tres" id="3_qtwvq"]
+[ext_resource type="Texture2D" uid="uid://d3584a82vy3m8" path="res://assets/skeleton_character_psx/textures/skeleton_baseColor.png" id="4_ljppu"]
+[ext_resource type="AudioStream" uid="uid://b7h6y8ou2ytq7" path="res://assets/audio/death1.mp3" id="5_8tgvh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ckic"]
+render_priority = 0
+shader = ExtResource("3_qtwvq")
+shader_parameter/LightStrength = 5.0
+shader_parameter/LightColor = Color(0.796078, 0.121569, 0.988235, 1)
+shader_parameter/ShaderTime = 4.5
+shader_parameter/Speed = 1.0
+shader_parameter/Texture = ExtResource("4_ljppu")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ehm7o"]
+radius = 0.1
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a6dwf"]
+radius = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a8lrg"]
+
+[sub_resource type="Animation" id="Animation_ube3h"]
+resource_name = "shader"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:shaderL")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [4.5, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tgov2"]
+_data = {
+"shader": SubResource("Animation_ube3h")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wfius"]
+radius = 6.5
+
+[node name="Skeleton" type="CharacterBody3D" groups=["skeleton"]]
+transform = Transform3D(1, -9.54271e-05, -9.79694e-05, 9.54271e-05, 1, -0.000108432, 9.79694e-05, 0.000108432, 1, 0, 0, 0)
+script = ExtResource("1_owd63")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_t8h8n")]
+transform = Transform3D(1, 1.57945e-11, 3.63798e-11, -1.53513e-11, 1, 0, -3.63798e-11, 0, 1, 0, -1, 0)
+
+[node name="Skeleton3D" parent="Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4" index="0"]
+transform = Transform3D(1, 0, 9.83746e-12, 0, 1, 7.27596e-12, -2.67342e-12, 7.27596e-12, 1, 0, 0, 0)
+
+[node name="Object_34" parent="Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, -2.65397e-11, 0, 1, 0, -2.67164e-12, 0, 1, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_7ckic")
+
+[node name="Hitbox" type="Area3D" parent="." groups=["skeleton"]]
+
+[node name="HitBoxCollision" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("CapsuleShape3D_ehm7o")
+
+[node name="HitTimer" type="Timer" parent="."]
+wait_time = 0.7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_a6dwf")
+
+[node name="attack" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="attack"]
+transform = Transform3D(0.59999, -0.00295073, -0.00195806, 0.00294207, 0.599987, -0.00264831, 0.00197104, 0.00263866, 0.599991, -1.99236e-05, -2.20471e-05, -0.203344)
+
+[node name="skeleAtkHitbox" type="Area3D" parent="attack/MeshInstance3D" groups=["skeleAttack"]]
+
+[node name="skeleAtkCollision" type="CollisionShape3D" parent="attack/MeshInstance3D/skeleAtkHitbox"]
+shape = SubResource("SphereShape3D_a8lrg")
+
+[node name="attackCooldown" type="Timer" parent="."]
+
+[node name="ShaderAnim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../ShaderTimer")
+libraries = {
+"": SubResource("AnimationLibrary_tgov2")
+}
+
+[node name="ShaderTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="Detection" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection"]
+shape = SubResource("SphereShape3D_wfius")
+
+[node name="Death1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_8tgvh")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
+[connection signal="area_shape_entered" from="Hitbox" to="." method="_on_hitbox_area_shape_entered"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]
+[connection signal="area_entered" from="attack/MeshInstance3D/skeleAtkHitbox" to="." method="_on_skele_atk_hitbox_area_entered"]
+[connection signal="area_exited" from="attack/MeshInstance3D/skeleAtkHitbox" to="." method="_on_skele_atk_hitbox_area_exited"]
+[connection signal="timeout" from="attackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="ShaderTimer" to="." method="_on_shader_timer_timeout"]
+[connection signal="area_entered" from="Detection" to="." method="_on_detection_area_entered"]
+[connection signal="area_exited" from="Detection" to="." method="_on_detection_area_exited"]
+
+[editable path="Sketchfab_Scene"]

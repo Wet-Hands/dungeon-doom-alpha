@@ -1,0 +1,56 @@
+extends Node3D
+
+var keyInv = "none"
+
+func _ready(): #Called when the node enters the scene tree for the first time.
+	$KeyArea/KeyCol.disabled = true
+	if keyInv == "red":
+		$KeyArea.add_to_group("redInt")
+		$"../HUD/KeyRect".texture = ResourceLoader.load("res://assets/hud/redKey16.png")
+	if keyInv == "green":
+		$KeyArea.add_to_group("greenInt")
+		$"../HUD/KeyRect".texture = ResourceLoader.load("res://assets/hud/greenKey16.png")
+	if keyInv == "blue":
+		$KeyArea.add_to_group("blueInt")
+		$"../HUD/KeyRect".texture = ResourceLoader.load("res://assets/hud/blueKey16.png")
+
+func _process(delta): #Called every frame. 'delta' is the elapsed time since the previous frame.
+	if Input.is_action_pressed("interact"):#when backspace is pressed
+		$KeyArea/KeyCol.disabled = false
+		var group = $KeyArea.get_groups()
+		print(str(group))
+	if Input.is_action_just_released("interact"):
+		$KeyArea/KeyCol.disabled = true
+
+func _on_key_area_area_entered(area):
+	if keyInv == "redInt":
+		if area.is_in_group("redLock"):
+			keyReset("redInt")
+	if keyInv == "greenInt":
+		if area.is_in_group("greenLock"):
+			keyReset("greenInt")
+	if keyInv == "blueInt":
+		if area.is_in_group("blueLock"):
+			keyReset("blueInt")
+	else:
+		if area.is_in_group("noneLock"):
+			keyInv = "noneInt"
+
+	if area.is_in_group("redCol"):
+		keyInv = "redInt"
+		$KeyArea.add_to_group("redInt")
+		$"../HUD/KeyRect".texture = ResourceLoader.load("res://assets/hud/redKey16.png")
+	if area.is_in_group("greenCol"):
+		keyInv = "greenInt"
+		$KeyArea.add_to_group("greenInt")
+		$"../HUD/KeyRect".texture = ResourceLoader.load("res://assets/hud/greenKey16.png")
+	if area.is_in_group("blueCol"):
+		keyInv = "blueInt"
+		$KeyArea.add_to_group("blueInt")
+		$"../HUD/KeyRect".texture = ResourceLoader.load("res://assets/hud/blueKey16.png")
+
+func keyReset(col):
+	keyInv = "noneInt"
+	$KeyArea.add_to_group("noneInt")
+	print("Key Removed")
+	$"../HUD/KeyRect".texture = null

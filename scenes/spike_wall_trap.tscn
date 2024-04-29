@@ -1,0 +1,188 @@
+[gd_scene load_steps=13 format=3 uid="uid://co543lyt6iucd"]
+
+[ext_resource type="Script" path="res://scripts/spike_wall_trap.gd" id="1_56ful"]
+[ext_resource type="Texture2D" uid="uid://nwkb8rv414xq" path="res://assets/textures/tiles2/wall2.png" id="2_ld864"]
+[ext_resource type="Texture2D" uid="uid://i6r8n3yad5dp" path="res://assets/textures/tiles2/cobble_stoneTILE_n.png" id="3_wrtjw"]
+[ext_resource type="Material" uid="uid://dp6t67vcm5t3h" path="res://assets/materials/metal.tres" id="4_xq18w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifqfd"]
+albedo_color = Color(0.772549, 0.772549, 0.772549, 1)
+albedo_texture = ExtResource("2_ld864")
+normal_enabled = true
+normal_texture = ExtResource("3_wrtjw")
+uv1_scale = Vector3(2, 2, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_847mu"]
+material = SubResource("StandardMaterial3D_ifqfd")
+size = Vector2(3, 3)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tqjd5"]
+material = ExtResource("4_xq18w")
+top_radius = 0.0
+bottom_radius = 0.2
+height = 1.5
+radial_segments = 4
+rings = 2
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_07yqw"]
+points = PackedVector3Array(0.0737396, 0.380729, 0.0261672, -0.211905, -0.761756, -0.0214053, -0.0214053, -0.761756, -0.211905, 0.0261672, -0.761756, 0.216667, 0.216667, -0.761756, -0.0214053, -0.0214053, 0.761756, -0.0214053, -0.0214053, 0.571317, 0.0499954, -0.211905, -0.666462, 0.0261672, 0.0261672, -0.666462, -0.211905, 0.0261672, 0.737895, -0.0214053, -0.0214053, -0.690322, 0.216667, 0.216667, -0.714034, 0.0261672, -0.211905, -0.642601, -0.0214053, -0.0214053, -0.642601, -0.211905, 0.0261672, 0.737895, 0.0261672, 0.192839, -0.499884, -0.0214053, -0.0452334, 0.595028, 0.0261672, 0.0261672, -0.523595, 0.192839, -0.211905, -0.761756, 0.0261672, 0.0261672, 0.595028, -0.0452334, -0.0452334, 0.452162, -0.0452334, 0.0261672, -0.761756, -0.211905, 0.192839, -0.666462, -0.0452334, -0.0452334, -0.666462, 0.192839, -0.0214053, -0.761756, 0.216667, -0.0214053, 0.737895, 0.0261672, 0.216667, -0.761756, 0.0261672, 0.0261672, -0.714034, 0.216667, 0.00238097, -0.499884, 0.192839, 0.192839, -0.523595, 0.0261672, -0.0689777, 0.42845, -0.0214053, -0.0214053, 0.42845, -0.0689777)
+
+[sub_resource type="Animation" id="Animation_bdl3m"]
+resource_name = "end"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spikes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5, 0), Vector3(0, 1.5, -1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_88mig"]
+resource_name = "start"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spikes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5, -1.5), Vector3(0, 1.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fn7y6"]
+_data = {
+"end": SubResource("Animation_bdl3m"),
+"start": SubResource("Animation_88mig")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1d5g4"]
+size = Vector3(3, 3, 1)
+
+[node name="SpikeWallTrap" type="Node3D"]
+script = ExtResource("1_56ful")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.5, 0)
+visible = false
+mesh = SubResource("PlaneMesh_847mu")
+
+[node name="Spikes" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.75)
+mesh = SubResource("CylinderMesh_tqjd5")
+
+[node name="Area3D" type="Area3D" parent="Spikes" groups=["trap"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes/Area3D"]
+shape = SubResource("ConvexPolygonShape3D_07yqw")
+
+[node name="Area3D7" type="Area3D" parent="Spikes" groups=["trap"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.75, 0.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes/Area3D7"]
+shape = SubResource("ConvexPolygonShape3D_07yqw")
+
+[node name="Area3D8" type="Area3D" parent="Spikes" groups=["trap"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.75, -0.75, 0.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes/Area3D8"]
+shape = SubResource("ConvexPolygonShape3D_07yqw")
+
+[node name="Area3D9" type="Area3D" parent="Spikes" groups=["trap"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.75, -0.75, 0.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes/Area3D9"]
+shape = SubResource("ConvexPolygonShape3D_07yqw")
+
+[node name="Area3D4" type="Area3D" parent="Spikes" groups=["trap"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.75, 0.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes/Area3D4"]
+shape = SubResource("ConvexPolygonShape3D_07yqw")
+
+[node name="Area3D5" type="Area3D" parent="Spikes" groups=["trap"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.75, 0.75, 0.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes/Area3D5"]
+shape = SubResource("ConvexPolygonShape3D_07yqw")
+
+[node name="Area3D6" type="Area3D" parent="Spikes" groups=["trap"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.75, 0.75, 0.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes/Area3D6"]
+shape = SubResource("ConvexPolygonShape3D_07yqw")
+
+[node name="Area3D2" type="Area3D" parent="Spikes" groups=["trap"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.75, 0, 0.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes/Area3D2"]
+shape = SubResource("ConvexPolygonShape3D_07yqw")
+
+[node name="Area3D3" type="Area3D" parent="Spikes" groups=["trap"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.75, 0, 0.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes/Area3D3"]
+shape = SubResource("ConvexPolygonShape3D_07yqw")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.75, 0, 0.75)
+mesh = SubResource("CylinderMesh_tqjd5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.75, 0, 0.75)
+mesh = SubResource("CylinderMesh_tqjd5")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.75, 0.75)
+mesh = SubResource("CylinderMesh_tqjd5")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.75, -0.75, 0.75)
+mesh = SubResource("CylinderMesh_tqjd5")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.75, -0.75, 0.75)
+mesh = SubResource("CylinderMesh_tqjd5")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.75, 0.75)
+mesh = SubResource("CylinderMesh_tqjd5")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.75, 0.75, 0.75)
+mesh = SubResource("CylinderMesh_tqjd5")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.75, 0.75, 0.75)
+mesh = SubResource("CylinderMesh_tqjd5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fn7y6")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+shape = SubResource("BoxShape3D_1d5g4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

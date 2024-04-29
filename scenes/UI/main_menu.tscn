@@ -1,0 +1,303 @@
+[gd_scene load_steps=6 format=3 uid="uid://dey8x4xm453xn"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_f7mnl"]
+[ext_resource type="Texture2D" uid="uid://dsnmkijua6imn" path="res://assets/textures/tiles1/wallTexture64.jpg" id="2_8p1wj"]
+[ext_resource type="Texture2D" uid="uid://ctomq5a2mdn0l" path="res://assets/Menus/pixil-frame-0 (6).png" id="3_m0568"]
+[ext_resource type="AudioStream" uid="uid://bxbxkike56ik8" path="res://assets/audio/gui.mp3" id="4_bb3ft"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bvhx3"]
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f7mnl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(0.938, 0.938)
+
+[node name="TextureRect9" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 192.0
+offset_top = 127.932
+offset_right = 256.0
+offset_bottom = 191.932
+texture = ExtResource("2_8p1wj")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect10" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 128.0
+offset_top = 127.932
+offset_right = 192.0
+offset_bottom = 191.932
+texture = ExtResource("2_8p1wj")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect11" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 64.0
+offset_top = 127.932
+offset_right = 128.0
+offset_bottom = 191.932
+texture = ExtResource("2_8p1wj")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect12" type="TextureRect" parent="MeshInstance2D"]
+offset_top = 127.932
+offset_right = 64.0
+offset_bottom = 191.932
+texture = ExtResource("2_8p1wj")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect5" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 192.0
+offset_top = 63.9659
+offset_right = 256.0
+offset_bottom = 127.966
+texture = ExtResource("2_8p1wj")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect6" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 128.0
+offset_top = 63.9659
+offset_right = 192.0
+offset_bottom = 127.966
+texture = ExtResource("2_8p1wj")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect7" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 64.0
+offset_top = 63.9659
+offset_right = 128.0
+offset_bottom = 127.966
+texture = ExtResource("2_8p1wj")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect8" type="TextureRect" parent="MeshInstance2D"]
+offset_top = 63.9659
+offset_right = 64.0
+offset_bottom = 127.966
+texture = ExtResource("2_8p1wj")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect4" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 192.0
+offset_right = 256.0
+offset_bottom = 64.0
+texture = ExtResource("2_8p1wj")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 128.0
+offset_right = 192.0
+offset_bottom = 64.0
+texture = ExtResource("2_8p1wj")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+texture = ExtResource("2_8p1wj")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="MeshInstance2D"]
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_8p1wj")
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 8.0
+offset_right = 268.0
+offset_bottom = 108.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_m0568")
+
+[node name="CreditsButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 190.0
+offset_top = 153.0
+offset_right = 253.0
+offset_bottom = 184.0
+scale = Vector2(0.75, 0.75)
+text = "Credits"
+
+[node name="CreditsBackButton" type="Button" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 190.0
+offset_top = 153.0
+offset_right = 253.0
+offset_bottom = 184.0
+scale = Vector2(0.75, 0.75)
+text = "Back"
+
+[node name="Menu" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 94.0
+offset_right = 162.0
+offset_bottom = 195.0
+scale = Vector2(0.8, 0.8)
+
+[node name="Start" type="Button" parent="Menu"]
+layout_mode = 2
+text = "Start"
+
+[node name="Settings" type="Button" parent="Menu"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Exit" type="Button" parent="Menu"]
+layout_mode = 2
+text = "Exit"
+
+[node name="Settings" type="Control" parent="."]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 93.5
+offset_top = 40.0
+offset_right = 146.5
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Video" type="Button" parent="Settings/VBoxContainer"]
+layout_mode = 2
+text = "Video"
+
+[node name="Audio" type="Button" parent="Settings/VBoxContainer"]
+layout_mode = 2
+text = "Audio"
+
+[node name="Settingsback" type="Button" parent="Settings"]
+layout_mode = 0
+offset_left = 97.5
+offset_top = 130.0
+offset_right = 142.5
+offset_bottom = 161.0
+text = "Back"
+
+[node name="Video" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Video"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 20.0
+offset_right = 180.0
+offset_bottom = 100.0
+
+[node name="Labels" type="VBoxContainer" parent="Video/HBoxContainer"]
+layout_mode = 2
+
+[node name="Fullscreen" type="Label" parent="Video/HBoxContainer/Labels"]
+layout_mode = 2
+text = "Full Screen"
+
+[node name="Checks" type="VBoxContainer" parent="Video/HBoxContainer"]
+layout_mode = 2
+
+[node name="Fullscreen" type="CheckBox" parent="Video/HBoxContainer/Checks"]
+layout_mode = 2
+
+[node name="VideoBack" type="Button" parent="Video"]
+layout_mode = 0
+offset_left = 97.5
+offset_top = 130.0
+offset_right = 142.5
+offset_bottom = 161.0
+text = "Back"
+
+[node name="Audio" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Audio"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 20.0
+offset_right = 193.0
+offset_bottom = 100.0
+
+[node name="Labels" type="VBoxContainer" parent="Audio/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Volume" type="Label" parent="Audio/HBoxContainer2/Labels"]
+layout_mode = 2
+text = "Volume"
+
+[node name="Checks" type="VBoxContainer" parent="Audio/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Volume" type="HSlider" parent="Audio/HBoxContainer2/Checks"]
+layout_mode = 2
+min_value = 0.1
+max_value = 2.0
+step = 0.1
+value = 0.1
+
+[node name="AudioBack" type="Button" parent="Audio"]
+layout_mode = 0
+offset_left = 97.5
+offset_top = 130.0
+offset_right = 142.5
+offset_bottom = 161.0
+text = "Back"
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Credits"]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 57.0
+text = "Game Developers:
+Ian Day
+Vincent Churilla
+
+Skeleton: 
+\"Skeleton Character PSX\" (https://skfb.ly/oQHwM) by vinrax is licensed under Creative Commons Attribution"
+label_settings = SubResource("LabelSettings_bvhx3")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Gui" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_bb3ft")
+
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CreditsBackButton" to="." method="_on_credits_back_button_pressed"]
+[connection signal="pressed" from="Menu/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Menu/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Settings/VBoxContainer/Video" to="." method="_on_video_pressed"]
+[connection signal="pressed" from="Settings/VBoxContainer/Audio" to="." method="_on_audio_pressed"]
+[connection signal="pressed" from="Settings/Settingsback" to="." method="_on_settingsback_pressed"]
+[connection signal="toggled" from="Video/HBoxContainer/Checks/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="pressed" from="Video/VideoBack" to="." method="_on_video_back_pressed"]
+[connection signal="value_changed" from="Audio/HBoxContainer2/Checks/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="pressed" from="Audio/AudioBack" to="." method="_on_audio_back_pressed"]

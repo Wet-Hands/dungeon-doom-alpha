@@ -1,0 +1,179 @@
+[gd_scene load_steps=24 format=3 uid="uid://6skxxgqvb10x"]
+
+[ext_resource type="Material" uid="uid://jxhq8654tmrv" path="res://assets/materials/endDoorMat.tres" id="1_d211r"]
+[ext_resource type="Script" path="res://scripts/end_door.gd" id="1_jfvo4"]
+[ext_resource type="Shader" uid="uid://dcmwtebyys6hc" path="res://assets/portal/portalShader.tres" id="3_2yaua"]
+[ext_resource type="Texture2D" uid="uid://nwkb8rv414xq" path="res://assets/textures/tiles2/wall2.png" id="4_hudrl"]
+[ext_resource type="AudioStream" uid="uid://2dbkw3amuh0h" path="res://assets/audio/key.mp3" id="5_5eefu"]
+[ext_resource type="Texture2D" uid="uid://i6r8n3yad5dp" path="res://assets/textures/tiles2/cobble_stoneTILE_n.png" id="5_wd4j0"]
+[ext_resource type="AudioStream" uid="uid://cw7shmynb7adx" path="res://assets/audio/keyFail.mp3" id="7_r1hhq"]
+[ext_resource type="AudioStream" uid="uid://bvrxeygadeqwo" path="res://assets/audio/portalLoop.mp3" id="8_txg2y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_p104j"]
+size = Vector3(1, 2, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tvw8l"]
+size = Vector3(1, 2, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c6eea"]
+size = Vector3(1, 2, 0.5)
+
+[sub_resource type="Animation" id="Animation_j7r0k"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftTurnPoint:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightTurnPoint:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8cwr0"]
+_data = {
+"open": SubResource("Animation_j7r0k")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wbbo"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xa1v"]
+albedo_color = Color(1, 0.101961, 0.0862745, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jtswl"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0shpa"]
+albedo_color = Color(0.286275, 1, 0.0901961, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvoo8"]
+albedo_color = Color(0.0901961, 0.286275, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wded4"]
+render_priority = 0
+shader = ExtResource("3_2yaua")
+shader_parameter/ColorParam = Color(1, 0.705882, 0, 1)
+shader_parameter/IntenseParam = 10.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wjyh8"]
+material = SubResource("ShaderMaterial_wded4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6815o"]
+albedo_texture = ExtResource("4_hudrl")
+normal_enabled = true
+normal_texture = ExtResource("5_wd4j0")
+uv1_scale = Vector3(8, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uldff"]
+material = SubResource("StandardMaterial3D_6815o")
+size = Vector3(2, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0txms"]
+size = Vector3(2, 2, 0.25)
+
+[node name="EndDoor" type="Node3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.75, 1.5, 0)
+script = ExtResource("1_jfvo4")
+
+[node name="LeftTurnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, 0)
+
+[node name="LeftSide" type="MeshInstance3D" parent="LeftTurnPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+material_override = ExtResource("1_d211r")
+mesh = SubResource("BoxMesh_p104j")
+skeleton = NodePath("../..")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="LeftTurnPoint/LeftSide"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftTurnPoint/LeftSide/RigidBody3D"]
+shape = SubResource("BoxShape3D_tvw8l")
+
+[node name="RightTurnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1, 0)
+
+[node name="RightSide" type="MeshInstance3D" parent="RightTurnPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0)
+material_override = ExtResource("1_d211r")
+mesh = SubResource("BoxMesh_c6eea")
+skeleton = NodePath("../..")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="RightTurnPoint/RightSide"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightTurnPoint/RightSide/RigidBody3D"]
+shape = SubResource("BoxShape3D_tvw8l")
+
+[node name="DoorAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8cwr0")
+}
+
+[node name="InteractArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
+shape = SubResource("BoxShape3D_7wbbo")
+
+[node name="KeyholeRed" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, -0.25, -0.125)
+visible = false
+material_override = SubResource("StandardMaterial3D_0xa1v")
+mesh = SubResource("CylinderMesh_jtswl")
+
+[node name="KeyholeGreen" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, -0.25, -0.125)
+visible = false
+material_override = SubResource("StandardMaterial3D_0shpa")
+mesh = SubResource("CylinderMesh_jtswl")
+
+[node name="KeyholeBlue" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, -0.25, -0.125)
+visible = false
+material_override = SubResource("StandardMaterial3D_hvoo8")
+mesh = SubResource("CylinderMesh_jtswl")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="WhiteBack" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, 0, -0.0222708)
+mesh = SubResource("PlaneMesh_wjyh8")
+
+[node name="WallFix" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, 1.25, 0)
+mesh = SubResource("BoxMesh_uldff")
+
+[node name="Key" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_5eefu")
+
+[node name="KeyFail" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_r1hhq")
+
+[node name="SFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_txg2y")
+
+[node name="Portal" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+shape = SubResource("BoxShape3D_0txms")
+
+[connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,191 @@
+[gd_scene load_steps=19 format=3 uid="uid://cavtxc7hw0rjj"]
+
+[ext_resource type="Script" path="res://scripts/chest.gd" id="1_hwv8j"]
+[ext_resource type="Texture2D" uid="uid://c1nd7bcskdgly" path="res://assets/textures/tiles2/woodTile2Chest.png" id="2_mafqi"]
+[ext_resource type="Texture2D" uid="uid://batds7i5yv3un" path="res://assets/textures/tiles2/woodTile2_n.png" id="4_0mnbw"]
+[ext_resource type="PackedScene" uid="uid://5ddiqwwo58lh" path="res://scenes/item.tscn" id="4_78ort"]
+[ext_resource type="AudioStream" uid="uid://2dbkw3amuh0h" path="res://assets/audio/key.mp3" id="5_a6r6r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kirp7"]
+albedo_texture = ExtResource("2_mafqi")
+normal_enabled = true
+normal_texture = ExtResource("4_0mnbw")
+uv1_scale = Vector3(3, 1, 1)
+uv1_triplanar = true
+
+[sub_resource type="PrismMesh" id="PrismMesh_jssoc"]
+lightmap_size_hint = Vector2i(24, 25)
+size = Vector3(1.5, 0.25, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8yssb"]
+albedo_texture = ExtResource("2_mafqi")
+normal_enabled = true
+normal_texture = ExtResource("4_0mnbw")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l61qi"]
+size = Vector2(1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sejmp"]
+cull_mode = 2
+albedo_texture = ExtResource("2_mafqi")
+normal_enabled = true
+normal_texture = ExtResource("4_0mnbw")
+uv1_scale = Vector3(2, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xpq6h"]
+size = Vector2(1.5, 0.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n2it4"]
+size = Vector2(1, 0.5)
+
+[sub_resource type="Animation" id="Animation_4qw1k"]
+resource_name = "open"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChestTop/TopTurnPoint:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.74533, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Item:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"itemCollection"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w4bj5"]
+_data = {
+"open": SubResource("Animation_4qw1k")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gbr0r"]
+size = Vector3(1.5, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ape5p"]
+size = Vector3(2.5, 2, 2.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohuwi"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jphu1"]
+top_radius = 0.125
+bottom_radius = 0.125
+height = 0.25
+
+[node name="Chest" type="Node3D"]
+script = ExtResource("1_hwv8j")
+
+[node name="ChestTop" type="Node3D" parent="."]
+
+[node name="TopTurnPoint" type="Node3D" parent="ChestTop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="ChestTop/TopTurnPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0.5)
+material_override = SubResource("StandardMaterial3D_kirp7")
+mesh = SubResource("PrismMesh_jssoc")
+skeleton = NodePath("../../..")
+
+[node name="ChestBottom" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ChestBottom"]
+material_override = SubResource("StandardMaterial3D_8yssb")
+mesh = SubResource("PlaneMesh_l61qi")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ChestBottom"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.25, -0.5)
+material_override = SubResource("StandardMaterial3D_sejmp")
+mesh = SubResource("PlaneMesh_xpq6h")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="ChestBottom"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.25, 0.5)
+material_override = SubResource("StandardMaterial3D_sejmp")
+mesh = SubResource("PlaneMesh_xpq6h")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="ChestBottom"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.75, 0.25, 0)
+material_override = SubResource("StandardMaterial3D_sejmp")
+mesh = SubResource("PlaneMesh_n2it4")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="ChestBottom"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.75, 0.25, 0)
+material_override = SubResource("StandardMaterial3D_sejmp")
+mesh = SubResource("PlaneMesh_n2it4")
+
+[node name="ChestAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w4bj5")
+}
+
+[node name="TestTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3081, 0)
+light_color = Color(1, 0.717647, 0.2, 1)
+light_energy = 0.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_gbr0r")
+
+[node name="OpenArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00231886, 1.00162, -0.00136682)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OpenArea"]
+shape = SubResource("BoxShape3D_ape5p")
+
+[node name="Keyhole" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.45767, 0.435379)
+material_override = SubResource("StandardMaterial3D_ohuwi")
+mesh = SubResource("CylinderMesh_jphu1")
+
+[node name="Item" parent="." instance=ExtResource("4_78ort")]
+
+[node name="Key" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_a6r6r")
+
+[connection signal="chItem" from="." to="Item" method="_on_chest_ch_item"]
+[connection signal="timeout" from="TestTimer" to="." method="_on_test_timer_timeout"]
+[connection signal="area_entered" from="OpenArea" to="." method="_on_open_area_area_entered"]

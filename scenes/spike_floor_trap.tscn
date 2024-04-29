@@ -1,0 +1,125 @@
+[gd_scene load_steps=11 format=3 uid="uid://b5ovx6awnnt4s"]
+
+[ext_resource type="Script" path="res://scripts/spike_floor_trap.gd" id="1_vrm7v"]
+[ext_resource type="Texture2D" uid="uid://blsamlepdwqe7" path="res://assets/textures/tiles1/floorTexture64.jpg" id="2_645em"]
+[ext_resource type="Material" uid="uid://dp6t67vcm5t3h" path="res://assets/materials/metal.tres" id="3_vv5cl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ee5kp"]
+albedo_texture = ExtResource("2_645em")
+normal_enabled = true
+uv1_scale = Vector3(2, 2, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nj5yv"]
+material = SubResource("StandardMaterial3D_ee5kp")
+size = Vector2(3, 3)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5rdud"]
+material = ExtResource("3_vv5cl")
+top_radius = 0.0
+bottom_radius = 0.2
+height = 1.5
+radial_segments = 4
+rings = 2
+
+[sub_resource type="Animation" id="Animation_qvdyu"]
+resource_name = "end"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spikes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1rhre"]
+resource_name = "start"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spikes:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pr0qx"]
+_data = {
+"end": SubResource("Animation_qvdyu"),
+"start": SubResource("Animation_1rhre")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e2pww"]
+size = Vector3(3, 3, 3)
+
+[node name="SpikeFloorTrap" type="Node3D"]
+script = ExtResource("1_vrm7v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("PlaneMesh_nj5yv")
+
+[node name="Spikes" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("CylinderMesh_5rdud")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.75, 0)
+mesh = SubResource("CylinderMesh_5rdud")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0.75, 0)
+mesh = SubResource("CylinderMesh_5rdud")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.75)
+mesh = SubResource("CylinderMesh_5rdud")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.75, 0.75)
+mesh = SubResource("CylinderMesh_5rdud")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0.75, 0.75)
+mesh = SubResource("CylinderMesh_5rdud")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.75)
+mesh = SubResource("CylinderMesh_5rdud")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0.75, -0.75)
+mesh = SubResource("CylinderMesh_5rdud")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Spikes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0.75, -0.75)
+mesh = SubResource("CylinderMesh_5rdud")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pr0qx")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_e2pww")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
