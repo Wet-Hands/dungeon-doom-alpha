@@ -14,7 +14,7 @@ func _ready(): #Called when the node enters the scene tree for the first time.
 		$KeyArea.add_to_group("blueInt")
 		$"../HUD/KeyRect".texture = ResourceLoader.load("res://assets/hud/blueKey16.png")
 
-func _process(delta): #Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta): #Called every frame. 'delta' is the elapsed time since the previous frame.
 	if Input.is_action_pressed("interact"):#when backspace is pressed
 		$KeyArea/KeyCol.disabled = false
 		var group = $KeyArea.get_groups()
@@ -49,7 +49,7 @@ func _on_key_area_area_entered(area):
 		$KeyArea.add_to_group("blueInt")
 		$"../HUD/KeyRect".texture = ResourceLoader.load("res://assets/hud/blueKey16.png")
 
-func keyReset(col):
+func keyReset(_col):
 	keyInv = "noneInt"
 	$KeyArea.add_to_group("noneInt")
 	print("Key Removed")

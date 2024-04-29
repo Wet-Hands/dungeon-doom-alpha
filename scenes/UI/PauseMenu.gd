@@ -6,9 +6,6 @@ var paused = false
 func _ready():
 	pass
 
-func _process(delta):
-	pass
-
 func _on_player_pause():
 	visible = !visible
 	paused = visible

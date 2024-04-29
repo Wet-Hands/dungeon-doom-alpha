@@ -5,10 +5,9 @@ extends Node3D
 @export var key = "none"
 @export var endDoor = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready(): #Called when the node enters the scene tree for the first time.
 	$InteractArea.add_to_group("door")
-	$InteractAreaBack.add_to_group("door")
+	$InteractAreaBack.add_to_group("door")  
 	if key == "red":
 		$InteractArea.add_to_group("redLock")
 		$InteractAreaBack.add_to_group("redLock")
@@ -38,12 +37,11 @@ func _ready(): #Called when the node enters the scene tree for the first time.
 		$LeftTurnPoint/LeftSide.material_override.albedo_color = "f2b834" #f2bb78
 		pass
 
-func openFunc(side):
+func openFunc(_side):
 	if open == false:
 		$Key.play()
 		$DoorAnim.play("open")
 		open = true
-		print("DOOR OPEN")
 		$InteractArea.remove_from_group("door")
 		$InteractAreaBack.remove_from_group("door")
 

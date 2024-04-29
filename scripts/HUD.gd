@@ -26,5 +26,5 @@ func _on_hitbox_area_entered(area):
 	if area.is_in_group("blueLock"):
 		$Label.text = "Unlock Using Key [E]"
 
-func _on_hitbox_area_exited(area):
+func _on_hitbox_area_exited(_area):
 	$Label.text = " "

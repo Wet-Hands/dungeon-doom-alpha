@@ -193,7 +193,7 @@ func _on_fuel_timer_timeout():
 
 var levels = ["res://scenes/UI/main_menu.tscn", "res://level_2.tscn", "res://levels/level3/level_3.tscn", "res://levels/level4/level_4.tscn", "res://levels/level5/level_5.tscn"]
 
-func _on_key_area_area_entered(area):
+func _on_key_area_area_entered(_area):
 	pass
 
 var switched
