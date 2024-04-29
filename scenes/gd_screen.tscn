@@ -102,7 +102,6 @@ script = ExtResource("1_bwaow")
 environment = SubResource("Environment_ymw86")
 
 [node name="head" parent="." instance=ExtResource("1_x4860")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0)
 
 [node name="Cube" parent="head" index="1"]
 mesh = SubResource("ArrayMesh_hxset")

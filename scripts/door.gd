@@ -70,15 +70,13 @@ func _on_interact_area_area_entered(area):
 		else:
 			$KeyFail.play()
 
-
-func _on_timer_timeout():
+func _on_timer_timeout(): #NOTE: CONVERT THIS INTO A FOR-LOOP AND A 2D ARRAY
 	$InteractArea.remove_from_group("redLock")
 	$InteractArea.remove_from_group("greenLock")
 	$InteractArea.remove_from_group("blueLock")
 	$InteractAreaBack.remove_from_group("redLock")
 	$InteractAreaBack.remove_from_group("greenLock")
 	$InteractAreaBack.remove_from_group("blueLock")
-
 
 func _on_interact_area_back_area_entered(area):
 	if area.is_in_group("redInt"):

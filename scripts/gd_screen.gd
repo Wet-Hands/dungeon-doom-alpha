@@ -1,20 +1,13 @@
 extends Node3D
-var spins = 0
-@onready var head = $head
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	playSpin()
-	$Audio.play()
-	$Timer.start()
+func _ready(): #Called when the node enters the scene tree for the first time.
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN) #Fullscren the Game
+	$Audio.play() #Play Sound Effect
+	$Timer.start() #Timer Starts (3.25s)
 
-func _process(delta):
-	playSpin()
+func _process(_delta): #Always Running
+	$AnimationPlayer.play("fullSpin") #Play Spin Animation
 
-func playSpin():
-	$AnimationPlayer.play("fullSpin")
-
-func _on_timer_timeout():
-	$Timer.stop()
-	get_tree().change_scene_to_file("res://scenes/UI/main_menu.tscn")
+func _on_timer_timeout(): #When Timer (3.25s) Stops
+	$Timer.stop() #Stop Timer
+	get_tree().change_scene_to_file("res://scenes/UI/main_menu.tscn") #Go to Main Menu
