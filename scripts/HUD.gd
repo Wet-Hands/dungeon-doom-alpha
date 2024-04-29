@@ -28,3 +28,9 @@ func _on_hitbox_area_entered(area):
 
 func _on_hitbox_area_exited(_area):
 	$Label.text = " "
+
+func _on_player_damage(num):
+	if num < 0:
+		$DamageAnim.play("dmg")
+	if num > 0:
+		$DamageAnim.play("hlt")

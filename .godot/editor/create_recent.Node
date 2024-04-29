@@ -1,8 +1,9 @@
+AnimationPlayer
+ColorRect
 Node3D
 AudioStreamPlayer3D
 CollisionShape3D
 Area3D
-AnimationPlayer
 Timer
 AudioStreamPlayer
 RichTextLabel
@@ -11,4 +12,3 @@ Control
 Camera3D
 MeshInstance3D
 Node
-HSlider

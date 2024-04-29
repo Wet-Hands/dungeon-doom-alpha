@@ -23,6 +23,8 @@ var currentFuel #Fuel Player is at
 var initPos #Initial Position of Player
 
 signal pause
+
+signal damage
 var passed = false
 
 func _ready():
@@ -130,6 +132,7 @@ func playFootStep(): #Footstep sound for Headbob animation
 
 func health(num): #Change Player health
 	currentHealth += num #Update Current Health by num
+	emit_signal("damage", num) #Play Damage Flash
 	if currentHealth <= 0: #If Player Dies
 		position = initPos #Return to Start
 		health(100) #Reset Health back to Full

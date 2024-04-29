@@ -37,10 +37,10 @@ func _ready(): #Called when the node enters the scene tree for the first time.
 		$LeftTurnPoint/LeftSide.material_override.albedo_color = "f2b834" #f2bb78
 		pass
 
-func openFunc(_side):
+func openFunc(side):
 	if open == false:
 		$Key.play()
-		$DoorAnim.play("open")
+		$DoorAnim.play(side)
 		open = true
 		$InteractArea.remove_from_group("door")
 		$InteractAreaBack.remove_from_group("door")

@@ -26,13 +26,6 @@ res://scenes/UI/PauseMenu.tscn
 res://scenes/tileset_2.tscn
 res://scenes/gd_screen.tscn
 res://scripts/spike_wall_trap.gd
-res://scripts/gd_screen.gd
 res://scripts/door.gd
-res://scripts/main_menu.gd
-res://scripts/item.gd
-res://scripts/player.gd
 res://scripts/HUD.gd
-res://scripts/KeyManager.gd
-res://scenes/UI/PauseMenu.gd
-res://scripts/end_door.gd
-res://scripts/skeleton.gd
+res://scripts/player.gd

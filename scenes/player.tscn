@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://378kl0b07lmb"]
+[gd_scene load_steps=34 format=3 uid="uid://378kl0b07lmb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_luw3v"]
 [ext_resource type="Texture2D" uid="uid://5ow12i52hvse" path="res://assets/hud/lantern.png" id="2_odx47"]
@@ -351,6 +351,44 @@ shadow_size = 0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xpvym"]
 
+[sub_resource type="Animation" id="Animation_8b3am"]
+resource_name = "dmg"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Damage:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.141176), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_myqff"]
+resource_name = "hlt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Damage:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(0, 1, 0, 0.141176), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j5g2i"]
+_data = {
+"dmg": SubResource("Animation_8b3am"),
+"hlt": SubResource("Animation_myqff")
+}
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t3k7p"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
@@ -511,6 +549,17 @@ vertical_alignment = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HUD/Area3D"]
 shape = SubResource("CapsuleShape3D_xpvym")
 
+[node name="Damage" type="ColorRect" parent="HUD"]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 180.0
+color = Color(1, 0, 0, 0)
+
+[node name="DamageAnim" type="AnimationPlayer" parent="HUD"]
+libraries = {
+"": SubResource("AnimationLibrary_j5g2i")
+}
+
 [node name="HitTimer" type="Timer" parent="."]
 
 [node name="KeyManager" type="Node3D" parent="."]
@@ -529,6 +578,7 @@ visible = false
 [node name="Swing" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_cegbu")
 
+[connection signal="damage" from="." to="HUD" method="_on_player_damage"]
 [connection signal="pause" from="." to="PauseMenu" method="_on_player_pause"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="Hitbox" to="HUD" method="_on_hitbox_area_entered"]
