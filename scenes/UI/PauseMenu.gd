@@ -3,9 +3,6 @@ extends Control
 @onready var player = get_node("..")
 var paused = false
 
-func _ready():
-	pass
-
 func _on_player_pause():
 	visible = !visible
 	paused = visible

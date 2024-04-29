@@ -52,9 +52,8 @@ func _process(delta): #If Game is runnong
 			atkHitbox.monitoring = false
 			doAtk = true
 			$attackCooldown.start()
-			print("skele attacked!")
 		move_and_slide()
-	else: pass
+
 func update_target_location(target_location):
 	if detected == true:
 		nav_agent.target_position = target_location #changes target for path finding to players current location
@@ -62,11 +61,9 @@ func update_target_location(target_location):
 func _physics_process(_delta): #While Physics is happening (Always)
 	if dead == false:
 		look_at(player.global_position) #Look at Player
-	#pass
 
 func health(num): #Change Player health
 	curHealth += num #Update Current Health by num
-	print(str(curHealth))
 	if curHealth <= 0: #If Health reaches 0
 		dead = true #Skeleton Dead
 		$CollisionShape3D.position = Vector3(0, 100, 0) #sends collision shape to hell before the skeleton
@@ -74,7 +71,7 @@ func health(num): #Change Player health
 		ob34.material_override.set_shader_parameter("LightStrength", 1) #Update Shader on Skeleton
 		$ShaderTimer.start() #Shader Update Timer Starts
 		$ShaderAnim.play("shader") #Play Shader Animation
-		$Death1.play()
+		$Death1.play() #Play Death Animation
 
 func _disableCol():
 	$Hitbox.monitoring = false
@@ -96,14 +93,11 @@ func _on_hitbox_area_entered(area): #If hit by sword
 	if area.is_in_group("Light"): #If in Light
 		inLight = true #skele is in Light
 		inEdgeLight = true #skele is in Edge (to check for exit later)
-		print("Skele is in Light")
 	if area.is_in_group("sword"): #If it's hit by sword
 		if curHit == false: #If the swing hasn't already damaged the skeleton
 			health(-25) #Lose 25 Health
 			curHit = true #Skeleton Been Hit in Swing
-			print("Skele hurt") #Console Test
 			$HitTimer.start() #Start Timer 'til next swing
-		else: pass
 
 func _on_hit_timer_timeout(): #SWINGIN' TIME!
 	$HitTimer.stop() #Stop Timer when complete
@@ -112,10 +106,8 @@ func _on_hit_timer_timeout(): #SWINGIN' TIME!
 func _on_hitbox_area_exited(area): #checks if anything has left the skeleton's hitbox
 	if area.is_in_group("Light"): #if the skele leaves the Light area
 		inLight = false #sets skeleton in light to false
-		print("skele is not in Light")
 	if area.is_in_group("EdgeLight"): #if the skele leaves the edge of the light
 		inEdgeLight = false #sets skeleotn in edge of light to false
-		print("not on edge of Light")
 
 func _on_attack_cooldown_timeout(): #When Cooldown is Over
 	$attackCooldown.stop() #Stop Timer
@@ -127,17 +119,14 @@ func _on_attack_cooldown_timeout(): #When Cooldown is Over
 func _on_skele_atk_hitbox_area_entered(area):
 	if area.is_in_group("player"):
 		playerInfront = true
-		print ("player in front!")
 
 func _on_skele_atk_hitbox_area_exited(area):
 	if area.is_in_group("player"):
 		playerInfront = false
-		print ("player no longer in front!")
 
 func _on_detection_area_entered(area):
 	if area.is_in_group("player"):
 		detected = true
-
 
 func _on_detection_area_exited(area):
 	if area.is_in_group("player"):

@@ -17,10 +17,10 @@ var anim_names #changed depending on what animation needs to be used (this is fo
 @export var maxHealth = 100 #Max Health
 var currentHealth #Health Player is at
 
-var currentFuel
-var maxFuel = 100
+var maxFuel = 100 #Max Fuel
+var currentFuel #Fuel Player is at
 
-var initPos
+var initPos #Initial Position of Player
 
 signal pause
 var passed = false

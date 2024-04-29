@@ -92,7 +92,7 @@ func _on_interact_area_back_area_entered(area):
 			locked = false
 			$KeyholeBlue.visible = false
 			$Timer.start()
-			
+
 	if area.is_in_group("noneInt"):
 		if locked == false:
 			openFunc("openBack")

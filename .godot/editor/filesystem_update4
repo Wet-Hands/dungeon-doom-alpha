@@ -34,3 +34,5 @@ res://scripts/player.gd
 res://scripts/HUD.gd
 res://scripts/KeyManager.gd
 res://scenes/UI/PauseMenu.gd
+res://scripts/end_door.gd
+res://scripts/skeleton.gd

@@ -5,7 +5,6 @@ extends Node3D
 @export var key = "none"
 @export var endDoor = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready(): #Called when the node enters the scene tree for the first time.
 	$WhiteBack.visible = false
 	$InteractArea.add_to_group("door")
@@ -70,7 +69,6 @@ func _on_interact_area_area_entered(area):
 			openFunc()
 		else:
 			$KeyFail.play()
-
 
 func _on_timer_timeout():
 	$InteractArea.remove_from_group("redLock")
