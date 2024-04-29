@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://co543lyt6iucd"]
+[gd_scene load_steps=15 format=3 uid="uid://co543lyt6iucd"]
 
 [ext_resource type="Script" path="res://scripts/spike_wall_trap.gd" id="1_56ful"]
 [ext_resource type="Texture2D" uid="uid://nwkb8rv414xq" path="res://assets/textures/tiles2/wall2.png" id="2_ld864"]
 [ext_resource type="Texture2D" uid="uid://i6r8n3yad5dp" path="res://assets/textures/tiles2/cobble_stoneTILE_n.png" id="3_wrtjw"]
 [ext_resource type="Material" uid="uid://dp6t67vcm5t3h" path="res://assets/materials/metal.tres" id="4_xq18w"]
+[ext_resource type="AudioStream" uid="uid://cw7shmynb7adx" path="res://assets/audio/keyFail.mp3" id="5_uo6vc"]
+[ext_resource type="AudioStream" uid="uid://2dbkw3amuh0h" path="res://assets/audio/key.mp3" id="6_xvjnf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifqfd"]
 albedo_color = Color(0.772549, 0.772549, 0.772549, 1)
@@ -185,8 +187,10 @@ shape = SubResource("BoxShape3D_1d5g4")
 wait_time = 3.0
 
 [node name="Warning" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_uo6vc")
 
 [node name="SpikeAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_xvjnf")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

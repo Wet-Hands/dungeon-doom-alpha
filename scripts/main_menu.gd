@@ -1,9 +1,5 @@
 extends Control
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
 func toggle():
 	visible = !visible
 	get_tree().paused = visible
@@ -38,7 +34,6 @@ func _on_video_pressed():
 func _on_audio_pressed():
 	$Gui.play()
 	menuUpdate($Audio, $Settings)
-	
 
 func _on_video_back_pressed():
 	$Gui.play()

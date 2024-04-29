@@ -26,7 +26,7 @@ signal pause
 var passed = false
 
 func _ready():
-	Engine.max_fps = 60
+	Engine.max_fps = 60 #Set FPS to 60
 	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
 	currentHealth = maxHealth #Set Current Health to Max
@@ -167,43 +167,34 @@ func _on_sword_hitbox_area_entered(area): #If sword hits skeleton
 	if area.is_in_group("skeleton"): #If it's a skeleton
 		print("Skeleton Hit!") #Skeleton Hit!
 
-func _on_hitbox_area_entered(area):
-		if area.is_in_group("skeleAttack"): #If it's hit by sword
+func _on_hitbox_area_entered(area): #When Player Enters Area
+		if area.is_in_group("skeleAttack"): #If it's hit by Skeleton
 			health(-10) #Lose 10 Health
-			print(currentHealth) #Console Test
-		if area.is_in_group("trap"):
-			health(-20)
-		if area.is_in_group("portal"):
-			#$EndorTimer.start()
-			print("In Portal")
-			$"/root/Global".level += 1
-			if $"/root/Global".level == 5:
-				$"/root/Global".level = 0
-			call_deferred("nextLevel")
+		if area.is_in_group("trap"): #If Player Enters Spikes
+			health(-20) #Lose 20 Health per Spike
+		if area.is_in_group("portal"): #If Players Enters Portal
+			$"/root/Global".level += 1 #Level Var +1
+			if $"/root/Global".level == 5: #If Game is Beaten
+				$"/root/Global".level = 0 #Return to Main Menu Num
+			call_deferred("nextLevel") #Fix for Stupid Errors
 
-func nextLevel():
-	get_tree().change_scene_to_file(levels[$"/root/Global".level])
+func nextLevel(): #Next Level Function
+	get_tree().change_scene_to_file(levels[$"/root/Global".level]) #Go to Next Level
 
 func _on_fuel_timer_timeout():
-	if light == true:
-		fuel(-2)
-		if currentFuel < 0:
+	if light == true: #If the light is on
+		fuel(-2) #Lose 2 fuel points
+		if currentFuel < 0: #If Player runs out of fuel
 			$Head/Items/Lantern.visible = false #Turn off light
-			$Head/Items/Lantern/LightHitbox/CollisionShape3D.disabled = true
+			$Head/Items/Lantern/LightHitbox/CollisionShape3D.disabled = true #Disable Skeleton Protection
 			$Head/Items/Lantern/OuterLightHitbox/OuterLightCollision.disabled = true #turns off Outer Light collision
-			LightHitbox.monitoring = false
+			LightHitbox.monitoring = false #Disable Skeleton Protection
 			light = false #Light is off
 
 var levels = ["res://scenes/UI/main_menu.tscn", "res://level_2.tscn", "res://levels/level3/level_3.tscn", "res://levels/level4/level_4.tscn", "res://levels/level5/level_5.tscn"]
-#func _process(delta):
-	#if passed == true:
-		#get_tree().change_scene_to_file(levels[$"/root/Global".level])
 
 func _on_key_area_area_entered(area):
 	pass
-
-func _on_endor_timer_timeout():
-	passed = true
 
 var switched
 func _on_lantern_animation_animation_finished(anim_name):

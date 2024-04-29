@@ -1,6 +1,7 @@
 extends Node3D
 
 func _ready(): #Called when the node enters the scene tree for the first time.
+	Engine.max_fps = 60 #Set FPS to 60
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN) #Fullscren the Game
 	$Audio.play() #Play Sound Effect
 	$Timer.start() #Timer Starts (3.25s)

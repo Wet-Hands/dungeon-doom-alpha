@@ -429,6 +429,10 @@ disabled = true
 
 [node name="Sprite3D" type="Sprite3D" parent="Head/Items/HealthPot"]
 
+[node name="Axe" type="Node3D" parent="Head/Items"]
+
+[node name="Dagger" type="Node3D" parent="Head/Items"]
+
 [node name="Camera3D" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.001, 0.29, 0.001)
 
@@ -522,9 +526,6 @@ visible = false
 
 [node name="fuelTimer" type="Timer" parent="."]
 
-[node name="EndorTimer" type="Timer" parent="."]
-wait_time = 3.0
-
 [node name="Swing" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_cegbu")
 
@@ -545,4 +546,3 @@ stream = ExtResource("8_cegbu")
 [connection signal="area_entered" from="KeyManager/KeyArea" to="." method="_on_key_area_area_entered"]
 [connection signal="area_entered" from="KeyManager/KeyArea" to="KeyManager" method="_on_key_area_area_entered"]
 [connection signal="timeout" from="fuelTimer" to="." method="_on_fuel_timer_timeout"]
-[connection signal="timeout" from="EndorTimer" to="." method="_on_endor_timer_timeout"]
