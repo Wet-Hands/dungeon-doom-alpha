@@ -6,6 +6,7 @@ res://assets/materials/endDoorMat.tres
 res://assets/portal/portalShader.tres
 res://assets/tileset/tileset2.tres
 res://assets/materials/metal.tres
+res://scripts/player.gd
 res://scenes/skeleton.tscn
 res://scenes/sketchfab_scene.tscn
 res://scenes/test_world.tscn
@@ -25,5 +26,3 @@ res://scenes/UI/main_menu.tscn
 res://scenes/UI/PauseMenu.tscn
 res://scenes/tileset_2.tscn
 res://scenes/gd_screen.tscn
-res://scripts/player.gd
-res://scripts/KeyManager.gd

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://378kl0b07lmb"]
+[gd_scene load_steps=42 format=3 uid="uid://378kl0b07lmb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_luw3v"]
 [ext_resource type="Texture2D" uid="uid://5ow12i52hvse" path="res://assets/hud/lantern.png" id="2_odx47"]
@@ -344,6 +344,39 @@ _data = {
 "bob": SubResource("Animation_bk0lt")
 }
 
+[sub_resource type="Animation" id="Animation_446od"]
+resource_name = "attack"
+
+[sub_resource type="Animation" id="Animation_larmo"]
+resource_name = "idle"
+length = 2.0
+
+[sub_resource type="Animation" id="Animation_c18nt"]
+resource_name = "walk"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8rivj"]
+_data = {
+"attack": SubResource("Animation_446od"),
+"idle": SubResource("Animation_larmo"),
+"walk": SubResource("Animation_c18nt")
+}
+
+[sub_resource type="Animation" id="Animation_8n8vf"]
+resource_name = "attack"
+
+[sub_resource type="Animation" id="Animation_g1gm4"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_pejwg"]
+resource_name = "walk"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l7i8k"]
+_data = {
+"attack": SubResource("Animation_8n8vf"),
+"idle": SubResource("Animation_g1gm4"),
+"walk": SubResource("Animation_pejwg")
+}
+
 [sub_resource type="LabelSettings" id="LabelSettings_4xiw0"]
 font = ExtResource("6_m37cq")
 font_size = 20
@@ -489,6 +522,16 @@ libraries = {
 [node name="Headbob" type="AnimationPlayer" parent="Head"]
 libraries = {
 "": SubResource("AnimationLibrary_rg8vv")
+}
+
+[node name="AxeAnim" type="AnimationPlayer" parent="Head"]
+libraries = {
+"": SubResource("AnimationLibrary_8rivj")
+}
+
+[node name="DaggerAnim" type="AnimationPlayer" parent="Head"]
+libraries = {
+"": SubResource("AnimationLibrary_l7i8k")
 }
 
 [node name="Footstep" type="AudioStreamPlayer3D" parent="."]

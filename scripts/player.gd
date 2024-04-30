@@ -74,7 +74,6 @@ func _input(event): #When any input is made, better than checking constantly wit
 				$Head/Items/Lantern/OuterLightHitbox/OuterLightCollision.disabled = true #turns off Outer Light collision
 				LightHitbox.monitoring = false
 				light = false
-		print("Light After: " + str(light))
 	if Input.is_action_just_pressed("fullScreen"): #If "f" or "f11" are pressed
 		if fs == false: #If Fullscreen is off
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN) #Full Screen
@@ -111,8 +110,6 @@ func _physics_process(delta): #If physics is happening (always)
 	else:
 		if anim_names != "Attack": #If Attack isn't happening
 			SwordHitbox.monitoring = false #Turn off Hitbox
-			#if switched == true:
-				#$Head/LanternAnimation.play("idleUp")
 			swordAnim.play("Idle") #Play Idle Animation
 			anim_names = "Idle" 
 	move_and_slide() #Brings it all together
@@ -149,10 +146,6 @@ func _on_animation_player_animation_finished(anim_name): #plays after animation 
 		$Head/Items/Sword/SwordMesh/SwordHitbox/CollisionShape3D.disabled = true #Disable Hitbox
 		SwordHitbox.monitoring = false #sets hitbox monitoring to false
 
-func _on_sword_hitbox_area_entered(area): #If sword hits skeleton
-	if area.is_in_group("skeleton"): #If it's a skeleton
-		print("Skeleton Hit!") #Skeleton Hit!
-
 func _on_hitbox_area_entered(area): #When Player Enters Area
 		if area.is_in_group("skeleAttack"): #If it's hit by Skeleton
 			health(-10) #Lose 10 Health
@@ -178,9 +171,6 @@ func _on_fuel_timer_timeout():
 			light = false #Light is off
 
 var levels = ["res://scenes/UI/main_menu.tscn", "res://level_2.tscn", "res://levels/level3/level_3.tscn", "res://levels/level4/level_4.tscn", "res://levels/level5/level_5.tscn"]
-
-func _on_key_area_area_entered(_area):
-	pass
 
 var switched
 func _on_lantern_animation_animation_finished(anim_name):
