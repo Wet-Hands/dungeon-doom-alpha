@@ -74,6 +74,7 @@ func health(num): #Change Player health
 		$Death1.play() #Play Death Animation
 
 func _disableCol():
+	$attack/MeshInstance3D/skeleAtkHitbox.remove_from_group("skeleAttack")
 	$Hitbox.monitoring = false
 	$CollisionShape3D.disabled = true
 	$Hitbox/HitBoxCollision.disabled = true

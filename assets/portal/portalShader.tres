@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=13 format=3 uid="uid://dcmwtebyys6hc"]
 
-[ext_resource type="Texture2D" uid="uid://j845wht7e8h3" path="res://assets/portal/T_VFX_lelu1_tiled.png" id="1_kyy4r"]
+[ext_resource type="Texture2D" uid="uid://b17ukblmos5yl" path="res://assets/portal/portal128.png" id="1_l2jlb"]
 [ext_resource type="Texture2D" uid="uid://bcp7qdigh3ewg" path="res://assets/portal/T_VFX_CircleFit1.png" id="2_p850x"]
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_w7wjg"]
@@ -16,7 +16,7 @@ operator = 2
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_k0xvx"]
 expanded_output_ports = [0]
-texture = ExtResource("1_kyy4r")
+texture = ExtResource("1_l2jlb")
 texture_type = 1
 
 [sub_resource type="VisualShaderNodeUVPolarCoord" id="VisualShaderNodeUVPolarCoord_qqq5l"]
@@ -104,6 +104,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-296.344, -114.439)
 modes/cull = 2
 nodes/fragment/0/position = Vector2(1300, 160)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_k0xvx")
