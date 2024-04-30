@@ -4,28 +4,27 @@ const speed = 4 #Movement Velocity? [THIS IS A JOKE, unless if i was right]
 var speedMulti = 1.0 #Movement Multiplier
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") #Gravity from Project Settings (9.81)
 
+var anim_names #changed depending on what animation needs to be used (this is for my sanity in checking what animation is currently playing there is probably a better way but its late and I'm tired)
 @onready var cam = $Head/Camera3D #Camera Variable
 @onready var swordAnim = $Head/SwordAnimation #movement animation variable
+
 @onready var SwordHitbox = $Head/Items/Sword/SwordMesh/SwordHitbox #hitbox of the sword
 @onready var LightHitbox = $Head/Items/Lantern/LightHitbox #hitbox for the Light
+
 var fs = false #Is fullscreen on or off
 var camSens = 1 #Camera Speed Sensitivity
 
-var light #Is lantern on or off
-var anim_names #changed depending on what animation needs to be used (this is for my sanity in checking what animation is currently playing there is probably a better way but its late and I'm tired)
-
 @export var maxHealth = 100 #Max Health
 var currentHealth #Health Player is at
-
 var maxFuel = 100 #Max Fuel
 var currentFuel #Fuel Player is at
 
 var initPos #Initial Position of Player
 
 signal pause
-
 signal damage
-var passed = false
+
+var light #Is lantern on or off
 
 func _ready():
 	Engine.max_fps = 60 #Set FPS to 60
@@ -37,7 +36,6 @@ func _ready():
 	$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health/heartFull16.png")
 	$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel100.png")
 	initPos = global_position
-	passed = false
 	light = false
 	$Head/Items/Lantern.position.y = -1.25
 	$Head/Items/Lantern.light_energy = 0
@@ -140,24 +138,9 @@ func health(num): #Change Player health
 
 func fuel(num):
 	currentFuel += num
-	if currentFuel < 13:
-		$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel13.png")
-	if currentFuel > 13:
-		$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel26.png")
-	if currentFuel > 26:
-		$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel39.png")
-	if currentFuel > 39:
-		$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel52.png")
-	if currentFuel > 52:
-		$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel65.png")
-	if currentFuel > 65:
-		$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel78.png")
-	if currentFuel > 78:
-		$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel91.png")
-	if currentFuel > 91:
-		$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel100.png")
-	if currentFuel <= 0:
-		$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel0.png")
+	var cf = currentFuel #100, 91, 78, 65, 52, 39, 26, 13, 0
+	if cf == 100 || cf == 92 || cf == 78 || cf == 64 || cf == 52 || cf == 38 || cf == 26 || cf == 12 || cf == 0:
+		$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel" + str(cf) + ".png")
 
 func _on_animation_player_animation_finished(anim_name): #plays after animation is finished
 	if anim_name == "Attack": #if the annimation is "Attack" 

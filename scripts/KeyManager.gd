@@ -1,6 +1,10 @@
 extends Node3D
 
 var keyInv = "none"
+var keyIntGroup = ["redInt", "greenInt", "blueInt", "noneInt"]
+var keyTexGroup = ["res://assets/hud/redKey16.png", "res://assets/hud/greenKey16.png", "res://assets/hud/blueKey16.png"]
+var lockGroup = ["redLock", "greenLock", "blueLock", "noneLock"]
+var colGroup = ["redCol", "greenCol", "blueCol"]
 
 func _ready(): #Called when the node enters the scene tree for the first time.
 	$KeyArea/KeyCol.disabled = true

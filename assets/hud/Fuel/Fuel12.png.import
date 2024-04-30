@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wu4qkitfmwy8"
-path="res://.godot/imported/Fuel13.png-60f5c77dbed64fe5f139fd0457eb4657.ctex"
+path="res://.godot/imported/Fuel12.png-07e6a734a03357ea90f8208e3aa04141.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/hud/Fuel/Fuel13.png"
-dest_files=["res://.godot/imported/Fuel13.png-60f5c77dbed64fe5f139fd0457eb4657.ctex"]
+source_file="res://assets/hud/Fuel/Fuel12.png"
+dest_files=["res://.godot/imported/Fuel12.png-07e6a734a03357ea90f8208e3aa04141.ctex"]
 
 [params]
 
