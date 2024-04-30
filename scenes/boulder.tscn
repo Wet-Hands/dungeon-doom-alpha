@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1ktsjp37a8fs"]
+
+[ext_resource type="Texture2D" uid="uid://blsamlepdwqe7" path="res://assets/textures/tiles1/floorTexture64.jpg" id="1_gvse6"]
+[ext_resource type="Script" path="res://scripts/boulder.gd" id="1_xy6xk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ie5oq"]
+albedo_texture = ExtResource("1_gvse6")
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_mpsca"]
+material = SubResource("StandardMaterial3D_ie5oq")
+radial_segments = 16
+rings = 4
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cyqso"]
+points = PackedVector3Array(-0.0521082, -0.286645, -0.369146, 0.0233878, 0.166372, 0.462224, -0.021979, 0.166452, 0.462446, -0.0373989, 0.411207, -0.265812, 0.468031, -0.153108, -0.0375535, -0.431716, -0.166829, 0.175102, 0.114538, -0.409742, 0.251108, -0.449823, 0.152628, -0.129095, 0.433599, 0.151782, 0.190526, 0.327878, 0.152186, -0.341764, -0.158778, 0.409932, 0.220848, 0.251114, 0.409742, 0.114525, -0.189973, 0.152394, -0.433969, -0.279338, -0.393615, -0.112853, 0.188605, -0.390902, -0.232283, 0.190532, -0.151874, 0.433595, -0.189505, -0.15202, 0.434282, -0.34175, 0.152101, 0.327899, -0.342314, -0.152352, -0.327056, 0.191, -0.152249, -0.433282, -0.190212, -0.41222, 0.191531, -0.279338, 0.393615, -0.112853, -0.0222278, -0.489779, -0.0222484, 0.279951, -0.392482, 0.113907, 0.280082, 0.392666, -0.112579, -0.0222278, 0.489779, -0.0222484, 0.433599, -0.151782, 0.190526, 0.468031, 0.153108, -0.0375535, 0.0390402, 0.153558, -0.467735, 0.327073, 0.151812, 0.342302, 0.113921, 0.392483, 0.279948, -0.052714, -0.152571, -0.465015)
+
+[node name="Boulder" type="Node3D"]
+script = ExtResource("1_xy6xk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_mpsca")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_cyqso")

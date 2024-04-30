@@ -1,3 +1,5 @@
+RigidBody3D
+MeshInstance3D
 AnimationPlayer
 ColorRect
 Node3D
@@ -10,5 +12,4 @@ RichTextLabel
 Label
 Control
 Camera3D
-MeshInstance3D
 Node

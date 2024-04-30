@@ -26,3 +26,6 @@ res://scenes/UI/main_menu.tscn
 res://scenes/UI/PauseMenu.tscn
 res://scenes/tileset_2.tscn
 res://scenes/gd_screen.tscn
+res://scripts/global.gd
+res://scenes/boulder.tscn
+res://scripts/boulder.gd
