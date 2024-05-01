@@ -441,6 +441,10 @@ shape = SubResource("CapsuleShape3D_4qoa5")
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(0.999997, -0.00171673, -0.00185316, 0.00172182, 0.999995, 0.00274956, 0.00184844, -0.00275274, 0.999995, 0, 0.240095, 0)
 
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 1.78488e-09, -1.05938e-08, -1.09139e-10, 1, -1.39698e-09, -1.16415e-10, 0, 1, 0.001, 0.29, 0.001)
+cull_mask = 1048573
+
 [node name="Items" type="Node3D" parent="Head"]
 transform = Transform3D(0.999997, 0.00172182, 0.00184843, -0.00171673, 0.999995, -0.00275274, -0.00185317, 0.00274956, 0.999995, 0, 0, 0)
 
@@ -503,9 +507,6 @@ disabled = true
 [node name="Axe" type="Node3D" parent="Head/Items"]
 
 [node name="Dagger" type="Node3D" parent="Head/Items"]
-
-[node name="Camera3D" type="Camera3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.001, 0.29, 0.001)
 
 [node name="SwordAnimation" type="AnimationPlayer" parent="Head"]
 root_node = NodePath("../..")

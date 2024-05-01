@@ -114,10 +114,10 @@ func _physics_process(delta): #If physics is happening (always)
 			anim_names = "Idle" 
 	move_and_slide() #Brings it all together
 	
-	for i in get_slide_collision_count():
-		var c = get_slide_collision(i)
-		if c.get_collider() is RigidBody3D:
-			c.get_collider().apply_central_impulse(-c.get_normal())
+	for i in get_slide_collision_count(): #Collision Stuff
+		var c = get_slide_collision(i) #Collision Stuff
+		if c.get_collider() is RigidBody3D: #If Colliding with RigidBody
+			c.get_collider().apply_central_impulse(-c.get_normal()) #Apply Force to RigidBoies
 
 func headBob(): #Headbob Function
 	if anim_names != "Attack": #If Attack isn't happening

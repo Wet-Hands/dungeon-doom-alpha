@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyg0rs77unshp"]
+
+[ext_resource type="Script" path="res://scripts/lava.gd" id="1_4tdp6"]
+[ext_resource type="Shader" uid="uid://do3a6umiqm3b7" path="res://shaders/lava.tres" id="1_pfmgb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7sgdj"]
+lightmap_size_hint = Vector2i(54, 31)
+size = Vector3(5, 0, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aeyhq"]
+render_priority = 0
+shader = ExtResource("1_pfmgb")
+
+[node name="Lava" type="Node3D"]
+script = ExtResource("1_4tdp6")
+speed = Vector3(0, 5, 3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_7sgdj")
+surface_material_override/0 = SubResource("ShaderMaterial_aeyhq")

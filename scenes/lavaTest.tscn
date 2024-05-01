@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ixqpnlg06311"]
+
+[ext_resource type="Script" path="res://scripts/lavaTest.gd" id="1_n0djq"]
+[ext_resource type="Gradient" uid="uid://dhmv8g48em52k" path="res://shaders/lavaTest.tres" id="2_p27tn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_00tn1"]
+frequency = 0.04
+fractal_type = 3
+fractal_octaves = 2
+fractal_lacunarity = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8lurb"]
+width = 64
+height = 64
+color_ramp = ExtResource("2_p27tn")
+noise = SubResource("FastNoiseLite_00tn1")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n0djq")
+speed = Vector3(0, 5, 3)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("NoiseTexture2D_8lurb")

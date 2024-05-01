@@ -1,0 +1,7 @@
+[gd_resource type="FastNoiseLite" format=3 uid="uid://dt1udlb04h336"]
+
+[resource]
+frequency = 0.03
+fractal_type = 3
+fractal_octaves = 2
+fractal_lacunarity = 1.0

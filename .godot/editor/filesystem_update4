@@ -6,7 +6,7 @@ res://assets/materials/endDoorMat.tres
 res://assets/portal/portalShader.tres
 res://assets/tileset/tileset2.tres
 res://assets/materials/metal.tres
-res://scripts/player.gd
+res://shaders/lava.tres
 res://scenes/boulder.tscn
 res://scenes/testPhysics.tscn
 res://scenes/skeleton.tscn
@@ -25,4 +25,7 @@ res://levels/level5/level_5.tscn
 res://scenes/door.tscn
 res://scenes/tileset_2.tscn
 res://scenes/gd_screen.tscn
-res://scripts/boulder.gd
+res://scenes/lavaTest.tscn
+res://scenes/lava.tscn
+res://scripts/lava.gd
+res://shaders/lavaNoise.tres

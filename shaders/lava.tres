@@ -1,0 +1,44 @@
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://do3a6umiqm3b7"]
+
+[ext_resource type="Gradient" uid="uid://dhmv8g48em52k" path="res://shaders/lavaTest.tres" id="1_n7yue"]
+[ext_resource type="FastNoiseLite" uid="uid://dt1udlb04h336" path="res://shaders/lavaNoise.tres" id="2_pcows"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_30dl2"]
+width = 128
+height = 128
+color_ramp = ExtResource("1_n7yue")
+noise = ExtResource("2_pcows")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_yv1ck"]
+texture = SubResource("NoiseTexture2D_30dl2")
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_rk760"]
+parameter_name = "offsetParam"
+default_value_enabled = true
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_2;
+
+
+
+void fragment() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	EMISSION = vec3(n_out2p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-443.245, -11.3257)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_yv1ck")
+nodes/fragment/2/position = Vector2(-80, 40)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_rk760")
+nodes/fragment/3/position = Vector2(-620, 20)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 2, 0, 0, 5)

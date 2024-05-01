@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://7x1p8sw0ae10"]
+[gd_scene load_steps=10 format=3 uid="uid://7x1p8sw0ae10"]
 
 [ext_resource type="PackedScene" uid="uid://c1ktsjp37a8fs" path="res://scenes/boulder.tscn" id="1_qpc2t"]
+[ext_resource type="PackedScene" uid="uid://dyg0rs77unshp" path="res://scenes/lava.tscn" id="2_kj32e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vmyu0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -13,6 +14,7 @@ sky_material = SubResource("ProceduralSkyMaterial_vmyu0")
 background_mode = 2
 sky = SubResource("Sky_vmln6")
 tonemap_mode = 2
+ssil_enabled = true
 glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_nujtw"]
@@ -59,3 +61,6 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 
 [node name="Boulder" parent="." instance=ExtResource("1_qpc2t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.95, -4.24)
+
+[node name="Lava" parent="." instance=ExtResource("2_kj32e")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3, 1, 1.75)
