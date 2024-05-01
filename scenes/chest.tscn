@@ -185,6 +185,7 @@ mesh = SubResource("CylinderMesh_jphu1")
 
 [node name="Key" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_a6r6r")
+max_db = 1.0
 
 [connection signal="chItem" from="." to="Item" method="_on_chest_ch_item"]
 [connection signal="timeout" from="TestTimer" to="." method="_on_test_timer_timeout"]

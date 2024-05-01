@@ -26,6 +26,8 @@ signal damage
 
 var light #Is lantern on or off
 
+var pushForce = 0.25
+
 func _ready():
 	Engine.max_fps = 60 #Set FPS to 60
 	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
@@ -113,13 +115,18 @@ func _physics_process(delta): #If physics is happening (always)
 			swordAnim.play("Idle") #Play Idle Animation
 			anim_names = "Idle" 
 	move_and_slide() #Brings it all together
+	
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * pushForce)
 
 func headBob(): #Headbob Function
 	if anim_names != "Attack": #If Attack isn't happening
 		SwordHitbox.monitoring = false #Turn off Hitbox
 		swordAnim.play("Walk") #Walk
 		anim_names = "Walk" 
-		$Head/Headbob.play("bob")
+	$Head/Headbob.play("bob")
 
 func playFootStep(): #Footstep sound for Headbob animation
 	$Footstep.pitch_scale = randf_range(0.8, 1.0) #Change Pitch so you don't sound like you're banging your head against the wall
