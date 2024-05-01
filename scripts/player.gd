@@ -26,12 +26,10 @@ signal damage
 
 var light #Is lantern on or off
 
-var pushForce = 0.25
-
 func _ready():
 	Engine.max_fps = 60 #Set FPS to 60
-	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
 	currentHealth = maxHealth #Set Current Health to Max
 	currentFuel = maxFuel
 	$HUD/ProgressBar.max_value = maxHealth #Set Max Health Visually
@@ -119,7 +117,7 @@ func _physics_process(delta): #If physics is happening (always)
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody3D:
-			c.get_collider().apply_central_impulse(-c.get_normal() * pushForce)
+			c.get_collider().apply_central_impulse(-c.get_normal())
 
 func headBob(): #Headbob Function
 	if anim_names != "Attack": #If Attack isn't happening

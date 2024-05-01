@@ -26,7 +26,7 @@ rings = 4
 radius = 1.013
 
 [node name="Boulder" type="RigidBody3D"]
-mass = 10.0
+mass = 50.0
 script = ExtResource("1_xy6xk")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
