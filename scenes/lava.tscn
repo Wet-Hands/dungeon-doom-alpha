@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyg0rs77unshp"]
+[gd_scene load_steps=6 format=3 uid="uid://dyg0rs77unshp"]
 
 [ext_resource type="Script" path="res://scripts/lava.gd" id="1_4tdp6"]
 [ext_resource type="Shader" uid="uid://do3a6umiqm3b7" path="res://shaders/lava.tres" id="1_pfmgb"]
@@ -11,6 +11,9 @@ size = Vector3(5, 0, 5)
 render_priority = 0
 shader = ExtResource("1_pfmgb")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_32gqw"]
+size = Vector3(5, 1, 5)
+
 [node name="Lava" type="Node3D"]
 script = ExtResource("1_4tdp6")
 speed = Vector3(0, 5, 3)
@@ -18,3 +21,8 @@ speed = Vector3(0, 5, 3)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_7sgdj")
 surface_material_override/0 = SubResource("ShaderMaterial_aeyhq")
+
+[node name="Area3D" type="Area3D" parent="." groups=["lava"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_32gqw")

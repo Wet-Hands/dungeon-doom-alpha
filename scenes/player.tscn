@@ -616,6 +616,9 @@ shape = SubResource("CapsuleShape3D_t3k7p")
 [node name="PauseMenu" parent="." instance=ExtResource("6_gx2dt")]
 visible = false
 
+[node name="LavaTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [node name="fuelTimer" type="Timer" parent="."]
 
 [node name="Swing" type="AudioStreamPlayer3D" parent="."]
@@ -627,6 +630,7 @@ emission_angle_enabled = true
 [connection signal="pause" from="." to="PauseMenu" method="_on_player_pause"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="Hitbox" to="HUD" method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
 [connection signal="area_exited" from="Hitbox" to="HUD" method="_on_hitbox_area_exited"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="Head/Items/Lantern/LightHitbox" to="." method="_on_light_hitbox_body_entered"]
@@ -640,4 +644,5 @@ emission_angle_enabled = true
 [connection signal="area_entered" from="HUD/Area3D" to="HUD" method="_on_area_3d_area_entered"]
 [connection signal="area_entered" from="KeyManager/KeyArea" to="." method="_on_key_area_area_entered"]
 [connection signal="area_entered" from="KeyManager/KeyArea" to="KeyManager" method="_on_key_area_area_entered"]
+[connection signal="timeout" from="LavaTimer" to="." method="_on_lava_timer_timeout"]
 [connection signal="timeout" from="fuelTimer" to="." method="_on_fuel_timer_timeout"]

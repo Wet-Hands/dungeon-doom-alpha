@@ -28,8 +28,8 @@ var light #Is lantern on or off
 
 func _ready():
 	Engine.max_fps = 60 #Set FPS to 60
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
+	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
 	currentHealth = maxHealth #Set Current Health to Max
 	currentFuel = maxFuel
 	$HUD/ProgressBar.max_value = maxHealth #Set Max Health Visually
@@ -151,9 +151,13 @@ func _on_animation_player_animation_finished(anim_name): #plays after animation 
 		$Head/Items/Sword/SwordMesh/SwordHitbox/CollisionShape3D.disabled = true #Disable Hitbox
 		SwordHitbox.monitoring = false #sets hitbox monitoring to false
 
+var inLava = false
 func _on_hitbox_area_entered(area): #When Player Enters Area
 		if area.is_in_group("skeleAttack"): #If it's hit by Skeleton
 			health(-10) #Lose 10 Health
+		if area.is_in_group("lava"):
+			inLava = true
+			$LavaTimer.start()
 		if area.is_in_group("trap"): #If Player Enters Spikes
 			health(-20) #Lose 20 Health per Spike
 		if area.is_in_group("portal"): #If Players Enters Portal
@@ -161,6 +165,11 @@ func _on_hitbox_area_entered(area): #When Player Enters Area
 			if $"/root/Global".level == 5: #If Game is Beaten
 				$"/root/Global".level = 0 #Return to Main Menu Num
 			call_deferred("nextLevel") #Fix for Stupid Errors
+
+func _on_hitbox_area_exited(area):
+	if area.is_in_group("lava"):
+		inLava = false
+		$LavaTimer.stop()
 
 func nextLevel(): #Next Level Function
 	get_tree().change_scene_to_file(levels[$"/root/Global".level]) #Go to Next Level
@@ -182,3 +191,7 @@ func _on_lantern_animation_animation_finished(anim_name):
 	print(anim_name)
 	if anim_name == "switch":
 		switched = !switched
+
+func _on_lava_timer_timeout():
+	if inLava == true:
+		health(-10)

@@ -1,3 +1,6 @@
+Timer
+CollisionShape3D
+Area3D
 MeshInstance3D
 TextureRect
 Camera3D
@@ -7,8 +10,6 @@ CanvasLayer
 AdaptiveAudioPlayer
 AudioStreamPlayer3D
 Node3D
-CollisionShape3D
-Area3D
 StaticBody3D
 RigidBody3D
 AnimationPlayer

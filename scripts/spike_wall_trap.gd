@@ -7,7 +7,7 @@ func _ready(): #Called when the node enters the scene tree for the first time.
 	active = true #Trap is Active
 
 func _on_area_3d_area_entered(area): #If Player Enters Spikes
-	if area.is_in_group("player") && active == true: #If Player Enters Trap Area & Are Active
+	if (area.is_in_group("player") || area.is_in_group("skeleton")) && active == true: #If Player Enters Trap Area & Are Active
 		$AnimationPlayer.play("start") #Spikes Shoot Out
 		$SpikeAudio.pitch_scale = 1.5 #Spike Sound Setup
 		$SpikeAudio.play() #Play Spike Sound
