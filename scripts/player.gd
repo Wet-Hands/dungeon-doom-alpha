@@ -12,7 +12,7 @@ var anim_names #changed depending on what animation needs to be used (this is fo
 @onready var LightHitbox = $Head/Items/Lantern/LightHitbox #hitbox for the Light
 
 var fs = false #Is fullscreen on or off
-var camSens = 1 #Camera Speed Sensitivity
+var camSens = .25 #Camera Speed Sensitivity
 
 @export var maxHealth = 100 #Max Health
 var currentHealth #Health Player is at
@@ -117,7 +117,7 @@ func _physics_process(delta): #If physics is happening (always)
 	for i in get_slide_collision_count(): #Collision Stuff
 		var c = get_slide_collision(i) #Collision Stuff
 		if c.get_collider() is RigidBody3D: #If Colliding with RigidBody
-			c.get_collider().apply_central_impulse(-c.get_normal()) #Apply Force to RigidBoies
+			c.get_collider().apply_central_impulse(-c.get_normal()) #Apply Force to RigidBodies
 
 func headBob(): #Headbob Function
 	if anim_names != "Attack": #If Attack isn't happening

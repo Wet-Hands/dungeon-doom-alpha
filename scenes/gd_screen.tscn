@@ -117,8 +117,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 240.0
-offset_bottom = 180.0
+offset_right = 1280.0
+offset_bottom = 960.0
 
 [node name="Label" type="Label" parent="Control"]
 visible = false
@@ -134,12 +134,12 @@ vertical_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control"]
 layout_mode = 0
-offset_left = 7.5
-offset_top = 140.0
-offset_right = 232.5
-offset_bottom = 174.0
+offset_left = 90.0
+offset_top = 750.0
+offset_right = 1190.0
+offset_bottom = 930.0
 bbcode_enabled = true
-text = "[center][font_size=19][tornado radius=4.0 freq=3.0 connected=1][font=res://assets/fonts/Kenney Blocks.ttf][rainbow freq=0.8 sat=0.7 val=0.8]Powered By Godot[/rainbow]"
+text = "[center][font_size=96][tornado radius=3.0 freq=5.0 connected=1][font=res://assets/fonts/Kenney Blocks.ttf][rainbow freq=0.6 sat=0.7 val=0.8]Powered By Godot[/rainbow]"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.25

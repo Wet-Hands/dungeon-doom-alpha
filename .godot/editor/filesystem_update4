@@ -17,10 +17,10 @@ res://scenes/item.tscn
 res://levels/level1/level_1.tscn
 res://level_2.tscn
 res://scenes/spike_wall_trap.tscn
-res://levels/level3/level_3.tscn
-res://levels/level4/level_4.tscn
-res://levels/level5/level_5.tscn
 res://scenes/door.tscn
-res://scenes/tileset_2.tscn
-res://scenes/gd_screen.tscn
 res://scenes/lava.tscn
+res://scenes/UI/main_menu.tscn
+res://scenes/UI/level_menu.tscn
+res://scenes/gd_screen.tscn
+res://scenes/UI/PauseMenu.tscn
+res://scripts/player.gd

@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://gh1e782cet7n"]
+
+[node name="LevelMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 240.0
+offset_bottom = 180.0
+
+[node name="LevelText" type="Label" parent="Text"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 20.0
+offset_right = 150.0
+offset_bottom = 45.0
+text = "Level: X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enemies" type="Label" parent="Text"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 60.0
+offset_right = 130.0
+offset_bottom = 85.0
+text = "Enemies Killed:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Secrets" type="Label" parent="Text"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 91.0
+offset_right = 130.0
+offset_bottom = 116.0
+text = "Secrets Found:"
+horizontal_alignment = 1
+vertical_alignment = 1

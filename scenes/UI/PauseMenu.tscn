@@ -8,8 +8,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -853.0
+offset_bottom = -640.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(3, 3)
 script = ExtResource("1_cooq0")
 
 [node name="Panel" type="Panel" parent="."]
@@ -19,18 +22,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -72.0
-offset_top = -82.0
-offset_right = 72.0
-offset_bottom = 82.0
+offset_left = -52.0
+offset_top = -100.0
+offset_right = 44.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -64.0
+offset_right = 48.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 

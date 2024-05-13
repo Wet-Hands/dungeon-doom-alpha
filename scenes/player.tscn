@@ -379,7 +379,7 @@ _data = {
 
 [sub_resource type="LabelSettings" id="LabelSettings_4xiw0"]
 font = ExtResource("6_m37cq")
-font_size = 20
+font_size = 86
 shadow_size = 0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xpvym"]
@@ -542,8 +542,8 @@ max_db = 1.0
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 240.0
-offset_bottom = 180.0
+offset_right = 1280.0
+offset_bottom = 960.0
 script = ExtResource("4_v5o7i")
 
 [node name="ProgressBar" type="ProgressBar" parent="HUD"]
@@ -567,21 +567,22 @@ offset_bottom = 40.0
 
 [node name="HeartRect" type="TextureRect" parent="HUD"]
 layout_mode = 0
-offset_right = 48.0
-offset_bottom = 48.0
+offset_left = 1040.0
+offset_right = 1280.0
+offset_bottom = 240.0
 
 [node name="FuelRect" type="TextureRect" parent="HUD"]
 layout_mode = 0
-offset_left = 222.0
-offset_right = 240.0
+offset_right = 18.0
 offset_bottom = 51.0
+scale = Vector2(3, 3)
 
 [node name="Label" type="Label" parent="HUD"]
 layout_mode = 0
-offset_left = 70.0
-offset_top = 140.0
-offset_right = 170.0
-offset_bottom = 180.0
+offset_left = 502.0
+offset_top = 700.0
+offset_right = 778.0
+offset_bottom = 780.0
 text = "Open Door"
 label_settings = SubResource("LabelSettings_4xiw0")
 horizontal_alignment = 1
@@ -594,8 +595,8 @@ shape = SubResource("CapsuleShape3D_xpvym")
 
 [node name="Damage" type="ColorRect" parent="HUD"]
 layout_mode = 0
-offset_right = 240.0
-offset_bottom = 180.0
+offset_right = 1280.0
+offset_bottom = 960.0
 color = Color(1, 0, 0, 0)
 
 [node name="DamageAnim" type="AnimationPlayer" parent="HUD"]
