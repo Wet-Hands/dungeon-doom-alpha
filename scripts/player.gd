@@ -8,8 +8,8 @@ var anim_names #changed depending on what animation needs to be used (this is fo
 @onready var cam = $Head/Camera3D #Camera Variable
 @onready var swordAnim = $Head/SwordAnimation #movement animation variable
 
-@onready var SwordHitbox = $Head/Items/Sword/SwordMesh/SwordHitbox #hitbox of the sword
-@onready var LightHitbox = $Head/Items/Lantern/LightHitbox #hitbox for the Light
+@onready var SwordHitbox = $Head/Camera3D/Items/Sword/SwordMesh/SwordHitbox #hitbox of the sword
+@onready var LightHitbox = $Head/Camera3D/Items/Lantern/LightHitbox #hitbox for the Light
 
 var fs = false #Is fullscreen on or off
 var camSens = .25 #Camera Speed Sensitivity
@@ -37,41 +37,41 @@ func _ready():
 	$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel100.png")
 	initPos = global_position
 	light = false
-	$Head/Items/Lantern.position.y = -1.25
-	$Head/Items/Lantern.light_energy = 0
+	$Head/Camera3D/Items/Lantern.position.y = -1.25
+	$Head/Camera3D/Items/Lantern.light_energy = 0
 	switched = false
 
 func _input(event): #When any input is made, better than checking constantly with _process
 	if event is InputEventMouseMotion: #If mouse is moving
 		$Head.rotate_y(-event.relative.x * camSens * get_process_delta_time()) #Look left and right
 		cam.rotate_x(-event.relative.y * camSens * get_process_delta_time()) #Look up and down
-		cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-12.5), deg_to_rad(60)) #Stop turning so player's neck doesn't break
+		cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-50), deg_to_rad(60)) #Stop turning so player's neck doesn't break
 	if Input.is_action_just_pressed("action1"): #If Left Mouse Click is pressed
 		if light == false:
 			swordAnim.play("Attack") #Play Attack Animation
 			$Swing.play() #Swing Sound Plays
 			anim_names = "Attack"
-			$Head/Items/Sword/SwordMesh/SwordHitbox/CollisionShape3D.disabled = false #Enable swordHitbox
+			$Head/Camera3D/Items/Sword/SwordMesh/SwordHitbox/CollisionShape3D.disabled = false #Enable swordHitbox
 			SwordHitbox.monitoring = true #turns the hitbox monitoring on
 	if Input.is_action_just_pressed("action2"): #If Right Mouse Click is pressed
 		print("Light Before: " + str(light))
 		if light == false && currentFuel > 0: #If lantern isn't on
-			$Head/Items/Lantern/LanternOn.pitch_scale = 1 #Lantern Up Pitch
-			$Head/Items/Lantern/LanternOn.play() #Play Lantern Sounds
+			$Head/Camera3D/Items/Lantern/LanternOn.pitch_scale = 1 #Lantern Up Pitch
+			$Head/Camera3D/Items/Lantern/LanternOn.play() #Play Lantern Sounds
 			$Head/LanternAnimation.play("switch") #Lantern Up Animation
-			$Head/Items/Lantern/LightHitbox/CollisionShape3D.disabled = false
-			$Head/Items/Lantern/OuterLightHitbox/OuterLightCollision.disabled = false #turns on Outer Light collision
+			$Head/Camera3D/Items/Lantern/LightHitbox/CollisionShape3D.disabled = false
+			$Head/Camera3D/Items/Lantern/OuterLightHitbox/OuterLightCollision.disabled = false #turns on Outer Light collision
 			LightHitbox.monitoring = true
 			$fuelTimer.start()
 			light = true
 		else: #If lantern is on
 			if light == true && currentFuel > 0:
 				switched = false
-				$Head/Items/Lantern/LanternOn.pitch_scale = 0.8 #Lantern Down Pitch
-				$Head/Items/Lantern/LanternOn.play() #Play Lantern Sounds
+				$Head/Camera3D/Items/Lantern/LanternOn.pitch_scale = 0.8 #Lantern Down Pitch
+				$Head/Camera3D/Items/Lantern/LanternOn.play() #Play Lantern Sounds
 				$Head/LanternAnimation.play_backwards("switch") #Lantern Down Animation
-				$Head/Items/Lantern/LightHitbox/CollisionShape3D.disabled = true
-				$Head/Items/Lantern/OuterLightHitbox/OuterLightCollision.disabled = true #turns off Outer Light collision
+				$Head/Camera3D/Items/Lantern/LightHitbox/CollisionShape3D.disabled = true
+				$Head/Camera3D/Items/Lantern/OuterLightHitbox/OuterLightCollision.disabled = true #turns off Outer Light collision
 				LightHitbox.monitoring = false
 				light = false
 	if Input.is_action_just_pressed("fullScreen"): #If "f" or "f11" are pressed
@@ -148,7 +148,7 @@ func _on_animation_player_animation_finished(anim_name): #plays after animation 
 	if anim_name == "Attack": #if the annimation is "Attack" 
 		swordAnim.play("Idle") #set animation to "Walk"
 		anim_names = "Idle"
-		$Head/Items/Sword/SwordMesh/SwordHitbox/CollisionShape3D.disabled = true #Disable Hitbox
+		$Head/Camera3D/Items/Sword/SwordMesh/SwordHitbox/CollisionShape3D.disabled = true #Disable Hitbox
 		SwordHitbox.monitoring = false #sets hitbox monitoring to false
 
 var inLava = false
@@ -178,9 +178,9 @@ func _on_fuel_timer_timeout():
 	if light == true: #If the light is on
 		fuel(-2) #Lose 2 fuel points
 		if currentFuel < 0: #If Player runs out of fuel
-			$Head/Items/Lantern.visible = false #Turn off light
-			$Head/Items/Lantern/LightHitbox/CollisionShape3D.disabled = true #Disable Skeleton Protection
-			$Head/Items/Lantern/OuterLightHitbox/OuterLightCollision.disabled = true #turns off Outer Light collision
+			$Head/Camera3D/Items/Lantern.visible = false #Turn off light
+			$Head/Camera3D/Items/Lantern/LightHitbox/CollisionShape3D.disabled = true #Disable Skeleton Protection
+			$Head/Camera3D/Items/Lantern/OuterLightHitbox/OuterLightCollision.disabled = true #turns off Outer Light collision
 			LightHitbox.monitoring = false #Disable Skeleton Protection
 			light = false #Light is off
 

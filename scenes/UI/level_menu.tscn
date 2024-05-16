@@ -10,8 +10,8 @@ grow_vertical = 2
 
 [node name="Text" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 240.0
-offset_bottom = 180.0
+offset_right = 1280.0
+offset_bottom = 960.0
 
 [node name="LevelText" type="Label" parent="Text"]
 layout_mode = 0

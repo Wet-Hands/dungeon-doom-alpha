@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://378kl0b07lmb" path="res://scenes/player.tscn" id="2_5tfgq"]
 [ext_resource type="MeshLibrary" uid="uid://dpo45qi73nv28" path="res://assets/tileset/tileset2.tres" id="2_dpln3"]
 [ext_resource type="PackedScene" uid="uid://dhhjd0v7u8svu" path="res://scenes/skeleton.tscn" id="3_gxdqp"]
-[ext_resource type="Texture2D" uid="uid://d3584a82vy3m8" path="res://assets/skeleton_character_psx/textures/skeleton_baseColor.png" id="4_jcls5"]
+[ext_resource type="Texture2D" uid="uid://d3584a82vy3m8" path="res://assets/enemies/textures/skeleton_baseColor.png" id="4_jcls5"]
 [ext_resource type="PackedScene" uid="uid://cavtxc7hw0rjj" path="res://scenes/chest.tscn" id="5_vai1t"]
 [ext_resource type="PackedScene" uid="uid://hyrnu4vwj65t" path="res://scenes/door.tscn" id="6_fnphk"]
 [ext_resource type="PackedScene" uid="uid://6skxxgqvb10x" path="res://scenes/end_door.tscn" id="8_3ac4h"]
@@ -1713,7 +1713,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 [node name="Skeleton" parent="." instance=ExtResource("3_gxdqp")]
 transform = Transform3D(-9.80131e-05, -0.000108432, -1, 9.54271e-05, 1, -0.000108432, 1, -9.54271e-05, -9.80131e-05, 27.25, 2.75, -7.75)
 
+[node name="Sketchfab_Scene" parent="Skeleton" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="Skeleton3D" parent="Skeleton/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/1/rotation = Quaternion(0.779791, 7.46298e-08, 9.29583e-08, 0.62604)
 bones/2/rotation = Quaternion(-0.231343, 1.24205e-14, -5.51564e-08, 0.972872)
 bones/3/rotation = Quaternion(0.114741, -1.48404e-14, 2.73564e-08, 0.993396)
@@ -1738,12 +1742,17 @@ bones/25/rotation = Quaternion(-0.53975, 0.000475172, 0.000475172, 0.841825)
 bones/26/rotation = Quaternion(-1.17789e-08, 0.973581, -0.228342, -1.97228e-07)
 
 [node name="Object_34" parent="Skeleton/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_lim3r")
 
 [node name="Skeleton2" parent="." instance=ExtResource("3_gxdqp")]
 transform = Transform3D(-9.80131e-05, -0.000108432, -1, 9.54271e-05, 1, -0.000108432, 1, -9.54271e-05, -9.80131e-05, 27.25, 2.75, -2)
 
+[node name="Sketchfab_Scene" parent="Skeleton2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="Skeleton3D" parent="Skeleton2/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/1/rotation = Quaternion(0.779791, 7.46298e-08, 9.29583e-08, 0.62604)
 bones/2/rotation = Quaternion(-0.231343, 1.24205e-14, -5.51564e-08, 0.972872)
 bones/3/rotation = Quaternion(0.114741, -1.48404e-14, 2.73564e-08, 0.993396)
@@ -1768,12 +1777,17 @@ bones/25/rotation = Quaternion(-0.53975, 0.000475172, 0.000475172, 0.841825)
 bones/26/rotation = Quaternion(-1.17789e-08, 0.973581, -0.228342, -1.97228e-07)
 
 [node name="Object_34" parent="Skeleton2/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_v2al6")
 
 [node name="Skeleton3" parent="." instance=ExtResource("3_gxdqp")]
 transform = Transform3D(-9.80131e-05, -0.000108432, -1, 9.54271e-05, 1, -0.000108432, 1, -9.54271e-05, -9.80131e-05, -12.25, 2.75, 29)
 
+[node name="Sketchfab_Scene" parent="Skeleton3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="Skeleton3D" parent="Skeleton3/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/1/rotation = Quaternion(0.779791, 7.46298e-08, 9.29583e-08, 0.62604)
 bones/2/rotation = Quaternion(-0.231343, 1.24205e-14, -5.51564e-08, 0.972872)
 bones/3/rotation = Quaternion(0.114741, -1.48404e-14, 2.73564e-08, 0.993396)
@@ -1798,12 +1812,17 @@ bones/25/rotation = Quaternion(-0.53975, 0.000475172, 0.000475172, 0.841825)
 bones/26/rotation = Quaternion(-1.17789e-08, 0.973581, -0.228342, -1.97228e-07)
 
 [node name="Object_34" parent="Skeleton3/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_vgm28")
 
 [node name="Skeleton4" parent="." instance=ExtResource("3_gxdqp")]
 transform = Transform3D(-9.80131e-05, -0.000108432, -1, 9.54271e-05, 1, -0.000108432, 1, -9.54271e-05, -9.80131e-05, -12.25, 2.75, 21.5)
 
+[node name="Sketchfab_Scene" parent="Skeleton4" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="Skeleton3D" parent="Skeleton4/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/1/rotation = Quaternion(0.779791, 7.46298e-08, 9.29583e-08, 0.62604)
 bones/2/rotation = Quaternion(-0.231343, 1.24205e-14, -5.51564e-08, 0.972872)
 bones/3/rotation = Quaternion(0.114741, -1.48404e-14, 2.73564e-08, 0.993396)
@@ -1828,12 +1847,17 @@ bones/25/rotation = Quaternion(-0.53975, 0.000475172, 0.000475172, 0.841825)
 bones/26/rotation = Quaternion(-1.17789e-08, 0.973581, -0.228342, -1.97228e-07)
 
 [node name="Object_34" parent="Skeleton4/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_cnfpl")
 
 [node name="Skeleton5" parent="." instance=ExtResource("3_gxdqp")]
 transform = Transform3D(1, -9.54271e-05, -9.79694e-05, 9.54271e-05, 1, -0.000108432, 9.79694e-05, 0.000108432, 1, -0.101397, 3.0235, 30.7467)
 
+[node name="Sketchfab_Scene" parent="Skeleton5" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="Skeleton3D" parent="Skeleton5/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/1/rotation = Quaternion(0.779791, 7.46298e-08, 9.29583e-08, 0.62604)
 bones/2/rotation = Quaternion(-0.231343, 1.24205e-14, -5.51564e-08, 0.972872)
 bones/3/rotation = Quaternion(0.114741, -1.48404e-14, 2.73564e-08, 0.993396)
@@ -1858,12 +1882,17 @@ bones/25/rotation = Quaternion(-0.53975, 0.000475172, 0.000475172, 0.841825)
 bones/26/rotation = Quaternion(-1.17789e-08, 0.973581, -0.228342, -1.97228e-07)
 
 [node name="Object_34" parent="Skeleton5/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_12u6o")
 
 [node name="Skeleton6" parent="." instance=ExtResource("3_gxdqp")]
 transform = Transform3D(0.013236, -0.000109695, -0.999912, 9.54271e-05, 1, -0.000108432, 0.999912, -9.39728e-05, 0.013236, -5.94949, 3.00223, 16.4604)
 
+[node name="Sketchfab_Scene" parent="Skeleton6" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="Skeleton3D" parent="Skeleton6/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/1/rotation = Quaternion(0.779791, 7.46298e-08, 9.29583e-08, 0.62604)
 bones/2/rotation = Quaternion(-0.231343, 1.24205e-14, -5.51564e-08, 0.972872)
 bones/3/rotation = Quaternion(0.114741, -1.48404e-14, 2.73564e-08, 0.993396)
@@ -1888,12 +1917,17 @@ bones/25/rotation = Quaternion(-0.53975, 0.000475172, 0.000475172, 0.841825)
 bones/26/rotation = Quaternion(-1.17789e-08, 0.973581, -0.228342, -1.97228e-07)
 
 [node name="Object_34" parent="Skeleton6/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_bfjxe")
 
 [node name="Skeleton7" parent="." instance=ExtResource("3_gxdqp")]
 transform = Transform3D(1, -9.54271e-05, -9.79694e-05, 9.54271e-05, 1, -0.000108432, 9.79694e-05, 0.000108432, 1, 15.0137, 2.81615, 7.31539)
 
+[node name="Sketchfab_Scene" parent="Skeleton7" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="Skeleton3D" parent="Skeleton7/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/1/rotation = Quaternion(0.779791, 7.46298e-08, 9.29583e-08, 0.62604)
 bones/2/rotation = Quaternion(-0.231343, 1.24205e-14, -5.51564e-08, 0.972872)
 bones/3/rotation = Quaternion(0.114741, -1.48404e-14, 2.73564e-08, 0.993396)
@@ -1918,12 +1952,17 @@ bones/25/rotation = Quaternion(-0.53975, 0.000475172, 0.000475172, 0.841825)
 bones/26/rotation = Quaternion(-1.17789e-08, 0.973581, -0.228342, -1.97228e-07)
 
 [node name="Object_34" parent="Skeleton7/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_5uyu3")
 
 [node name="Skeleton8" parent="." instance=ExtResource("3_gxdqp")]
 transform = Transform3D(-0.998294, 0.000101586, 0.0583936, 9.54271e-05, 1, -0.000108432, -0.0583936, -0.000102685, -0.998294, 0.0744892, 2.97618, -19.2142)
 
+[node name="Sketchfab_Scene" parent="Skeleton8" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
 [node name="Skeleton3D" parent="Skeleton8/Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/1/rotation = Quaternion(0.779791, 7.46298e-08, 9.29583e-08, 0.62604)
 bones/2/rotation = Quaternion(-0.231343, 1.24205e-14, -5.51564e-08, 0.972872)
 bones/3/rotation = Quaternion(0.114741, -1.48404e-14, 2.73564e-08, 0.993396)

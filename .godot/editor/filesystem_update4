@@ -1,6 +1,7 @@
 res://scenes/player.tscn
-res://shaders/lava.tres
 res://shaders/dissolve.tres
+res://shaders/dissolveGoblin.tres
+res://shaders/lava.tres
 res://assets/tileset/tileset.tres
 res://assets/materials/doorMat.tres
 res://assets/materials/endDoorMat.tres
@@ -15,6 +16,7 @@ res://scenes/end_door.tscn
 res://scenes/chest.tscn
 res://scenes/item.tscn
 res://levels/level1/level_1.tscn
+res://scenes/goblin.tscn
 res://level_2.tscn
 res://scenes/spike_wall_trap.tscn
 res://scenes/door.tscn
@@ -23,4 +25,9 @@ res://scenes/UI/main_menu.tscn
 res://scenes/UI/level_menu.tscn
 res://scenes/gd_screen.tscn
 res://scenes/UI/PauseMenu.tscn
-res://scripts/player.gd
+res://scenes/tileset_2.tscn
+res://shaders/psxCam.gdshader
+res://shaders/psxModel.gdshader
+res://assets/tileset/tileset3.tres
+res://levels/level1/level_1.gd
+res://scripts/door.gd

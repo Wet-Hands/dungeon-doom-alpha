@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cvjj3e4cd54fk"]
 
-[ext_resource type="PackedScene" uid="uid://gq1q1oo7y2w8" path="res://assets/skeleton_character_psx/scene.gltf" id="1_46oxi"]
+[ext_resource type="PackedScene" uid="uid://gq1q1oo7y2w8" path="res://assets/enemies/scene.gltf" id="1_46oxi"]
 [ext_resource type="Script" path="res://scripts/sketchfab_scene.gd" id="2_yn4kc"]
 
 [sub_resource type="Animation" id="Animation_0nn3b"]

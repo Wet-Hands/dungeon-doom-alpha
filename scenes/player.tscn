@@ -1,14 +1,14 @@
-[gd_scene load_steps=42 format=3 uid="uid://378kl0b07lmb"]
+[gd_scene load_steps=44 format=3 uid="uid://378kl0b07lmb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_luw3v"]
 [ext_resource type="Texture2D" uid="uid://5ow12i52hvse" path="res://assets/hud/lantern.png" id="2_odx47"]
 [ext_resource type="Texture2D" uid="uid://6kbs62gcbunq" path="res://assets/hud/testSword4.png" id="3_lxa52"]
 [ext_resource type="AudioStream" uid="uid://buci8voyiivpt" path="res://assets/audio/testLanternOn.mp3" id="3_ro1x1"]
-[ext_resource type="AudioStream" uid="uid://2xetoeufvh53" path="res://assets/audio/footstep_concrete_a_15.mp3" id="4_0yryg"]
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="4_v5o7i"]
 [ext_resource type="Script" path="res://scripts/KeyManager.gd" id="5_11h2x"]
+[ext_resource type="Shader" path="res://shaders/psxCam.gdshader" id="5_f6spc"]
 [ext_resource type="PackedScene" uid="uid://6kfogt2jbret" path="res://scenes/UI/PauseMenu.tscn" id="6_gx2dt"]
-[ext_resource type="FontFile" uid="uid://dm1awoklwrgu7" path="res://assets/fonts/Kenney High Square.ttf" id="6_m37cq"]
+[ext_resource type="FontFile" uid="uid://cvqy6jqxk5nk7" path="res://assets/fonts/Kenney High.ttf" id="6_siycb"]
 [ext_resource type="AudioStream" uid="uid://bb8dbfw03ki4b" path="res://assets/audio/testSwing.mp3" id="8_cegbu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_amreb"]
@@ -22,13 +22,33 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_m46tf"]
 size = Vector3(2.55371, 1.72504, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bfy6e"]
+render_priority = 0
+shader = ExtResource("5_f6spc")
+shader_parameter/enable_fog = true
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/noise_color = Color(0.25098, 0.25098, 0.25098, 1)
+shader_parameter/fog_distance = 12.0
+shader_parameter/fog_fade_range = 4.0
+shader_parameter/enable_noise = true
+shader_parameter/noise_time_fac = 4.0
+shader_parameter/enable_color_limitation = true
+shader_parameter/color_levels = 128
+shader_parameter/enable_dithering = true
+shader_parameter/dither_strength = 0.7
+
+[sub_resource type="QuadMesh" id="QuadMesh_il1gy"]
+material = SubResource("ShaderMaterial_bfy6e")
+flip_faces = true
+size = Vector2(2, 2)
+
 [sub_resource type="Animation" id="Animation_xvrh8"]
 resource_name = "Attack"
 length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Items/Sword/SwordMesh:position")
+tracks/0/path = NodePath("Head/Camera3D/Items/Sword/SwordMesh:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,7 +60,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Items/Sword/SwordMesh:rotation")
+tracks/1/path = NodePath("Head/Camera3D/Items/Sword/SwordMesh:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -52,7 +72,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Head/Items/Sword:rotation")
+tracks/2/path = NodePath("Head/Camera3D/Items/Sword:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -69,7 +89,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Items/Sword:rotation")
+tracks/0/path = NodePath("Head/Camera3D/Items/Sword:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -81,7 +101,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Items/Sword/SwordMesh:position")
+tracks/1/path = NodePath("Head/Camera3D/Items/Sword/SwordMesh:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -93,7 +113,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Head/Items/Sword/SwordMesh:rotation")
+tracks/2/path = NodePath("Head/Camera3D/Items/Sword/SwordMesh:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -108,7 +128,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Items/Sword:rotation")
+tracks/0/path = NodePath("Head/Camera3D/Items/Sword:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -120,7 +140,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Items/Sword/SwordMesh:position")
+tracks/1/path = NodePath("Head/Camera3D/Items/Sword/SwordMesh:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -132,7 +152,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Head/Items/Sword/SwordMesh:rotation")
+tracks/2/path = NodePath("Head/Camera3D/Items/Sword/SwordMesh:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -148,7 +168,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Items/Sword:rotation")
+tracks/0/path = NodePath("Head/Camera3D/Items/Sword:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -160,7 +180,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Items/Sword/SwordMesh:position")
+tracks/1/path = NodePath("Head/Camera3D/Items/Sword/SwordMesh:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -172,7 +192,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Head/Items/Sword/SwordMesh:rotation")
+tracks/2/path = NodePath("Head/Camera3D/Items/Sword/SwordMesh:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -195,7 +215,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Items/Lantern:position")
+tracks/0/path = NodePath("Camera3D/Items/Lantern:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -207,7 +227,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Items/Lantern:rotation")
+tracks/1/path = NodePath("Camera3D/Items/Lantern:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -224,7 +244,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Items/Lantern:position")
+tracks/0/path = NodePath("Camera3D/Items/Lantern:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -236,7 +256,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Items/Lantern:rotation")
+tracks/1/path = NodePath("Camera3D/Items/Lantern:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -252,7 +272,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Items/Lantern:position")
+tracks/0/path = NodePath("Camera3D/Items/Lantern:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -264,7 +284,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Items/Lantern:light_energy")
+tracks/1/path = NodePath("Camera3D/Items/Lantern:light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -276,7 +296,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Items/Lantern:rotation")
+tracks/2/path = NodePath("Camera3D/Items/Lantern:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -378,7 +398,7 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_4xiw0"]
-font = ExtResource("6_m37cq")
+font = ExtResource("6_siycb")
 font_size = 86
 shadow_size = 0
 
@@ -445,68 +465,74 @@ transform = Transform3D(0.999997, -0.00171673, -0.00185316, 0.00172182, 0.999995
 transform = Transform3D(1, 1.78488e-09, -1.05938e-08, -1.09139e-10, 1, -1.39698e-09, -1.16415e-10, 0, 1, 0.001, 0.29, 0.001)
 cull_mask = 1048573
 
-[node name="Items" type="Node3D" parent="Head"]
-transform = Transform3D(0.999997, 0.00172182, 0.00184843, -0.00171673, 0.999995, -0.00275274, -0.00185317, 0.00274956, 0.999995, 0, 0, 0)
+[node name="Items" type="Node3D" parent="Head/Camera3D"]
+transform = Transform3D(0.999997, 0.00172182, 0.00184844, -0.00171673, 0.999995, -0.00275274, -0.00185317, 0.00274956, 0.999995, -0.001, -0.29, -0.001)
 
-[node name="Lantern" type="OmniLight3D" parent="Head/Items"]
+[node name="Lantern" type="OmniLight3D" parent="Head/Camera3D/Items"]
 transform = Transform3D(1, -8.94465e-19, 0, 8.94465e-19, 1, -4.4409e-16, 3.97223e-34, 4.4409e-16, 0.999999, 0, -0.240382, -0.429587)
 light_color = Color(1, 0.8, 0.619608, 1)
 light_energy = 0.0
 light_indirect_energy = 3.0
 omni_range = 10.0
 
-[node name="LightHitbox" type="Area3D" parent="Head/Items/Lantern" groups=["Light"]]
+[node name="LightHitbox" type="Area3D" parent="Head/Camera3D/Items/Lantern" groups=["Light"]]
 transform = Transform3D(5, -4.87891e-18, 0, -4.87891e-18, 5, 0, 0, 0, 5, 0, 0, 0)
 monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Items/Lantern/LightHitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/Items/Lantern/LightHitbox"]
 transform = Transform3D(1, -2.2302e-16, -2.77556e-17, -9.75781e-19, 1, 0, 2.77556e-17, 0, 1, 0, 0, 0)
 shape = SubResource("SphereShape3D_nnslc")
 disabled = true
 
-[node name="OuterLightHitbox" type="Area3D" parent="Head/Items/Lantern" groups=["EdgeLight"]]
+[node name="OuterLightHitbox" type="Area3D" parent="Head/Camera3D/Items/Lantern" groups=["EdgeLight"]]
 monitoring = false
 
-[node name="OuterLightCollision" type="CollisionShape3D" parent="Head/Items/Lantern/OuterLightHitbox"]
+[node name="OuterLightCollision" type="CollisionShape3D" parent="Head/Camera3D/Items/Lantern/OuterLightHitbox"]
 transform = Transform3D(5.5, -5.3668e-18, -2.22045e-16, -5.3668e-18, 5.5, 0, 2.22045e-16, 0, 5.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_425ww")
 disabled = true
 
-[node name="Sprite3D" type="Sprite3D" parent="Head/Items/Lantern"]
+[node name="Sprite3D" type="Sprite3D" parent="Head/Camera3D/Items/Lantern"]
 transform = Transform3D(1, 1.08531e-10, -3.70995e-10, -3.17892e-11, 0.979614, 0.20089, 3.85234e-10, -0.20089, 0.979614, -0.6, 0, -0.4)
 layers = 3
+sorting_offset = 2.0
 texture = ExtResource("2_odx47")
 
-[node name="LanternOn" type="AudioStreamPlayer3D" parent="Head/Items/Lantern"]
+[node name="LanternOn" type="AudioStreamPlayer3D" parent="Head/Camera3D/Items/Lantern"]
 stream = ExtResource("3_ro1x1")
 
-[node name="Sword" type="Node3D" parent="Head/Items"]
+[node name="Sword" type="Node3D" parent="Head/Camera3D/Items"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77556e-17, 0.1, 5.55112e-17)
 
-[node name="SwordMesh" type="MeshInstance3D" parent="Head/Items/Sword"]
+[node name="SwordMesh" type="MeshInstance3D" parent="Head/Camera3D/Items/Sword"]
 transform = Transform3D(0.0999849, -0.0163205, -0.000593212, 0.00173652, 0.939699, 0.0341559, -1.49012e-09, -0.34161, 0.0939842, 0.331626, -0.123581, -0.634406)
 
-[node name="SwordHitbox" type="Area3D" parent="Head/Items/Sword/SwordMesh" groups=["sword"]]
+[node name="SwordHitbox" type="Area3D" parent="Head/Camera3D/Items/Sword/SwordMesh" groups=["sword"]]
 transform = Transform3D(1, 1.74622e-10, 2.79397e-09, -1.74623e-10, 1, 4.76837e-07, -2.79397e-09, -4.76837e-07, 1, 0, 0, 0)
 monitoring = false
 
-[node name="Sprite3D" type="Sprite3D" parent="Head/Items/Sword/SwordMesh/SwordHitbox"]
+[node name="Sprite3D" type="Sprite3D" parent="Head/Camera3D/Items/Sword/SwordMesh/SwordHitbox"]
 transform = Transform3D(7.93516, 0, 1.27065, 7.45058e-08, 0.8, -6.4671e-06, -1.01652, 7.15256e-07, 9.91894, -0.846523, -0.0258585, 0.754461)
+sorting_offset = 1.0
 offset = Vector2(0, 37)
 texture = ExtResource("3_lxa52")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Items/Sword/SwordMesh/SwordHitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/Items/Sword/SwordMesh/SwordHitbox"]
 transform = Transform3D(1, -1.3113e-05, 9.83477e-07, -5.58794e-08, 1, -5.58794e-07, 8.9407e-08, -4.64916e-06, 1, -0.776857, 0.38515, 1.19209e-06)
 shape = SubResource("BoxShape3D_m46tf")
 disabled = true
 
-[node name="HealthPot" type="Node3D" parent="Head/Items"]
+[node name="HealthPot" type="Node3D" parent="Head/Camera3D/Items"]
 
-[node name="Sprite3D" type="Sprite3D" parent="Head/Items/HealthPot"]
+[node name="Sprite3D" type="Sprite3D" parent="Head/Camera3D/Items/HealthPot"]
 
-[node name="Axe" type="Node3D" parent="Head/Items"]
+[node name="Axe" type="Node3D" parent="Head/Camera3D/Items"]
 
-[node name="Dagger" type="Node3D" parent="Head/Items"]
+[node name="Dagger" type="Node3D" parent="Head/Camera3D/Items"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 1.2551e-10, 0, -2.23281e-10, 1, 0, 0, 0, 1, 0, 0, -0.1)
+mesh = SubResource("QuadMesh_il1gy")
 
 [node name="SwordAnimation" type="AnimationPlayer" parent="Head"]
 root_node = NodePath("../..")
@@ -536,8 +562,6 @@ libraries = {
 }
 
 [node name="Footstep" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_0yryg")
-max_db = 1.0
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
@@ -634,11 +658,11 @@ emission_angle_enabled = true
 [connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]
 [connection signal="area_exited" from="Hitbox" to="HUD" method="_on_hitbox_area_exited"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_entered" from="Head/Items/Lantern/LightHitbox" to="." method="_on_light_hitbox_body_entered"]
-[connection signal="body_exited" from="Head/Items/Lantern/LightHitbox" to="." method="_on_light_hitbox_body_exited"]
-[connection signal="body_entered" from="Head/Items/Lantern/OuterLightHitbox" to="." method="_on_outer_light_hitbox_body_entered"]
-[connection signal="body_exited" from="Head/Items/Lantern/OuterLightHitbox" to="." method="_on_outer_light_hitbox_body_exited"]
-[connection signal="area_entered" from="Head/Items/Sword/SwordMesh/SwordHitbox" to="." method="_on_sword_hitbox_area_entered"]
+[connection signal="body_entered" from="Head/Camera3D/Items/Lantern/LightHitbox" to="." method="_on_light_hitbox_body_entered"]
+[connection signal="body_exited" from="Head/Camera3D/Items/Lantern/LightHitbox" to="." method="_on_light_hitbox_body_exited"]
+[connection signal="body_entered" from="Head/Camera3D/Items/Lantern/OuterLightHitbox" to="." method="_on_outer_light_hitbox_body_entered"]
+[connection signal="body_exited" from="Head/Camera3D/Items/Lantern/OuterLightHitbox" to="." method="_on_outer_light_hitbox_body_exited"]
+[connection signal="area_entered" from="Head/Camera3D/Items/Sword/SwordMesh/SwordHitbox" to="." method="_on_sword_hitbox_area_entered"]
 [connection signal="animation_finished" from="Head/SwordAnimation" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="Head/SwordAnimation" to="." method="_on_animation_player_animation_started"]
 [connection signal="animation_finished" from="Head/LanternAnimation" to="." method="_on_lantern_animation_animation_finished"]

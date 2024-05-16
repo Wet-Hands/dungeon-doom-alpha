@@ -4,6 +4,7 @@ extends Node3D
 @export var locked = true
 @export var key = "none"
 @export var endDoor = false
+@export var rot = 0
 
 func _ready(): #Called when the node enters the scene tree for the first time.
 	$InteractArea.add_to_group("door")

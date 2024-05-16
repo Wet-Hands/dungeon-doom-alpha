@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4wtr7xn2pcx3"
-path.s3tc="res://.godot/imported/skeleton_baseColor_n.png-a866470aa96a355dc063b25549a1e52e.s3tc.ctex"
+uid="uid://dp3up8083ajwt"
+path.s3tc="res://.godot/imported/testGoblin2_t_goblin_base.png-0b11ef765525f4c16b7c3815e0cbdd94.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://assets/skeleton_character_psx/textures/skeleton_baseColor_n.png"
-dest_files=["res://.godot/imported/skeleton_baseColor_n.png-a866470aa96a355dc063b25549a1e52e.s3tc.ctex"]
+source_file="res://assets/enemies/testGoblin2_t_goblin_base.png"
+dest_files=["res://.godot/imported/testGoblin2_t_goblin_base.png-0b11ef765525f4c16b7c3815e0cbdd94.s3tc.ctex"]
 
 [params]
 

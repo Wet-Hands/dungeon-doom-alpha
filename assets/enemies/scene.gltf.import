@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://gq1q1oo7y2w8"
-path="res://.godot/imported/scene.gltf-7c8398996b5e5da66738474903ec06ae.scn"
+path="res://.godot/imported/scene.gltf-fa827dcbf5db3d45d19649cde5b579c3.scn"
 
 [deps]
 
-source_file="res://assets/skeleton_character_psx/scene.gltf"
-dest_files=["res://.godot/imported/scene.gltf-7c8398996b5e5da66738474903ec06ae.scn"]
+source_file="res://assets/enemies/scene.gltf"
+dest_files=["res://.godot/imported/scene.gltf-fa827dcbf5db3d45d19649cde5b579c3.scn"]
 
 [params]
 

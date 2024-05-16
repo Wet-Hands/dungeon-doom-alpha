@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
-@onready var player = $"../Player"
+@onready var player #= $"../Player"
 @onready var hitbox = $Hitbox
 @onready var atkAnim = $Sketchfab_Scene/Sketchfab_model/MovementAnim
 @onready var atkHitbox = $attack/MeshInstance3D/skeleAtkHitbox
@@ -88,7 +88,8 @@ func _on_shader_timer_timeout(): #When Shader Update is Ready
 		goToHell() #Send Skeleton back to where he came from
 
 func goToHell():
-	position = Vector3(0, 100, 0) #TEMP FIX - Sends Skeleton back to Hell
+	#position = Vector3(0, 100, 0) #TEMP FIX - Sends Skeleton back to Hell
+	queue_free()
 
 func _on_hitbox_area_entered(area): #If hit by sword
 	if area.is_in_group("Light"): #If in Light

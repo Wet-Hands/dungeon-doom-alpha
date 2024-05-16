@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dhhjd0v7u8svu" path="res://scenes/skeleton.tscn" id="2_166e5"]
 [ext_resource type="MeshLibrary" uid="uid://dpo45qi73nv28" path="res://assets/tileset/tileset2.tres" id="2_273nu"]
 [ext_resource type="PackedScene" uid="uid://378kl0b07lmb" path="res://scenes/player.tscn" id="3_xpl1p"]
-[ext_resource type="Texture2D" uid="uid://d3584a82vy3m8" path="res://assets/skeleton_character_psx/textures/skeleton_baseColor.png" id="4_3cckm"]
+[ext_resource type="Texture2D" uid="uid://d3584a82vy3m8" path="res://assets/enemies/textures/skeleton_baseColor.png" id="4_3cckm"]
 [ext_resource type="PackedScene" uid="uid://6skxxgqvb10x" path="res://scenes/end_door.tscn" id="6_lxfup"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_0wdjp"]
