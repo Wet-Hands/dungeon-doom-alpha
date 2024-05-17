@@ -372,6 +372,7 @@ shape = SubResource("ConvexPolygonShape3D_hqkb1")
 
 [node name="DebugText" type="Label3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.25, 0)
+sorting_offset = 3.0
 text = "State: Goblin' Deez Nuts"
 font = SubResource("FontVariation_t1dpq")
 

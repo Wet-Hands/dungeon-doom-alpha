@@ -513,7 +513,7 @@ monitoring = false
 
 [node name="Sprite3D" type="Sprite3D" parent="Head/Camera3D/Items/Sword/SwordMesh/SwordHitbox"]
 transform = Transform3D(7.93516, 0, 1.27065, 7.45058e-08, 0.8, -6.4671e-06, -1.01652, 7.15256e-07, 9.91894, -0.846523, -0.0258585, 0.754461)
-sorting_offset = 1.0
+sorting_offset = 4.0
 offset = Vector2(0, 37)
 texture = ExtResource("3_lxa52")
 

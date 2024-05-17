@@ -23,6 +23,9 @@ func _ready():
 			if i == 7:
 				instDoor(Vector3i(x, 0, z), "none", io)
 				grid.set_cell_item(Vector3i(x, 0, z), 0, io)
+			if i == 10:
+				instDoor(Vector3i(x, 0, z), "blue", io)
+				grid.set_cell_item(Vector3i(x, 0, z), 0, io)
 
 func _physics_process(_delta):
 	get_tree().call_group("skeleton" , "update_target_location" , player.global_position)
@@ -42,18 +45,15 @@ func instSkeleton(pos):
 	$Enemies.add_child(instance)
 
 func instDoor(pos, color, rot):
-	var secPos = Vector3i(0, 0, 0)
-	var test = [-1, 1]
-	var xx = 0
-	var zz = 0
-	for z in range(0, 1):
-		for x in range(0, 1):
-			if grid.get_cell_item(Vector3i(pos.x+test[x], 0, pos.z+test[z])) == grid.get_cell_item(pos):
-				secPos = Vector3i(pos.x+test[x], 0, pos.z+test[z])
-				grid.set_cell_item(secPos, 0, rot)
-				zz = test[z]
-				xx = test[x]
 	var instance = door.instantiate()
-	instance.position = Vector3i(pos.x+xx, 3.25, pos.z+zz)
+	print(rot)
+	if rot == 0:
+		instance.rotation_degrees.y = 90
+		instance.position = Vector3(pos.x+1.75, 3.25, pos.z+1.5)
+	if rot == 10:
+		instance.rotation_degrees.y = 90
+		instance.position = Vector3(pos.x+.375, 3.25, pos.z-2.5)
+	if rot == 16:
+		instance.position = Vector3(pos.x+1.5, 3.25, pos.z)
 	instance.key = color
 	$Objects.add_child(instance)
