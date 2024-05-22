@@ -176,7 +176,7 @@ libraries = {
 "": SubResource("AnimationLibrary_fn7y6")
 }
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["trapCOL"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]

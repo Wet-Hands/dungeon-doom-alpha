@@ -23,13 +23,14 @@ var initPos #Initial Position of Player
 
 signal pause
 signal damage
+signal magic
 
 var light #Is lantern on or off
 
 func _ready():
 	Engine.max_fps = 60 #Set FPS to 60
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
+	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
 	currentHealth = maxHealth #Set Current Health to Max
 	currentFuel = maxFuel
 	$HUD/ProgressBar.max_value = maxHealth #Set Max Health Visually
@@ -41,6 +42,7 @@ func _ready():
 	$Head/Camera3D/Items/Lantern.light_energy = 0
 	switched = false
 
+@onready var magicBall = preload("res://scenes/projectiles/magic_ball.tscn")
 func _input(event): #When any input is made, better than checking constantly with _process
 	if event is InputEventMouseMotion: #If mouse is moving
 		$Head.rotate_y(-event.relative.x * camSens * get_process_delta_time()) #Look left and right
@@ -55,6 +57,8 @@ func _input(event): #When any input is made, better than checking constantly wit
 			SwordHitbox.monitoring = true #turns the hitbox monitoring on
 	if Input.is_action_just_pressed("action2"): #If Right Mouse Click is pressed
 		print("Light Before: " + str(light))
+		emit_signal("magic")
+		var testt = """
 		if light == false && currentFuel > 0: #If lantern isn't on
 			$Head/Camera3D/Items/Lantern/LanternOn.pitch_scale = 1 #Lantern Up Pitch
 			$Head/Camera3D/Items/Lantern/LanternOn.play() #Play Lantern Sounds
@@ -74,6 +78,7 @@ func _input(event): #When any input is made, better than checking constantly wit
 				$Head/Camera3D/Items/Lantern/OuterLightHitbox/OuterLightCollision.disabled = true #turns off Outer Light collision
 				LightHitbox.monitoring = false
 				light = false
+				"""
 	if Input.is_action_just_pressed("fullScreen"): #If "f" or "f11" are pressed
 		if fs == false: #If Fullscreen is off
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN) #Full Screen

@@ -3,28 +3,28 @@ extends Control
 func _ready():
 	$Label.text = " "
 
-func _on_area_3d_area_entered(area):
-	print("Area Entered")
-	if area.is_in_group("door"):
-		$Label.text = "Open Door"
+#func _on_area_3d_area_entered(area):
+	#print("Area Entered")
+	#if area.is_in_group("door"):
+		#updateText("Open Door [E]")
 
 func _on_hitbox_area_entered(area):
 	if area.is_in_group("door"):
-		$Label.text = "Open Door [E]"
+		updateText("Open Door [E]")
 	if area.is_in_group("chest"):
-		$Label.text = "Open Chest [E]"
+		updateText("Open Chest [E]")
 	if area.is_in_group("redCol"):
-		$Label.text = "Collect Red Key [E]"
+		updateText("Collect Red Key [E]")
 	if area.is_in_group("greenCol"):
-		$Label.text = "Collect Green Key [E]"
+		updateText("Collect Green Key [E]")
 	if area.is_in_group("blueCol"):
-		$Label.text = "Collect Blue Key [E]"
+		updateText("Collect Blue Key [E]")
 	if area.is_in_group("redLock"):
-		$Label.text = "Unlock Using Key [E]"
+		updateText("Unlock Using Key [E]")
 	if area.is_in_group("greenLock"):
-		$Label.text = "Unlock Using Key [E]"
+		updateText("Unlock Using Key [E]")
 	if area.is_in_group("blueLock"):
-		$Label.text = "Unlock Using Key [E]"
+		updateText("Unlock Using Key [E]")
 
 func _on_hitbox_area_exited(_area):
 	$Label.text = " "
@@ -34,3 +34,14 @@ func _on_player_damage(num):
 		$DamageAnim.play("dmg")
 	if num > 0:
 		$DamageAnim.play("hlt")
+
+func updateText(string):
+	#var fullString = ""
+	#for i in string.length():
+		#fullString[i] = string[i]
+		#if string[i+1] == " ":
+			#fullString[i].add("[font_size=52]")
+			#fullString[i+2].add("[font_size=86]")
+	#$Label.text = "[center][font=res://assets/fonts/Pixtura12.ttf][font_size=86][outline_size=32][outline_color=black]" + string
+	#$Label.position.x = ((1280-$Label.size.x)/2)
+	pass

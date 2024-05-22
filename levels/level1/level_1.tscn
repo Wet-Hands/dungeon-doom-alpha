@@ -69,3 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.75, -11.75)
 [node name="Enemies" type="Node3D" parent="."]
 
 [node name="Objects" type="Node3D" parent="."]
+
+[node name="Projectiles" type="Node3D" parent="."]
+
+[connection signal="magic" from="Player" to="." method="_on_player_magic"]

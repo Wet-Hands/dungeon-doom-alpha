@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scripts/KeyManager.gd" id="5_11h2x"]
 [ext_resource type="Shader" path="res://shaders/psxCam.gdshader" id="5_f6spc"]
 [ext_resource type="PackedScene" uid="uid://6kfogt2jbret" path="res://scenes/UI/PauseMenu.tscn" id="6_gx2dt"]
-[ext_resource type="FontFile" uid="uid://cvqy6jqxk5nk7" path="res://assets/fonts/Kenney High.ttf" id="6_siycb"]
+[ext_resource type="FontFile" uid="uid://d1xyt3113n0ug" path="res://assets/fonts/Pixtura12.ttf" id="7_w026n"]
 [ext_resource type="AudioStream" uid="uid://bb8dbfw03ki4b" path="res://assets/audio/testSwing.mp3" id="8_cegbu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_amreb"]
@@ -397,11 +397,6 @@ _data = {
 "walk": SubResource("Animation_pejwg")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_4xiw0"]
-font = ExtResource("6_siycb")
-font_size = 86
-shadow_size = 0
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xpvym"]
 
 [sub_resource type="Animation" id="Animation_8b3am"]
@@ -441,6 +436,12 @@ _data = {
 "dmg": SubResource("Animation_8b3am"),
 "hlt": SubResource("Animation_myqff")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_p2qv8"]
+font = ExtResource("7_w026n")
+font_size = 86
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t3k7p"]
 
@@ -601,16 +602,14 @@ offset_right = 18.0
 offset_bottom = 51.0
 scale = Vector2(3, 3)
 
-[node name="Label" type="Label" parent="HUD"]
+[node name="Label" type="RichTextLabel" parent="HUD"]
 layout_mode = 0
-offset_left = 502.0
-offset_top = 700.0
-offset_right = 778.0
-offset_bottom = 780.0
-text = "Open Door"
-label_settings = SubResource("LabelSettings_4xiw0")
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = 454.0
+offset_top = 676.0
+offset_right = 1254.0
+offset_bottom = 886.0
+bbcode_enabled = true
+text = "[center][font=res://assets/fonts/Pixtura12.ttf][font_size=86][outline_size=32][outline_color=black]O[font_size=52] [font_size=86]p e n   D o o r"
 
 [node name="Area3D" type="Area3D" parent="HUD"]
 
@@ -627,6 +626,13 @@ color = Color(1, 0, 0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_j5g2i")
 }
+
+[node name="Label2" type="Label" parent="HUD"]
+layout_mode = 0
+offset_right = 623.0
+offset_bottom = 344.0
+text = "Open Door"
+label_settings = SubResource("LabelSettings_p2qv8")
 
 [node name="HitTimer" type="Timer" parent="."]
 
@@ -650,6 +656,8 @@ wait_time = 0.5
 stream = ExtResource("8_cegbu")
 max_db = 1.0
 emission_angle_enabled = true
+
+[node name="Balls" type="Node3D" parent="."]
 
 [connection signal="damage" from="." to="HUD" method="_on_player_damage"]
 [connection signal="pause" from="." to="PauseMenu" method="_on_player_pause"]

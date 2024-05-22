@@ -8,6 +8,7 @@ extends Node3D
 
 @onready var door = preload("res://scenes/door.tscn")
 @onready var endor = preload("res://scenes/end_door.tscn")
+@onready var magic = preload("res://scenes/projectiles/magic_ball.tscn")
 
 func _ready():
 	for z in range(-25, 25):
@@ -57,3 +58,10 @@ func instDoor(pos, color, rot):
 		instance.position = Vector3(pos.x+1.5, 3.25, pos.z)
 	instance.key = color
 	$Objects.add_child(instance)
+
+func _on_player_magic():
+	var inst = magic.instantiate()
+	inst.position = player.position
+	inst.rotation.x = $Player/Head/Camera3D.rotation.x
+	inst.rotation.y = $Player/Head.rotation.y
+	$Projectiles.add_child(inst)
