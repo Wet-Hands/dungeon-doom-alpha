@@ -133,38 +133,6 @@ spacing_glyph = 1
 states/End/position = Vector2(896, 100)
 states/Start/position = Vector2(219, 100)
 
-[sub_resource type="Animation" id="Animation_lmv3l"]
-resource_name = "walk"
-loop_mode = 1
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Skeleton3D:bicep.L.001")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -0.305462, 0.595129, 0.681489, -0.296796, 0.25, 1, -0.182013, 0.473111, 0.723183, -0.469088, 0.5, 1, -0.305462, 0.595129, 0.681489, -0.296796, 0.75, 1, -0.182013, 0.473111, 0.723183, -0.469088, 1, 1, -0.305462, 0.595129, 0.681489, -0.296796)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Skeleton3D:bicep.R.001")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0.179629, 0.470583, 0.723535, 0.471999, 0.25, 1, 0.316632, 0.605189, 0.675101, 0.278799, 0.5, 1, 0.179629, 0.470583, 0.723535, 0.471999, 0.75, 1, 0.316632, 0.605189, 0.675101, 0.278799, 1, 1, 0.179629, 0.470583, 0.723535, 0.471999)
-tracks/2/type = "rotation_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Skeleton3D:thigh.L.001")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, -0.478229, -0.611811, -0.17335, 0.605751, 0.25, 1, -0.651012, -0.330643, 0.0768754, 0.678932, 0.5, 1, -0.478229, -0.611811, -0.17335, 0.605751, 0.75, 1, -0.651012, -0.330643, 0.0768754, 0.678932, 1, 1, -0.478229, -0.611811, -0.17335, 0.605751)
-tracks/3/type = "rotation_3d"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Skeleton3D:thigh.R.001")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, -0.657472, 0.312651, -0.0908899, 0.679499, 0.25, 1, -0.469926, 0.620438, 0.182331, 0.600817, 0.5, 1, -0.657472, 0.312651, -0.0908899, 0.679499, 0.75, 1, -0.469926, 0.620438, 0.182331, 0.600817, 1, 1, -0.657472, 0.312651, -0.0908899, 0.679499)
-
 [sub_resource type="Animation" id="Animation_jcsgi"]
 resource_name = "RESET"
 tracks/0/type = "rotation_3d"
@@ -572,6 +540,38 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0.23686, 0.529557, 0.710645, 0.398059, 0.25, 1, 0.298136, 0.426706, 0.777605, 0.352657, 0.5, 1, 0.23686, 0.529557, 0.710645, 0.398059)
 
+[sub_resource type="Animation" id="Animation_lmv3l"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton3D:bicep.L.001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.305462, 0.595129, 0.681489, -0.296796, 0.25, 1, -0.182013, 0.473111, 0.723183, -0.469088, 0.5, 1, -0.305462, 0.595129, 0.681489, -0.296796, 0.75, 1, -0.182013, 0.473111, 0.723183, -0.469088, 1, 1, -0.305462, 0.595129, 0.681489, -0.296796)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton3D:bicep.R.001")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.179629, 0.470583, 0.723535, 0.471999, 0.25, 1, 0.316632, 0.605189, 0.675101, 0.278799, 0.5, 1, 0.179629, 0.470583, 0.723535, 0.471999, 0.75, 1, 0.316632, 0.605189, 0.675101, 0.278799, 1, 1, 0.179629, 0.470583, 0.723535, 0.471999)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton3D:thigh.L.001")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.478229, -0.611811, -0.17335, 0.605751, 0.25, 1, -0.651012, -0.330643, 0.0768754, 0.678932, 0.5, 1, -0.478229, -0.611811, -0.17335, 0.605751, 0.75, 1, -0.651012, -0.330643, 0.0768754, 0.678932, 1, 1, -0.478229, -0.611811, -0.17335, 0.605751)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton3D:thigh.R.001")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.657472, 0.312651, -0.0908899, 0.679499, 0.25, 1, -0.469926, 0.620438, 0.182331, 0.600817, 0.5, 1, -0.657472, 0.312651, -0.0908899, 0.679499, 0.75, 1, -0.469926, 0.620438, 0.182331, 0.600817, 1, 1, -0.657472, 0.312651, -0.0908899, 0.679499)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x41xi"]
 _data = {
 "RESET": SubResource("Animation_jcsgi"),
@@ -762,7 +762,7 @@ bones/21/parent = 20
 bones/21/rest = Transform3D(0.787977, 0.287599, -0.544407, 0.534638, 0.11894, 0.83667, 0.305377, -0.950337, -0.0600394, 0, 0.177639, -5.58794e-09)
 bones/21/enabled = true
 bones/21/position = Vector3(0, 0.177639, -5.58794e-09)
-bones/21/rotation = Quaternion(-0.657472, -0.312651, 0.0908901, 0.679499)
+bones/21/rotation = Quaternion(-0.595517, -0.451288, -0.0223921, 0.664227)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/name = "calve.L.001"
 bones/22/parent = 21

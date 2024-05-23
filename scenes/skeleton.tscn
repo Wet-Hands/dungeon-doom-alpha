@@ -61,7 +61,6 @@ transform = Transform3D(1, 1.57945e-11, 3.63798e-11, -1.53513e-11, 1, 0, -3.6379
 
 [node name="Skeleton3D" parent="Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4" index="0"]
 transform = Transform3D(1, 0, 9.83746e-12, 0, 1, 7.27596e-12, -2.67342e-12, 7.27596e-12, 1, 0, 0, 0)
-bones/0/position = Vector3(0.000247946, 0.000247951, -0.0547455)
 bones/1/rotation = Quaternion(0.779791, 7.46298e-08, 9.29583e-08, 0.62604)
 bones/2/position = Vector3(-8.88178e-16, 0.132465, 3.72529e-09)
 bones/2/rotation = Quaternion(-0.231343, 1.24205e-14, -5.51564e-08, 0.972872)
@@ -87,7 +86,6 @@ bones/15/rotation = Quaternion(0.170621, 0.056656, 0.0144522, 0.9836)
 bones/15/scale = Vector3(1, 1, 1)
 bones/16/rotation = Quaternion(-0.0192053, -0.0114637, 0.00921148, 0.999707)
 bones/16/scale = Vector3(1, 1, 1)
-bones/17/rotation = Quaternion(-6.77085e-35, -3.46945e-18, -1.95156e-17, 1)
 bones/18/rotation = Quaternion(0.991423, -5.8733e-09, 1.16907e-07, 0.130692)
 bones/18/scale = Vector3(1, 1, 0.999994)
 bones/19/position = Vector3(-4.91628e-09, 0.430739, -2.476e-10)

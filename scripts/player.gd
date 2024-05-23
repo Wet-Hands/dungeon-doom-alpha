@@ -29,8 +29,8 @@ var light #Is lantern on or off
 
 func _ready():
 	Engine.max_fps = 60 #Set FPS to 60
-	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
 	currentHealth = maxHealth #Set Current Health to Max
 	currentFuel = maxFuel
 	$HUD/ProgressBar.max_value = maxHealth #Set Max Health Visually

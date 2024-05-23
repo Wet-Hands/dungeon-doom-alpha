@@ -3,14 +3,16 @@ extends CharacterBody3D
 @export var shaderT = 4.5
 var maxHealth = 50
 var curHealth = maxHealth
-var speed = 1
+var speed = 1.5
 
 @onready var navAgent = $NavigationAgent3D
 @onready var player
 @onready var shaderMat = preload("res://shaders/dissolveGoblin.tres")
 
+var isDead = false
+var isAtk = false
+
 func _ready():
-	#$Skeleton3D/Goblin.material_override = shaderMat.
 	$Skeleton3D/Goblin.material_override.set_shader_parameter("LightStrength", 0) #Update Shader on Skeleton
 	shaderT = 4.5
 
@@ -21,10 +23,14 @@ func _process(delta):
 	velocity = (nextNavPoint - global_transform.origin).normalized() * speed
 	look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 	move_and_slide()
+	if isAtk == false && isDead == false:
+		$AnimationPlayer.speed_scale = 1
+		$AnimationPlayer.play("walk")
 
 func health(num):
 	curHealth += num
 	if curHealth <= 0:
+		isDead = true
 		$Skeleton3D/Goblin.material_override.set_shader_parameter("LightStrength", 1) #Update Shader on Skeleton
 		$ShaderTimer.start()
 		$ShaderAnim.play("shaderOn")

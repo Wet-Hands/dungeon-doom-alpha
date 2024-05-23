@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://378kl0b07lmb"]
+[gd_scene load_steps=42 format=3 uid="uid://378kl0b07lmb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_luw3v"]
 [ext_resource type="Texture2D" uid="uid://5ow12i52hvse" path="res://assets/hud/lantern.png" id="2_odx47"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scripts/KeyManager.gd" id="5_11h2x"]
 [ext_resource type="Shader" path="res://shaders/psxCam.gdshader" id="5_f6spc"]
 [ext_resource type="PackedScene" uid="uid://6kfogt2jbret" path="res://scenes/UI/PauseMenu.tscn" id="6_gx2dt"]
-[ext_resource type="FontFile" uid="uid://d1xyt3113n0ug" path="res://assets/fonts/Pixtura12.ttf" id="7_w026n"]
 [ext_resource type="AudioStream" uid="uid://bb8dbfw03ki4b" path="res://assets/audio/testSwing.mp3" id="8_cegbu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_amreb"]
@@ -437,12 +436,6 @@ _data = {
 "hlt": SubResource("Animation_myqff")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_p2qv8"]
-font = ExtResource("7_w026n")
-font_size = 86
-outline_size = 16
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t3k7p"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
@@ -626,13 +619,6 @@ color = Color(1, 0, 0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_j5g2i")
 }
-
-[node name="Label2" type="Label" parent="HUD"]
-layout_mode = 0
-offset_right = 623.0
-offset_bottom = 344.0
-text = "Open Door"
-label_settings = SubResource("LabelSettings_p2qv8")
 
 [node name="HitTimer" type="Timer" parent="."]
 
