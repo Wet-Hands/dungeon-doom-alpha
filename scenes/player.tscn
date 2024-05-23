@@ -27,14 +27,14 @@ shader = ExtResource("5_f6spc")
 shader_parameter/enable_fog = true
 shader_parameter/fog_color = Color(0, 0, 0, 1)
 shader_parameter/noise_color = Color(0.25098, 0.25098, 0.25098, 1)
-shader_parameter/fog_distance = 12.0
-shader_parameter/fog_fade_range = 4.0
-shader_parameter/enable_noise = true
+shader_parameter/fog_distance = 8.0
+shader_parameter/fog_fade_range = 3.0
+shader_parameter/enable_noise = false
 shader_parameter/noise_time_fac = 4.0
 shader_parameter/enable_color_limitation = true
 shader_parameter/color_levels = 128
 shader_parameter/enable_dithering = true
-shader_parameter/dither_strength = 0.7
+shader_parameter/dither_strength = 0.1
 
 [sub_resource type="QuadMesh" id="QuadMesh_il1gy"]
 material = SubResource("ShaderMaterial_bfy6e")
@@ -585,15 +585,15 @@ offset_bottom = 40.0
 
 [node name="HeartRect" type="TextureRect" parent="HUD"]
 layout_mode = 0
-offset_left = 1040.0
-offset_right = 1280.0
-offset_bottom = 240.0
+offset_left = 173.0
+offset_top = 2.0
+offset_right = 237.0
+offset_bottom = 66.0
 
 [node name="FuelRect" type="TextureRect" parent="HUD"]
 layout_mode = 0
 offset_right = 18.0
 offset_bottom = 51.0
-scale = Vector2(3, 3)
 
 [node name="Label" type="RichTextLabel" parent="HUD"]
 layout_mode = 0
