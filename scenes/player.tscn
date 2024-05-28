@@ -579,9 +579,10 @@ offset_bottom = 40.0
 
 [node name="KeyRect" type="TextureRect" parent="HUD"]
 layout_mode = 0
-offset_left = 180.0
-offset_right = 220.0
-offset_bottom = 40.0
+offset_left = 132.0
+offset_top = 2.0
+offset_right = 172.0
+offset_bottom = 42.0
 
 [node name="HeartRect" type="TextureRect" parent="HUD"]
 layout_mode = 0

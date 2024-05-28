@@ -29,4 +29,3 @@ res://scenes/UI/level_menu.tscn
 res://scenes/UI/PauseMenu.tscn
 res://scenes/tileset_2.tscn
 res://scenes/projectiles/magic_ball.tscn
-res://scripts/player.gd

@@ -19,7 +19,6 @@ grow_vertical = 2
 script = ExtResource("1_f7mnl")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-scale = Vector2(5, 5)
 
 [node name="TextureRect9" type="TextureRect" parent="MeshInstance2D"]
 offset_left = 192.0
