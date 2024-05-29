@@ -134,12 +134,11 @@ vertical_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control"]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 750.0
-offset_right = 1190.0
-offset_bottom = 930.0
+offset_top = 150.0
+offset_right = 240.0
+offset_bottom = 330.0
 bbcode_enabled = true
-text = "[center][font_size=96][tornado radius=3.0 freq=5.0 connected=1][font=res://assets/fonts/Kenney Blocks.ttf][rainbow freq=0.6 sat=0.7 val=0.8]Powered By Godot[/rainbow]"
+text = "[center][font_size=18][tornado radius=2.0 freq=3.0 connected=1][font=res://assets/fonts/Kenney Blocks.ttf][rainbow freq=0.6 sat=0.7 val=0.8]Powered By Godot[/rainbow]"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.25
