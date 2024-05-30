@@ -145,15 +145,15 @@ func playFootStep(): #Footstep sound for Headbob animation
 	$Footstep.play() #Play Footstep sound
 
 func health(num): #Change Player health
-	if shield == false && num < 0:
+	if shield == false || num > 0:
 		currentHealth += num #Update Current Health by num
 		emit_signal("damage", num) #Play Damage Flash
 		if currentHealth <= 0: #If Player Dies
 			position = initPos #Return to Start
-			health(100) #Reset Health back to Full
+			currentHealth = 100 #Reset Health back to Full
+		if currentHealth >= 100:
+			currentHealth = 100
 		$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health2/health" + str(currentHealth) + ".png") #Update Health Meter
-		if currentHealth <= 0 || currentHealth >= 100:
-			$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health2/health100.png")
 
 func fuel(num):
 	currentFuel += num

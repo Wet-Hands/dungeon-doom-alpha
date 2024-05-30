@@ -2,7 +2,7 @@ extends Node3D
 
 var item = "none"
 var items = ["none", "sword", "heal", "red", "green", "blue"]
-var itemTextures = ["none", "sword", "heal", "res://assets/hud/redKey16.png", "res://assets/hud/greenKey16.png", "res://assets/hud/blueKey16.png"]
+var itemTextures = ["none", "sword", "res://assets/hud/health2/health100.png", "res://assets/hud/redKey16.png", "res://assets/hud/greenKey16.png", "res://assets/hud/blueKey16.png"]
 var itemGroups = ["noneCol", "swordCol", "healCol", "redCol", "greenCol", "blueCol"] #Item Collision Group
 var itemNum #Item Number in Array
 @onready var chest = $".." #Chest Scene

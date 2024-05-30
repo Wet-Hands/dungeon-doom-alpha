@@ -52,6 +52,8 @@ func _on_key_area_area_entered(area):
 		keyInv = "blueInt"
 		$KeyArea.add_to_group("blueInt")
 		$"../HUD/KeyRect".texture = ResourceLoader.load("res://assets/hud/blueKey16.png")
+	if area.is_in_group("healCol"):
+		$"..".health(50)
 
 func keyReset(_col):
 	keyInv = "noneInt"
