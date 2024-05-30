@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dvamwl4lv64ka"]
+[gd_scene load_steps=18 format=3 uid="uid://dvamwl4lv64ka"]
 
 [ext_resource type="Script" path="res://scripts/goblin.gd" id="1_d4o5n"]
 [ext_resource type="Texture2D" uid="uid://dp3up8083ajwt" path="res://assets/enemies/testGoblin2_t_goblin_base.png" id="1_q3whf"]
@@ -572,8 +572,12 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = PackedFloat32Array(0, 1, -0.657472, 0.312651, -0.0908899, 0.679499, 0.25, 1, -0.469926, 0.620438, 0.182331, 0.600817, 0.5, 1, -0.657472, 0.312651, -0.0908899, 0.679499, 0.75, 1, -0.469926, 0.620438, 0.182331, 0.600817, 1, 1, -0.657472, 0.312651, -0.0908899, 0.679499)
 
+[sub_resource type="Animation" id="Animation_sgl06"]
+resource_name = "Death"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x41xi"]
 _data = {
+"Death": SubResource("Animation_sgl06"),
 "RESET": SubResource("Animation_jcsgi"),
 "attack": SubResource("Animation_ei7qm"),
 "walk": SubResource("Animation_lmv3l")
@@ -644,7 +648,7 @@ bones/4/rest = Transform3D(0.822513, 0.563014, -0.0805454, -0.567642, 0.803822, 
 bones/4/enabled = true
 bones/4/position = Vector3(-4.47035e-08, 0.480461, 4.47035e-08)
 bones/4/rotation = Quaternion(0.0973997, -0.0118791, -0.297661, 0.949616)
-bones/4/scale = Vector3(1, 1, 1)
+bones/4/scale = Vector3(1, 1, 0.999999)
 bones/5/name = "hand.L.001"
 bones/5/parent = 4
 bones/5/rest = Transform3D(0.987783, 0.133976, -0.0795908, -0.15545, 0.882996, -0.442891, 0.0109415, 0.449853, 0.893036, -2.23517e-08, 0.502963, 7.45058e-09)
@@ -762,7 +766,7 @@ bones/21/parent = 20
 bones/21/rest = Transform3D(0.787977, 0.287599, -0.544407, 0.534638, 0.11894, 0.83667, 0.305377, -0.950337, -0.0600394, 0, 0.177639, -5.58794e-09)
 bones/21/enabled = true
 bones/21/position = Vector3(0, 0.177639, -5.58794e-09)
-bones/21/rotation = Quaternion(-0.595517, -0.451288, -0.0223921, 0.664227)
+bones/21/rotation = Quaternion(-0.657472, -0.312651, 0.0908901, 0.679499)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/name = "calve.L.001"
 bones/22/parent = 21
