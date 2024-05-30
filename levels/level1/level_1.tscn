@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddeeqorg2q5j7"]
+[gd_scene load_steps=11 format=3 uid="uid://ddeeqorg2q5j7"]
 
 [ext_resource type="Script" path="res://levels/level1/level_1.gd" id="1_yg06m"]
 [ext_resource type="PackedScene" uid="uid://378kl0b07lmb" path="res://scenes/player.tscn" id="2_r62gd"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b5ovx6awnnt4s" path="res://scenes/spike_floor_trap.tscn" id="9_a55bw"]
 [ext_resource type="PackedScene" uid="uid://co543lyt6iucd" path="res://scenes/spike_wall_trap.tscn" id="9_qic3y"]
 [ext_resource type="MeshLibrary" uid="uid://dp8pasm6jobsa" path="res://assets/tileset/tileset3.tres" id="9_syts6"]
-[ext_resource type="PackedScene" uid="uid://c1ktsjp37a8fs" path="res://scenes/boulder.tscn" id="11_cwxcr"]
 [ext_resource type="PackedScene" uid="uid://dyg0rs77unshp" path="res://scenes/lava.tscn" id="12_j7at5"]
 
 [sub_resource type="Environment" id="Environment_jyj12"]
@@ -45,11 +44,6 @@ visible = false
 
 [node name="SpikeWallTrap" parent="." instance=ExtResource("9_qic3y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.75, -1.5)
-visible = false
-
-[node name="Boulder" parent="." instance=ExtResource("11_cwxcr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.91534, 0)
-visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_yskki")

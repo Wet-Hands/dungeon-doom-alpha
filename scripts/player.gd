@@ -26,8 +26,10 @@ signal damage
 signal magic
 
 var light #Is lantern on or off
+var shield = false
 
 func _ready():
+	shield = false
 	Engine.max_fps = 60 #Set FPS to 60
 	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
@@ -55,9 +57,16 @@ func _input(event): #When any input is made, better than checking constantly wit
 			anim_names = "Attack"
 			$Head/Camera3D/Items/Sword/SwordMesh/SwordHitbox/CollisionShape3D.disabled = false #Enable swordHitbox
 			SwordHitbox.monitoring = true #turns the hitbox monitoring on
+	if Input.is_action_pressed("action2"): #If Right Mouse Click is pressed
+		shield = true
+		print("Pressed: " + str(shield))
+	else:
+		shield = false
+		print("Pressed: " + str(shield))
+
 	if Input.is_action_just_pressed("action2"): #If Right Mouse Click is pressed
 		print("Light Before: " + str(light))
-		emit_signal("magic")
+		#emit_signal("magic")
 		var testt = """
 		if light == false && currentFuel > 0: #If lantern isn't on
 			$Head/Camera3D/Items/Lantern/LanternOn.pitch_scale = 1 #Lantern Up Pitch
@@ -136,12 +145,15 @@ func playFootStep(): #Footstep sound for Headbob animation
 	$Footstep.play() #Play Footstep sound
 
 func health(num): #Change Player health
-	currentHealth += num #Update Current Health by num
-	emit_signal("damage", num) #Play Damage Flash
-	if currentHealth <= 0: #If Player Dies
-		position = initPos #Return to Start
-		health(100) #Reset Health back to Full
-	$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health2/health" + str(currentHealth) + ".png") #Update Health Meter
+	if shield == false && num < 0:
+		currentHealth += num #Update Current Health by num
+		emit_signal("damage", num) #Play Damage Flash
+		if currentHealth <= 0: #If Player Dies
+			position = initPos #Return to Start
+			health(100) #Reset Health back to Full
+		$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health2/health" + str(currentHealth) + ".png") #Update Health Meter
+		if currentHealth <= 0 || currentHealth >= 100:
+			$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health2/health100.png")
 
 func fuel(num):
 	currentFuel += num
@@ -200,3 +212,8 @@ func _on_lantern_animation_animation_finished(anim_name):
 func _on_lava_timer_timeout():
 	if inLava == true:
 		health(-10)
+
+var sTime = 0
+func _on_timer_timeout():
+	$SoundTimer.stop()
+	sTime += 1

@@ -217,6 +217,7 @@ layout_mode = 2
 
 [node name="Fullscreen" type="CheckBox" parent="Video/HBoxContainer/Checks"]
 layout_mode = 2
+button_pressed = true
 
 [node name="VideoBack" type="Button" parent="Video"]
 layout_mode = 0

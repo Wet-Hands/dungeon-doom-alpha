@@ -4,6 +4,7 @@ extends Control
 var paused = false
 
 func _on_player_pause():
+	$"../Soundtrack".volume_db = -30
 	visible = !visible
 	paused = visible
 	get_tree().paused = paused
@@ -21,6 +22,7 @@ func _on_menu_button_pressed():
 
 
 func _on_resume_button_pressed():
+	$"../Soundtrack".volume_db = -20
 	visible = !visible
 	paused = visible
 	get_tree().paused = paused
