@@ -5,14 +5,14 @@ extends Node3D
 
 @onready var skeleton = preload("res://scenes/skeleton.tscn")
 @onready var goblin = preload("res://scenes/goblin.tscn")
-
 @onready var door = preload("res://scenes/door.tscn")
 @onready var endor = preload("res://scenes/end_door.tscn")
-@onready var magic = preload("res://scenes/projectiles/magic_ball.tscn")
+@onready var chest = preload("res://scenes/chest.tscn")
 
+@onready var magic = preload("res://scenes/projectiles/magic_ball.tscn")
 func _ready():
-	for z in range(-25, 25):
-		for x in range(-25, 25):
+	for z in range(-50, 50):
+		for x in range(-50, 50):
 			var i = grid.get_cell_item(Vector3i(x, 0, z))
 			var io = grid.get_cell_item_orientation(Vector3i(x, 0, z))
 			if i == 5:
@@ -21,12 +21,15 @@ func _ready():
 			if i == 4:
 				instSkeleton(Vector3i(x, 0, z))
 				grid.set_cell_item(Vector3i(x, 0, z), 2, io)
-			if i == 7:
-				instDoor(Vector3i(x, 0, z), "none", io)
-				grid.set_cell_item(Vector3i(x, 0, z), 0, io)
-			if i == 10:
-				instDoor(Vector3i(x, 0, z), "blue", io)
-				grid.set_cell_item(Vector3i(x, 0, z), 0, io)
+			if i == 12:
+				instChest(Vector3i(x, 0, z), "red")
+				grid.set_cell_item(Vector3i(x, 0, z), 2, 0)
+			if i == 13:
+				instChest(Vector3i(x, 0, z), "green")
+				grid.set_cell_item(Vector3i(x, 0, z), 2, io)
+			if i == 14:
+				instChest(Vector3i(x, 0, z), "blue")
+				grid.set_cell_item(Vector3i(x, 0, z), 2, io)
 
 func _physics_process(_delta):
 	get_tree().call_group("skeleton" , "update_target_location" , player.global_position)
@@ -34,14 +37,24 @@ func _physics_process(_delta):
 func instGoblin(pos):
 	var instance = goblin.instantiate()
 	instance.position = pos
-	instance.position.y = 1.75
+	instance.position.x += 6
+	instance.position.y = 0.75
 	instance.player = player
 	$Enemies.add_child(instance)
+
+func instChest(pos, color):
+	print(color)
+	var instance = chest.instantiate()
+	instance.position = pos
+	instance.position.y = 1.75
+	instance.chestItem = color
+	instance.locked = false
+	$Objects.add_child(instance)
 
 func instSkeleton(pos):
 	var instance = skeleton.instantiate()
 	instance.position = pos
-	instance.position.y = 2.75
+	instance.position.y = 1.75
 	instance.player = player
 	$Enemies.add_child(instance)
 

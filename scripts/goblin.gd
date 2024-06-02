@@ -12,9 +12,12 @@ var speed = 1.5
 var isDead = false
 var isAtk = false
 
+var active = false
 func _ready():
 	$Skeleton3D/Goblin.material_override.set_shader_parameter("LightStrength", 0) #Update Shader on Skeleton
 	shaderT = 4.5
+	active = false
+	print(global_position)
 
 func _process(delta):
 	velocity = Vector3.ZERO
@@ -22,7 +25,8 @@ func _process(delta):
 	var nextNavPoint = navAgent.get_next_path_position()
 	velocity = (nextNavPoint - global_transform.origin).normalized() * speed
 	look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
-	move_and_slide()
+	if active == true:
+		move_and_slide()
 	if isAtk == false && isDead == false:
 		$AnimationPlayer.speed_scale = 1
 		$AnimationPlayer.play("walk")
@@ -48,3 +52,7 @@ func _on_shader_timer_timeout():
 		$ShaderTimer.start()
 	if shaderT == 1.0:
 		queue_free()
+
+func _on_int_area_area_entered(area):
+	if area.is_in_group("player"):
+		active = true

@@ -1,11 +1,11 @@
+CollisionShape3D
+Area3D
 Timer
 AudioStreamPlayer
 OmniLight3D
 Node3D
 Label
 RichTextLabel
-Area3D
-CollisionShape3D
 MeshInstance3D
 StaticBody3D
 NavigationAgent3D

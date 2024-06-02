@@ -59,10 +59,8 @@ func _input(event): #When any input is made, better than checking constantly wit
 			SwordHitbox.monitoring = true #turns the hitbox monitoring on
 	if Input.is_action_pressed("action2"): #If Right Mouse Click is pressed
 		shield = true
-		print("Pressed: " + str(shield))
 	else:
 		shield = false
-		print("Pressed: " + str(shield))
 
 	if Input.is_action_just_pressed("action2"): #If Right Mouse Click is pressed
 		print("Light Before: " + str(light))
@@ -143,6 +141,9 @@ func headBob(): #Headbob Function
 func playFootStep(): #Footstep sound for Headbob animation
 	$Footstep.pitch_scale = randf_range(0.8, 1.0) #Change Pitch so you don't sound like you're banging your head against the wall
 	$Footstep.play() #Play Footstep sound
+
+#func _process(delta):
+	#print(global_position)
 
 func health(num): #Change Player health
 	if shield == false || num > 0:

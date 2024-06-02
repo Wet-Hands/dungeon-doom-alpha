@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://clitpinrxwt7f"]
+[gd_scene load_steps=25 format=3 uid="uid://clitpinrxwt7f"]
 
 [ext_resource type="PackedScene" uid="uid://bf2exohtirjed" path="res://assets/tileset/tileset2.glb" id="1_3nn2s"]
 [ext_resource type="Texture2D" uid="uid://ysvdx1xciv6y" path="res://assets/tileset/tileset2_tileset_atlas2.png" id="2_ifl58"]
@@ -28,7 +28,7 @@ normal_enabled = true
 normal_texture = ExtResource("3_xnt1s")
 texture_filter = 2
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_vrf8o"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_v6ai2"]
 _surfaces = [{
 "aabb": AABB(-0.5, 0, -0.5, 1, 2.5, 1.00001),
 "format": 34896613377,
@@ -58,118 +58,10 @@ _surfaces = [{
 "vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 127, 255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 102, 102, 0, 0, 255, 127, 0, 0, 102, 102, 0, 0, 255, 127, 255, 255, 102, 102, 0, 0, 255, 127, 255, 255, 102, 102, 0, 0, 255, 127, 0, 0, 204, 204, 0, 0, 255, 159, 0, 0, 204, 204, 0, 0, 255, 127, 255, 255, 204, 204, 0, 0, 255, 159, 255, 255, 204, 204, 0, 0, 255, 127, 0, 0, 255, 255, 255, 127, 255, 191, 0, 0, 255, 255, 255, 127, 255, 159, 255, 255, 255, 255, 255, 127, 255, 191, 255, 255, 255, 255, 255, 127, 255, 159, 0, 0, 255, 255, 254, 255, 255, 191, 255, 255, 255, 255, 254, 255, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_vrf8o")
+shadow_mesh = SubResource("ArrayMesh_v6ai2")
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ucwm4"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_a31hf"]
 data = PackedVector3Array(-0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 1, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, 2, -0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 2, -0.5, 0.5, 2, -0.5, -0.5, 2, -0.5, 0.5, 2.5, 0, 0.5, 2, -0.5, -0.5, 2, -0.5, -0.5, 2.5, 0, 0.5, 2.5, 0, -0.5, 2.5, 0, 0.5, 2.5, 0.5, 0.5, 2.5, 0, -0.5, 2.5, 0, -0.5, 2.5, 0.5, 0.5, 2.5, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4d2tv"]
-resource_name = "Material.001"
-cull_mode = 2
-albedo_color = Color(1, 0.67451, 0, 1)
-albedo_texture = ExtResource("2_ifl58")
-normal_enabled = true
-normal_texture = ExtResource("3_xnt1s")
-texture_filter = 2
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_dkeex"]
-resource_name = "tileset2_Plane"
-_surfaces = [{
-"aabb": AABB(-0.5, 0, -0.5, 1, 2.5, 1.00001),
-"attribute_data": PackedByteArray(255, 127, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 0, 0, 0, 0, 255, 127, 255, 127, 255, 127, 0, 0, 0, 0, 255, 63, 0, 0, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0),
-"format": 34896613399,
-"index_count": 30,
-"index_data": PackedByteArray(0, 0, 5, 0, 1, 0, 0, 0, 3, 0, 5, 0, 2, 0, 8, 0, 4, 0, 2, 0, 6, 0, 8, 0, 7, 0, 13, 0, 9, 0, 7, 0, 11, 0, 13, 0, 10, 0, 17, 0, 12, 0, 10, 0, 15, 0, 17, 0, 14, 0, 19, 0, 16, 0, 14, 0, 18, 0, 19, 0),
-"material": SubResource("StandardMaterial3D_4d2tv"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 20,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 127, 255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 102, 102, 0, 0, 255, 127, 0, 0, 102, 102, 0, 0, 255, 127, 255, 255, 102, 102, 0, 0, 255, 127, 255, 255, 102, 102, 0, 0, 255, 127, 0, 0, 204, 204, 0, 0, 255, 159, 0, 0, 204, 204, 0, 0, 255, 127, 255, 255, 204, 204, 0, 0, 255, 159, 255, 255, 204, 204, 0, 0, 255, 127, 0, 0, 255, 255, 255, 127, 255, 191, 0, 0, 255, 255, 255, 127, 255, 159, 255, 255, 255, 255, 255, 127, 255, 191, 255, 255, 255, 255, 255, 127, 255, 159, 0, 0, 255, 255, 254, 255, 255, 191, 255, 255, 255, 255, 254, 255, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_vrf8o")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p00lu"]
-resource_name = "Material.001"
-cull_mode = 2
-albedo_color = Color(0.768627, 0, 0, 1)
-albedo_texture = ExtResource("2_ifl58")
-normal_enabled = true
-normal_texture = ExtResource("3_xnt1s")
-texture_filter = 2
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_entpb"]
-resource_name = "tileset2_Plane"
-_surfaces = [{
-"aabb": AABB(-0.5, 0, -0.5, 1, 2.5, 1.00001),
-"attribute_data": PackedByteArray(255, 127, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 0, 0, 0, 0, 255, 127, 255, 127, 255, 127, 0, 0, 0, 0, 255, 63, 0, 0, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0),
-"format": 34896613399,
-"index_count": 30,
-"index_data": PackedByteArray(0, 0, 5, 0, 1, 0, 0, 0, 3, 0, 5, 0, 2, 0, 8, 0, 4, 0, 2, 0, 6, 0, 8, 0, 7, 0, 13, 0, 9, 0, 7, 0, 11, 0, 13, 0, 10, 0, 17, 0, 12, 0, 10, 0, 15, 0, 17, 0, 14, 0, 19, 0, 16, 0, 14, 0, 18, 0, 19, 0),
-"material": SubResource("StandardMaterial3D_p00lu"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 20,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 127, 255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 102, 102, 0, 0, 255, 127, 0, 0, 102, 102, 0, 0, 255, 127, 255, 255, 102, 102, 0, 0, 255, 127, 255, 255, 102, 102, 0, 0, 255, 127, 0, 0, 204, 204, 0, 0, 255, 159, 0, 0, 204, 204, 0, 0, 255, 127, 255, 255, 204, 204, 0, 0, 255, 159, 255, 255, 204, 204, 0, 0, 255, 127, 0, 0, 255, 255, 255, 127, 255, 191, 0, 0, 255, 255, 255, 127, 255, 159, 255, 255, 255, 255, 255, 127, 255, 191, 255, 255, 255, 255, 255, 127, 255, 159, 0, 0, 255, 255, 254, 255, 255, 191, 255, 255, 255, 255, 254, 255, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_vrf8o")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_riauo"]
-resource_name = "Material.001"
-cull_mode = 2
-albedo_color = Color(0.0156863, 1, 0, 1)
-albedo_texture = ExtResource("2_ifl58")
-normal_enabled = true
-normal_texture = ExtResource("3_xnt1s")
-texture_filter = 2
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_wv3kv"]
-resource_name = "tileset2_Plane"
-_surfaces = [{
-"aabb": AABB(-0.5, 0, -0.5, 1, 2.5, 1.00001),
-"attribute_data": PackedByteArray(255, 127, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 0, 0, 0, 0, 255, 127, 255, 127, 255, 127, 0, 0, 0, 0, 255, 63, 0, 0, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0),
-"format": 34896613399,
-"index_count": 30,
-"index_data": PackedByteArray(0, 0, 5, 0, 1, 0, 0, 0, 3, 0, 5, 0, 2, 0, 8, 0, 4, 0, 2, 0, 6, 0, 8, 0, 7, 0, 13, 0, 9, 0, 7, 0, 11, 0, 13, 0, 10, 0, 17, 0, 12, 0, 10, 0, 15, 0, 17, 0, 14, 0, 19, 0, 16, 0, 14, 0, 18, 0, 19, 0),
-"material": SubResource("StandardMaterial3D_riauo"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 20,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 127, 255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 102, 102, 0, 0, 255, 127, 0, 0, 102, 102, 0, 0, 255, 127, 255, 255, 102, 102, 0, 0, 255, 127, 255, 255, 102, 102, 0, 0, 255, 127, 0, 0, 204, 204, 0, 0, 255, 159, 0, 0, 204, 204, 0, 0, 255, 127, 255, 255, 204, 204, 0, 0, 255, 159, 255, 255, 204, 204, 0, 0, 255, 127, 0, 0, 255, 255, 255, 127, 255, 191, 0, 0, 255, 255, 255, 127, 255, 159, 255, 255, 255, 255, 255, 127, 255, 191, 255, 255, 255, 255, 255, 127, 255, 159, 0, 0, 255, 255, 254, 255, 255, 191, 255, 255, 255, 255, 254, 255, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_vrf8o")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1u1f0"]
-resource_name = "Material.001"
-cull_mode = 2
-albedo_color = Color(0, 0, 1, 1)
-albedo_texture = ExtResource("2_ifl58")
-normal_enabled = true
-normal_texture = ExtResource("3_xnt1s")
-texture_filter = 2
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_i83pw"]
-resource_name = "tileset2_Plane"
-_surfaces = [{
-"aabb": AABB(-0.5, 0, -0.5, 1, 2.5, 1.00001),
-"attribute_data": PackedByteArray(255, 127, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 0, 0, 0, 0, 255, 127, 255, 127, 255, 127, 0, 0, 0, 0, 255, 63, 0, 0, 0, 0, 255, 127, 255, 63, 255, 127, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0),
-"format": 34896613399,
-"index_count": 30,
-"index_data": PackedByteArray(0, 0, 5, 0, 1, 0, 0, 0, 3, 0, 5, 0, 2, 0, 8, 0, 4, 0, 2, 0, 6, 0, 8, 0, 7, 0, 13, 0, 9, 0, 7, 0, 11, 0, 13, 0, 10, 0, 17, 0, 12, 0, 10, 0, 15, 0, 17, 0, 14, 0, 19, 0, 16, 0, 14, 0, 18, 0, 19, 0),
-"material": SubResource("StandardMaterial3D_1u1f0"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 20,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 127, 255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 102, 102, 0, 0, 255, 127, 0, 0, 102, 102, 0, 0, 255, 127, 255, 255, 102, 102, 0, 0, 255, 127, 255, 255, 102, 102, 0, 0, 255, 127, 0, 0, 204, 204, 0, 0, 255, 159, 0, 0, 204, 204, 0, 0, 255, 127, 255, 255, 204, 204, 0, 0, 255, 159, 255, 255, 204, 204, 0, 0, 255, 127, 0, 0, 255, 255, 255, 127, 255, 191, 0, 0, 255, 255, 255, 127, 255, 159, 255, 255, 255, 255, 255, 127, 255, 191, 255, 255, 255, 255, 255, 127, 255, 159, 0, 0, 255, 255, 254, 255, 255, 191, 255, 255, 255, 255, 254, 255, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_vrf8o")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axvyb"]
 resource_name = "Material.001"
@@ -196,7 +88,132 @@ _surfaces = [{
 "vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 127, 255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 102, 102, 0, 0, 255, 127, 0, 0, 102, 102, 0, 0, 255, 127, 255, 255, 102, 102, 0, 0, 255, 127, 255, 255, 102, 102, 0, 0, 255, 127, 0, 0, 204, 204, 0, 0, 255, 159, 0, 0, 204, 204, 0, 0, 255, 127, 255, 255, 204, 204, 0, 0, 255, 159, 255, 255, 204, 204, 0, 0, 255, 127, 0, 0, 255, 255, 255, 127, 255, 191, 0, 0, 255, 255, 255, 127, 255, 159, 255, 255, 255, 255, 255, 127, 255, 191, 255, 255, 255, 255, 255, 127, 255, 159, 0, 0, 255, 255, 254, 255, 255, 191, 255, 255, 255, 255, 254, 255, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_vrf8o")
+shadow_mesh = SubResource("ArrayMesh_v6ai2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0ge4"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0.643137, 0, 0, 1)
+albedo_texture = ExtResource("2_ifl58")
+normal_enabled = true
+normal_texture = ExtResource("3_xnt1s")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_isa1n"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 2.5, 1.00001),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 4, 0, 7, 0, 5, 0, 4, 0, 6, 0, 7, 0),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 255, 255, 255, 255, 254, 255, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_evlmv"]
+resource_name = "tileset2_Plane_005"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 2.5, 1.00001),
+"attribute_data": PackedByteArray(255, 127, 255, 127, 255, 255, 255, 127, 255, 127, 0, 0, 255, 255, 0, 0, 0, 0, 255, 127, 255, 127, 255, 127, 0, 0, 0, 0, 255, 127, 0, 0),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 4, 0, 7, 0, 5, 0, 4, 0, 6, 0, 7, 0),
+"material": SubResource("StandardMaterial3D_d0ge4"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 255, 255, 254, 255, 255, 191, 255, 255, 255, 255, 254, 255, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_isa1n")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cqjui"]
+data = PackedVector3Array(-0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 2.5, -0.5, 0.5, 2.5, 0.5, 0.5, 2.5, -0.5, -0.5, 2.5, -0.5, -0.5, 2.5, 0.5, 0.5, 2.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpaqy"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0.0705882, 1, 0, 1)
+albedo_texture = ExtResource("2_ifl58")
+normal_enabled = true
+normal_texture = ExtResource("3_xnt1s")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_532nx"]
+resource_name = "tileset2_Plane_005"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 2.5, 1.00001),
+"attribute_data": PackedByteArray(255, 127, 255, 127, 255, 255, 255, 127, 255, 127, 0, 0, 255, 255, 0, 0, 0, 0, 255, 127, 255, 127, 255, 127, 0, 0, 0, 0, 255, 127, 0, 0),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 4, 0, 7, 0, 5, 0, 4, 0, 6, 0, 7, 0),
+"material": SubResource("StandardMaterial3D_mpaqy"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 255, 255, 254, 255, 255, 191, 255, 255, 255, 255, 254, 255, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_isa1n")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqsdu"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0.0705882, 0, 0.819608, 1)
+albedo_texture = ExtResource("2_ifl58")
+normal_enabled = true
+normal_texture = ExtResource("3_xnt1s")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1inba"]
+resource_name = "tileset2_Plane_005"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 2.5, 1.00001),
+"attribute_data": PackedByteArray(255, 127, 255, 127, 255, 255, 255, 127, 255, 127, 0, 0, 255, 255, 0, 0, 0, 0, 255, 127, 255, 127, 255, 127, 0, 0, 0, 0, 255, 127, 0, 0),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 4, 0, 7, 0, 5, 0, 4, 0, 6, 0, 7, 0),
+"material": SubResource("StandardMaterial3D_oqsdu"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 255, 255, 254, 255, 255, 191, 255, 255, 255, 255, 254, 255, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_isa1n")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gnnyb"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0.470588, 0, 0.819608, 1)
+albedo_texture = ExtResource("2_ifl58")
+normal_enabled = true
+normal_texture = ExtResource("3_xnt1s")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vxk7y"]
+resource_name = "tileset2_Plane_005"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 2.5, 1.00001),
+"attribute_data": PackedByteArray(255, 127, 255, 127, 255, 255, 255, 127, 255, 127, 0, 0, 255, 255, 0, 0, 0, 0, 255, 127, 255, 127, 255, 127, 0, 0, 0, 0, 255, 127, 0, 0),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 4, 0, 7, 0, 5, 0, 4, 0, 6, 0, 7, 0),
+"material": SubResource("StandardMaterial3D_gnnyb"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 255, 255, 254, 255, 255, 191, 255, 255, 255, 255, 254, 255, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_isa1n")
 
 [node name="tileset2" instance=ExtResource("1_3nn2s")]
 
@@ -226,54 +243,54 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="trap_wall" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="trap_wall/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ucwm4")
+shape = SubResource("ConcavePolygonShape3D_a31hf")
 
-[node name="door" type="MeshInstance3D" parent="." index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
-mesh = SubResource("ArrayMesh_dkeex")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="door" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="door/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ucwm4")
-
-[node name="redDoor" type="MeshInstance3D" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1)
-mesh = SubResource("ArrayMesh_entpb")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="redDoor" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="redDoor/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ucwm4")
-
-[node name="greenDoor" type="MeshInstance3D" parent="." index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 2)
-mesh = SubResource("ArrayMesh_wv3kv")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="greenDoor" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="greenDoor/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ucwm4")
-
-[node name="blueDoor" type="MeshInstance3D" parent="." index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
-mesh = SubResource("ArrayMesh_i83pw")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="blueDoor" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="blueDoor/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ucwm4")
-
-[node name="endDoor" type="MeshInstance3D" parent="." index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
+[node name="endDoor" type="MeshInstance3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1)
 mesh = SubResource("ArrayMesh_ywvpk")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="endDoor" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="endDoor/StaticBody3D" index="0"]
-shape = SubResource("ConcavePolygonShape3D_ucwm4")
+shape = SubResource("ConcavePolygonShape3D_a31hf")
+
+[node name="redChest" type="MeshInstance3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+mesh = SubResource("ArrayMesh_evlmv")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="redChest" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="redChest/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_cqjui")
+
+[node name="greenChest" type="MeshInstance3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 1)
+mesh = SubResource("ArrayMesh_532nx")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="greenChest" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="greenChest/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_cqjui")
+
+[node name="blueChest" type="MeshInstance3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 2)
+mesh = SubResource("ArrayMesh_1inba")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="blueChest" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="blueChest/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_cqjui")
+
+[node name="heartChest" type="MeshInstance3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 3)
+mesh = SubResource("ArrayMesh_vxk7y")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="heartChest" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="heartChest/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_cqjui")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dvamwl4lv64ka"]
+[gd_scene load_steps=19 format=3 uid="uid://dvamwl4lv64ka"]
 
 [ext_resource type="Script" path="res://scripts/goblin.gd" id="1_d4o5n"]
 [ext_resource type="Texture2D" uid="uid://dp3up8083ajwt" path="res://assets/enemies/testGoblin2_t_goblin_base.png" id="1_q3whf"]
@@ -125,6 +125,9 @@ bind/27/name = &"foot.R.001"
 bind/27/bone = -1
 bind/27/pose = Transform3D(0.0128528, -0.718156, -0.695763, -0.203814, -0.683095, 0.701314, -0.978925, 0.132792, -0.15515, -0.0863347, 0.111893, -0.229301)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_gvde3"]
+radius = 6.0
+
 [sub_resource type="FontVariation" id="FontVariation_t1dpq"]
 base_font = ExtResource("4_usat6")
 spacing_glyph = 1
@@ -132,6 +135,9 @@ spacing_glyph = 1
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ylayk"]
 states/End/position = Vector2(896, 100)
 states/Start/position = Vector2(219, 100)
+
+[sub_resource type="Animation" id="Animation_sgl06"]
+resource_name = "Death"
 
 [sub_resource type="Animation" id="Animation_jcsgi"]
 resource_name = "RESET"
@@ -572,9 +578,6 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = PackedFloat32Array(0, 1, -0.657472, 0.312651, -0.0908899, 0.679499, 0.25, 1, -0.469926, 0.620438, 0.182331, 0.600817, 0.5, 1, -0.657472, 0.312651, -0.0908899, 0.679499, 0.75, 1, -0.469926, 0.620438, 0.182331, 0.600817, 1, 1, -0.657472, 0.312651, -0.0908899, 0.679499)
 
-[sub_resource type="Animation" id="Animation_sgl06"]
-resource_name = "Death"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x41xi"]
 _data = {
 "Death": SubResource("Animation_sgl06"),
@@ -816,6 +819,12 @@ material_override = SubResource("ShaderMaterial_tga62")
 mesh = SubResource("ArrayMesh_2xnqb")
 skin = SubResource("Skin_6tixl")
 
+[node name="IntArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IntArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16216, 0)
+shape = SubResource("SphereShape3D_gvde3")
+
 [node name="Area3D" type="Area3D" parent="." groups=["goblin"]]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
@@ -847,5 +856,6 @@ path_height_offset = 0.5
 [node name="ShaderTimer" type="Timer" parent="."]
 wait_time = 0.1
 
+[connection signal="area_entered" from="IntArea" to="." method="_on_int_area_area_entered"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="timeout" from="ShaderTimer" to="." method="_on_shader_timer_timeout"]
