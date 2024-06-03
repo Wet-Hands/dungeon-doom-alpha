@@ -70,6 +70,8 @@ func health(num): #Change Player health
 		$ShaderTimer.start() #Shader Update Timer Starts
 		$ShaderAnim.play("shader") #Play Shader Animation
 		$Death1.play() #Play Death Animation
+	else:
+		$Hurt.play()
 
 func _disableCol():
 	$attack/MeshInstance3D/skeleAtkHitbox.remove_from_group("skeleAttack")
