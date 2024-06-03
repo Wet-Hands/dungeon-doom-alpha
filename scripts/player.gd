@@ -9,7 +9,7 @@ var anim_names #changed depending on what animation needs to be used (this is fo
 @onready var swordAnim = $Head/SwordAnimation #movement animation variable
 
 @onready var SwordHitbox = $Head/Camera3D/Items/Sword/SwordMesh/SwordHitbox #hitbox of the sword
-@onready var LightHitbox = $Head/Camera3D/Items/Lantern/LightHitbox #hitbox for the Light
+@onready var LightHitbox = $Head/Camera3D/Items/Shield/ShieldHitbox #hitbox for the Light
 
 var fs = false #Is fullscreen on or off
 var camSens = .75 #Camera Speed Sensitivity
@@ -27,6 +27,7 @@ signal magic
 
 var light #Is lantern on or off
 var shield = false
+var shieldUp = false
 
 func _ready():
 	shield = false
@@ -40,8 +41,7 @@ func _ready():
 	$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel100.png")
 	initPos = global_position
 	light = false
-	$Head/Camera3D/Items/Lantern.position.y = -1.25
-	$Head/Camera3D/Items/Lantern.light_energy = 0
+	$Head/Camera3D/Items/Shield.position.y = -1.25
 	switched = false
 
 @onready var magicBall = preload("res://scenes/projectiles/magic_ball.tscn")
@@ -59,8 +59,14 @@ func _input(event): #When any input is made, better than checking constantly wit
 			SwordHitbox.monitoring = true #turns the hitbox monitoring on
 	if Input.is_action_pressed("action2"): #If Right Mouse Click is pressed
 		shield = true
-	else:
+		if shieldUp == false:
+			$Head/ShieldAnimation.play("switch")
+			shieldUp = true
+	
+	if Input.is_action_just_released("action2"):
+		$Head/ShieldAnimation.play_backwards("switch")
 		shield = false
+		shieldUp = false
 
 	if Input.is_action_just_pressed("action2"): #If Right Mouse Click is pressed
 		print("Light Before: " + str(light))
@@ -142,9 +148,6 @@ func playFootStep(): #Footstep sound for Headbob animation
 	$Footstep.pitch_scale = randf_range(0.8, 1.0) #Change Pitch so you don't sound like you're banging your head against the wall
 	$Footstep.play() #Play Footstep sound
 
-#func _process(delta):
-	#print(global_position)
-
 func health(num): #Change Player health
 	if shield == false || num > 0:
 		currentHealth += num #Update Current Health by num
@@ -192,23 +195,9 @@ func _on_hitbox_area_exited(area):
 func nextLevel(): #Next Level Function
 	get_tree().change_scene_to_file(levels[$"/root/Global".level]) #Go to Next Level
 
-func _on_fuel_timer_timeout():
-	if light == true: #If the light is on
-		fuel(-2) #Lose 2 fuel points
-		if currentFuel < 0: #If Player runs out of fuel
-			$Head/Camera3D/Items/Lantern.visible = false #Turn off light
-			$Head/Camera3D/Items/Lantern/LightHitbox/CollisionShape3D.disabled = true #Disable Skeleton Protection
-			$Head/Camera3D/Items/Lantern/OuterLightHitbox/OuterLightCollision.disabled = true #turns off Outer Light collision
-			LightHitbox.monitoring = false #Disable Skeleton Protection
-			light = false #Light is off
-
 var levels = ["res://scenes/UI/main_menu.tscn", "res://level_2.tscn", "res://levels/level3/level_3.tscn", "res://levels/level4/level_4.tscn", "res://levels/level5/level_5.tscn"]
 
 var switched
-func _on_lantern_animation_animation_finished(anim_name):
-	print(anim_name)
-	if anim_name == "switch":
-		switched = !switched
 
 func _on_lava_timer_timeout():
 	if inLava == true:
