@@ -38,10 +38,12 @@ func health(num):
 		$Skeleton3D/Goblin.material_override.set_shader_parameter("LightStrength", 1) #Update Shader on Skeleton
 		$ShaderTimer.start()
 		$ShaderAnim.play("shaderOn")
+		$Gdeath.play()
 		print("Goblin Death")
 
 func _on_area_3d_area_entered(area):
 	if area.is_in_group("sword"):
+		$Ghurt.play()
 		health(-25)
 
 func _on_shader_timer_timeout():

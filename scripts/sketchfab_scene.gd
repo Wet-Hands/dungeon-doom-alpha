@@ -9,7 +9,7 @@ func _process(_delta):
 	if dead == true:
 		animPlay.play("Death")
 	elif doAtk == true:
-		animPlay.play("Attack")
+		animPlay.play("Magic")
 	elif inLight == true && inEdgeLight == true:
 		animPlay.play("Backwards")
 	elif inLight == false && inEdgeLight == true:

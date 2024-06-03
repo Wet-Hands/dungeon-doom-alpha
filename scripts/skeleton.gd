@@ -18,7 +18,7 @@ var inLight = false #is skeleton in Light
 var inEdgeLight = false #is skeleton on edge of Light
 var playerInfront = false #is player infront of skeleton
 var doAtk = false
-
+var stop = false
 var detected = false
 
 @export var shaderL = 4.5
@@ -38,19 +38,17 @@ func _process(delta): #If Game is runnong
 		var next_location = nav_agent.get_next_path_position()
 		var current_location = global_position #Finds skeletons current location
 		var new_velocity = current_location.direction_to(next_location) * speed * delta
-		if inLight == true:
-			velocity.x = new_velocity.x * -1
-			velocity.z = new_velocity.z * -1
-		elif inEdgeLight == true: #checks if the skeleton is on the edge of the Light
-			velocity = new_velocity * 0 #stops the skeleton's movement
-		else:
+		if stop == true:
+			velocity = new_velocity * 0
+		else: #checks if the skeleton is on the edge of the Light
 			velocity = new_velocity #sets skeleton's velocity to default
 			
-		if playerInfront == true && doAtk == false:
+		if detected == true && doAtk == false:
 			$attack/MeshInstance3D.visible = false
 			$attack/MeshInstance3D/skeleAtkHitbox/skeleAtkCollision.disabled = true
 			atkHitbox.monitoring = false
 			doAtk = true
+			stop = true
 			$attackCooldown.start()
 		move_and_slide()
 
@@ -114,8 +112,9 @@ func _on_hitbox_area_exited(area): #checks if anything has left the skeleton's h
 		inEdgeLight = false #sets skeleotn in edge of light to false
 
 func _on_attack_cooldown_timeout(): #When Cooldown is Over
-	$attackCooldown.stop() #Stop Timer
+	$attackCooldown.stop() #Stop Timee
 	doAtk = false
+	stop = false
 	$attack/MeshInstance3D.visible = true
 	$attack/MeshInstance3D/skeleAtkHitbox/skeleAtkCollision.disabled = false
 	atkHitbox.monitoring = true
