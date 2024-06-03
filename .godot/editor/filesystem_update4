@@ -12,6 +12,7 @@ res://assets/tileset/tileset2.tres
 res://assets/materials/metal.tres
 res://shaders/lava.tres
 res://shaders/psxModel.gdshader
+res://scripts/player.gd
 res://scenes/gd_screen.tscn
 res://scenes/test_world.tscn
 res://scenes/end_door.tscn
@@ -31,3 +32,5 @@ res://scenes/tileset_2.tscn
 res://scenes/projectiles/magic_ball.tscn
 res://scenes/sketchfab_scene.tscn
 res://scripts/skeleton.gd
+res://scripts/sketchfab_scene.gd
+res://scripts/projectiles/magic_ball.gd

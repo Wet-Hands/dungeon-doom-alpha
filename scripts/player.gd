@@ -32,13 +32,11 @@ var shieldUp = false
 func _ready():
 	shield = false
 	Engine.max_fps = 60 #Set FPS to 60
-	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
 	currentHealth = maxHealth #Set Current Health to Max
-	currentFuel = maxFuel
 	$HUD/ProgressBar.max_value = maxHealth #Set Max Health Visually
 	$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health/heartFull16.png")
-	$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel100.png")
 	initPos = global_position
 	light = false
 	$Head/Camera3D/Items/Shield.position.y = -1.25
@@ -67,31 +65,6 @@ func _input(event): #When any input is made, better than checking constantly wit
 		$Head/ShieldAnimation.play_backwards("switch")
 		shield = false
 		shieldUp = false
-
-	if Input.is_action_just_pressed("action2"): #If Right Mouse Click is pressed
-		print("Light Before: " + str(light))
-		#emit_signal("magic")
-		var testt = """
-		if light == false && currentFuel > 0: #If lantern isn't on
-			$Head/Camera3D/Items/Lantern/LanternOn.pitch_scale = 1 #Lantern Up Pitch
-			$Head/Camera3D/Items/Lantern/LanternOn.play() #Play Lantern Sounds
-			$Head/LanternAnimation.play("switch") #Lantern Up Animation
-			$Head/Camera3D/Items/Lantern/LightHitbox/CollisionShape3D.disabled = false
-			$Head/Camera3D/Items/Lantern/OuterLightHitbox/OuterLightCollision.disabled = false #turns on Outer Light collision
-			LightHitbox.monitoring = true
-			$fuelTimer.start()
-			light = true
-		else: #If lantern is on
-			if light == true && currentFuel > 0:
-				switched = false
-				$Head/Camera3D/Items/Lantern/LanternOn.pitch_scale = 0.8 #Lantern Down Pitch
-				$Head/Camera3D/Items/Lantern/LanternOn.play() #Play Lantern Sounds
-				$Head/LanternAnimation.play_backwards("switch") #Lantern Down Animation
-				$Head/Camera3D/Items/Lantern/LightHitbox/CollisionShape3D.disabled = true
-				$Head/Camera3D/Items/Lantern/OuterLightHitbox/OuterLightCollision.disabled = true #turns off Outer Light collision
-				LightHitbox.monitoring = false
-				light = false
-				"""
 	if Input.is_action_just_pressed("fullScreen"): #If "f" or "f11" are pressed
 		if fs == false: #If Fullscreen is off
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN) #Full Screen

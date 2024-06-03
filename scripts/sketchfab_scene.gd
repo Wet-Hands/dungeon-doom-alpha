@@ -16,3 +16,6 @@ func _process(_delta):
 		animPlay.play("Idle")
 	else:
 		animPlay.play("Walk")
+
+func magPlay():
+	emit_signal("magic")

@@ -1,11 +1,11 @@
+Timer
+Node3D
 AudioStreamPlayer3D
 Sprite3D
 CollisionShape3D
 Area3D
-Timer
 AudioStreamPlayer
 OmniLight3D
-Node3D
 Label
 RichTextLabel
 MeshInstance3D

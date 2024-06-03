@@ -24,6 +24,8 @@ var detected = false
 @export var shaderL = 4.5
 @onready var ob34 = $Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4/Skeleton3D/Object_34
 
+signal magic
+
 func _ready():
 	ob34.material_override.set_shader_parameter("LightStrength", 0) #Update Shader on Skeleton
 	curHealth = maxHealth[level] #Skeleton Starting Health at 100%
