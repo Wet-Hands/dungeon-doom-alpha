@@ -30,3 +30,5 @@ res://scenes/UI/PauseMenu.tscn
 res://scenes/tileset_2.tscn
 res://scenes/projectiles/magic_ball.tscn
 res://scenes/sketchfab_scene.tscn
+res://scripts/projectiles/magic_ball.gd
+res://scripts/sketchfab_scene.gd

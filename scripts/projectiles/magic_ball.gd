@@ -19,6 +19,3 @@ func _on_area_entered(area):
 
 func _on_timer_timeout():
 	start = true
-
-func end():
-	queue_free()

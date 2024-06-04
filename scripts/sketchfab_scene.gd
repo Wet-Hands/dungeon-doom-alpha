@@ -12,7 +12,6 @@ func _process(_delta):
 	if dead == true:
 		animPlay.speed_scale = 1
 		animPlay.play("Death")
-		curInst.end()
 	elif doAtk == true:
 		animPlay.speed_scale = 3
 		animPlay.play("Magic")
