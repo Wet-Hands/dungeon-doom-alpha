@@ -8,18 +8,17 @@ var start = false
 func _ready():
 	print(rotation_degrees)
 	start = false
-	
 
 func _process(delta):
 	if start == true:
 		position += transform.basis * Vector3(0, 0, -speed) * delta
 
 func _on_area_entered(area):
-	if area.is_in_group("player") || area.is_in_group("door") || area.is_in_group("trapCOL"):
-		pass 
-	else:
+	if area.is_in_group("player"):
 		queue_free()
-		print(area.get_groups())
 
 func _on_timer_timeout():
 	start = true
+
+func end():
+	queue_free()

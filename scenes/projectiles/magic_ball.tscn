@@ -9,15 +9,15 @@ shader = ExtResource("1_yeern")
 
 [sub_resource type="SphereMesh" id="SphereMesh_p4dlp"]
 material = SubResource("ShaderMaterial_wbw8q")
-radius = 0.25
-height = 0.25
+radius = 0.125
+height = 0.125
 radial_segments = 12
 rings = 3
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_a7woq"]
 radius = 0.25
 
-[node name="MagicBall" type="Area3D"]
+[node name="MagicBall" type="Area3D" groups=["magi"]]
 script = ExtResource("1_qu08c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -29,12 +29,11 @@ shape = SubResource("SphereShape3D_a7woq")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.898039, 1, 0.290196, 1)
-light_energy = 1.5
 light_indirect_energy = 0.5
-omni_range = 2.0
+omni_range = 1.5
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.5
+wait_time = 1.166
 autostart = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

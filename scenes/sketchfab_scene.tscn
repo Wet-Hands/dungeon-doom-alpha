@@ -1112,9 +1112,6 @@ bones/25/scale = Vector3(1, 1, 0.999998)
 bones/26/rotation = Quaternion(-1.17789e-08, 0.973581, -0.228342, -1.97228e-07)
 bones/27/rotation = Quaternion(2.64698e-23, -1.79003e-23, 4.1359e-25, 1)
 
-[node name="MagicPoint" type="Node3D" parent="Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4/Skeleton3D" index="1"]
-transform = Transform3D(-1, -1.69407e-21, 8.74228e-08, 8.74228e-08, -2.06632e-07, 1, 1.80644e-14, 1, 2.06632e-07, 0, -0.214, 1.5)
-
 [node name="Object_33" parent="Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4" index="1"]
 transform = Transform3D(0.999249, -0.0387541, -6.31384e-09, 6.31384e-09, -1.22398e-10, 1, -0.0387541, -0.999249, 1.2237e-10, 0, 1.60353e-08, 7.25006e-09)
 
@@ -1123,3 +1120,10 @@ root_node = NodePath("../skeleton_fbx/RootNode/rig/Object_4/Skeleton3D")
 libraries = {
 "": SubResource("AnimationLibrary_lpvru")
 }
+
+[node name="Balls" type="Node3D" parent="." index="1"]
+
+[node name="MagicPoint" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 8.47033e-21, 3.73267e-21, 4.57398e-20, 1, -8.52651e-14, 3.73268e-21, 8.52651e-14, 1, -1.87085e-08, 1.5, -0.214)
+
+[connection signal="animation_finished" from="Sketchfab_model/MovementAnim" to="." method="_on_movement_anim_animation_finished"]

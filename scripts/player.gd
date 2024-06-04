@@ -32,8 +32,8 @@ var shieldUp = false
 func _ready():
 	shield = false
 	Engine.max_fps = 60 #Set FPS to 60
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
+	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
 	currentHealth = maxHealth #Set Current Health to Max
 	$HUD/ProgressBar.max_value = maxHealth #Set Max Health Visually
 	$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health/heartFull16.png")
@@ -152,8 +152,8 @@ func _on_hitbox_area_entered(area): #When Player Enters Area
 		if area.is_in_group("lava"):
 			inLava = true
 			$LavaTimer.start()
-		if area.is_in_group("trap"): #If Player Enters Spikes
-			health(-20) #Lose 20 Health per Spike
+		if area.is_in_group("magi"): #If Player Hit by Magic
+			health(-20) #Lose 20 Health per Ball
 		if area.is_in_group("portal"): #If Players Enters Portal
 			$"/root/Global".level += 1 #Level Var +1
 			if $"/root/Global".level == 5: #If Game is Beaten

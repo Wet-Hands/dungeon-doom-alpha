@@ -1,14 +1,20 @@
 extends Node3D
 
+@onready var animPlay = $Sketchfab_model/MovementAnim
+var magic = preload("res://scenes/projectiles/magic_ball.tscn")
+var curInst
 func _process(_delta):
 	var inLight = $"..".inLight
 	var inEdgeLight = $"..".inEdgeLight
 	var doAtk = $"..".doAtk
 	var dead = $"..".dead
-	var animPlay = $Sketchfab_model/MovementAnim
+	
 	if dead == true:
+		animPlay.speed_scale = 1
 		animPlay.play("Death")
+		curInst.end()
 	elif doAtk == true:
+		animPlay.speed_scale = 3
 		animPlay.play("Magic")
 	elif inLight == true && inEdgeLight == true:
 		animPlay.play("Backwards")
@@ -18,4 +24,10 @@ func _process(_delta):
 		animPlay.play("Walk")
 
 func magPlay():
-	emit_signal("magic")
+	var inst = magic.instantiate()
+	curInst = inst
+	inst.position = $MagicPoint.position
+	$Balls.add_child(inst)
+
+func _on_movement_anim_animation_finished(anim_name):
+	animPlay.speed_scale = 1
