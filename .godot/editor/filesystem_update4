@@ -1,4 +1,4 @@
-res://scenes/sketchfab_scene.tscn
+res://scenes/player.tscn
 res://shaders/magicBall.tres
 res://shaders/psxCam.gdshader
 res://assets/tileset/tileset.tres
@@ -12,9 +12,6 @@ res://assets/tileset/tileset2.tres
 res://assets/materials/metal.tres
 res://shaders/lava.tres
 res://shaders/psxModel.gdshader
-res://scripts/player.gd
-res://scripts/sketchfab_scene.gd
-res://scenes/player.tscn
 res://scenes/gd_screen.tscn
 res://scenes/test_world.tscn
 res://scenes/end_door.tscn
@@ -32,4 +29,4 @@ res://scenes/UI/level_menu.tscn
 res://scenes/UI/PauseMenu.tscn
 res://scenes/tileset_2.tscn
 res://scenes/projectiles/magic_ball.tscn
-res://scripts/projectiles/magic_ball.gd
+res://scenes/sketchfab_scene.tscn
