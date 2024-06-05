@@ -38,11 +38,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
 [node name="Objects" type="Node3D" parent="."]
 
 [node name="EndDoor" parent="Objects" instance=ExtResource("5_onvpw")]
-transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -6.09924, 3.24993, 0.500089)
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -6, 3.25, 0.5)
 key = "green"
 
 [node name="Chest" parent="Objects" instance=ExtResource("4_8pcyo")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.54782, 1.75, 10.0778)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.54782, 1.75, 10.3278)
 chestItem = "blue"
 
 [node name="Chest2" parent="Objects" instance=ExtResource("4_8pcyo")]
@@ -54,19 +54,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5439, 1.72488, -14.0718)
 chestItem = "green"
 
 [node name="Door" parent="Objects" instance=ExtResource("7_8bd3i")]
-transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 5, 3.25, 0.75)
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 5, 3.25, 0)
 key = "red"
 
 [node name="Door2" parent="Objects" instance=ExtResource("7_8bd3i")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.75, 3.25, 5.25)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 3.25, 5.25)
 locked = false
 
 [node name="Door3" parent="Objects" instance=ExtResource("7_8bd3i")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.75, 3.25, -6.25)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 3.25, -6.25)
 key = "blue"
 
 [node name="Door4" parent="Objects" instance=ExtResource("7_8bd3i")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 12.75, 3.25, -10)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 13.5, 3.25, -10)
 locked = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

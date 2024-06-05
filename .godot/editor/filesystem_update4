@@ -7,8 +7,7 @@ res://assets/materials/endDoorMat.tres
 res://assets/portal/portalShader.tres
 res://shaders/psxCam.gdshader
 res://assets/tileset/tileset.tres
-res://assets/tileset/tileset3.tres
-res://assets/tileset/tileset2.tres
+res://assets/tileset/tileset4.tres
 res://assets/materials/metal.tres
 res://shaders/lava.tres
 res://shaders/psxModel.gdshader
@@ -32,7 +31,5 @@ res://scenes/tileset_2.tscn
 res://scenes/projectiles/magic_ball.tscn
 res://scenes/sketchfab_scene.tscn
 res://levels/level3/level_3.tscn
-res://levels/level1/level_1.gd
-res://assets/tileset/tileset4.tres
 res://levels/level4/level_4.tscn
 res://levels/level5/level_5.tscn

@@ -32,8 +32,8 @@ var shieldUp = false
 func _ready():
 	shield = false
 	Engine.max_fps = 60 #Set FPS to 60
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
+	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
 	currentHealth = maxHealth #Set Current Health to Max
 	$HUD/ProgressBar.max_value = maxHealth #Set Max Health Visually
 	$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health/heartFull16.png")
