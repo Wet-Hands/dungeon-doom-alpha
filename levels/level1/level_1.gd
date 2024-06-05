@@ -15,22 +15,18 @@ func _ready():
 		for x in range(-50, 50):
 			var i = grid.get_cell_item(Vector3i(x, 0, z))
 			var io = grid.get_cell_item_orientation(Vector3i(x, 0, z))
-			if i == 5:
-				instGoblin(Vector3i(x+(x*.5), 0, z+(z*.5)))
-				print(Vector3i(x, 0, z))
-				grid.set_cell_item(Vector3i(x, 0, z), 2, io)
 			if i == 4:
-				instSkeleton(Vector3i(x+(x*.5), 0, z+(z*.5)))
+				instSkeleton(Vector3i(x*1.5, 0, z*1.5))
 				grid.set_cell_item(Vector3i(x, 0, z), 2, io)
-			if i == 12:
-				instChest(Vector3i(x, 0, z), "red")
-				grid.set_cell_item(Vector3i(x, 0, z), 2, 0)
-			if i == 13:
-				instChest(Vector3i(x, 0, z), "green")
+			if i == 5:
+				instGoblin(Vector3i(x*1.5, 0, z*1.5))
 				grid.set_cell_item(Vector3i(x, 0, z), 2, io)
-			if i == 14:
-				instChest(Vector3i(x, 0, z), "blue")
-				grid.set_cell_item(Vector3i(x, 0, z), 2, io)
+			if i == 6:
+				instSkeleton(Vector3i(x*1.5, 0, z*1.5))
+				grid.set_cell_item(Vector3i(x, 0, z), 0, io)
+			if i == 7:
+				instGoblin(Vector3i(x*1.5, 0, z*1.5))
+				grid.set_cell_item(Vector3i(x, 0, z), 0, io)
 
 func _physics_process(_delta):
 	get_tree().call_group("skeleton" , "update_target_location" , player.global_position)
