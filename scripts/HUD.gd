@@ -35,6 +35,9 @@ func _on_player_damage(num):
 	if num > 0:
 		$DamageAnim.play("hlt")
 
+func _process(delta):
+	$Label.text = str(Vector3i($"..".global_position))
+
 func updateText(string):
 	#var fullString = ""
 	#for i in string.length():

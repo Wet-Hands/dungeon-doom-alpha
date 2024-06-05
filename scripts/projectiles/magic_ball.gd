@@ -1,6 +1,6 @@
 extends Area3D
 
-const speed = 12
+const speed = 10
 
 @onready var mesh = $MeshInstance3D
 var start = false
@@ -14,8 +14,14 @@ func _process(delta):
 		position += transform.basis * Vector3(0, 0, -speed) * delta
 
 func _on_area_entered(area):
-	if area.is_in_group("player"):
+	if area.is_in_group("player") && start == true:
 		queue_free()
 
 func _on_timer_timeout():
 	start = true
+
+func cancel():
+	if start == false:
+		remove_from_group("magi")
+		visible = false
+		$OmniLight3D.light_energy = 0

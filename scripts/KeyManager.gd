@@ -22,7 +22,6 @@ func _process(_delta): #Called every frame. 'delta' is the elapsed time since th
 	if Input.is_action_pressed("interact"):#when backspace is pressed
 		$KeyArea/KeyCol.disabled = false
 		var group = $KeyArea.get_groups()
-		print(str(group))
 	if Input.is_action_just_released("interact"):
 		$KeyArea/KeyCol.disabled = true
 
@@ -58,5 +57,4 @@ func _on_key_area_area_entered(area):
 func keyReset(_col):
 	keyInv = "noneInt"
 	$KeyArea.add_to_group("noneInt")
-	print("Key Removed")
 	$"../HUD/KeyRect".texture = null

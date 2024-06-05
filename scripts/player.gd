@@ -49,7 +49,7 @@ func _input(event): #When any input is made, better than checking constantly wit
 		cam.rotate_x(-event.relative.y * camSens * get_process_delta_time()) #Look up and down
 		cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-50), deg_to_rad(60)) #Stop turning so player's neck doesn't break
 	if Input.is_action_just_pressed("action1"): #If Left Mouse Click is pressed
-		if light == false:
+		if shield == false:
 			swordAnim.play("Attack") #Play Attack Animation
 			$Swing.play() #Swing Sound Plays
 			anim_names = "Attack"

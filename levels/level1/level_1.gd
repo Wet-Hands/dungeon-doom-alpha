@@ -16,10 +16,11 @@ func _ready():
 			var i = grid.get_cell_item(Vector3i(x, 0, z))
 			var io = grid.get_cell_item_orientation(Vector3i(x, 0, z))
 			if i == 5:
-				instGoblin(Vector3i(x, 0, z))
+				instGoblin(Vector3i(x+(x*.5), 0, z+(z*.5)))
+				print(Vector3i(x, 0, z))
 				grid.set_cell_item(Vector3i(x, 0, z), 2, io)
 			if i == 4:
-				instSkeleton(Vector3i(x, 0, z))
+				instSkeleton(Vector3i(x+(x*.5), 0, z+(z*.5)))
 				grid.set_cell_item(Vector3i(x, 0, z), 2, io)
 			if i == 12:
 				instChest(Vector3i(x, 0, z), "red")
@@ -37,7 +38,7 @@ func _physics_process(_delta):
 func instGoblin(pos):
 	var instance = goblin.instantiate()
 	instance.position = pos
-	instance.position.x += 6
+	#instance.position.x += 6
 	instance.position.y = 0.75
 	instance.player = player
 	$Enemies.add_child(instance)

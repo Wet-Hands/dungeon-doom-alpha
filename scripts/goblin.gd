@@ -17,7 +17,6 @@ func _ready():
 	$Skeleton3D/Goblin.material_override.set_shader_parameter("LightStrength", 0) #Update Shader on Skeleton
 	shaderT = 4.5
 	active = false
-	print(global_position)
 
 func _process(delta):
 	velocity = Vector3.ZERO
@@ -39,7 +38,6 @@ func health(num):
 		$ShaderTimer.start()
 		$ShaderAnim.play("shaderOn")
 		$Gdeath.play()
-		print("Goblin Death")
 
 func _on_area_3d_area_entered(area):
 	if area.is_in_group("sword"):
@@ -48,7 +46,6 @@ func _on_area_3d_area_entered(area):
 
 func _on_shader_timer_timeout():
 	$ShaderTimer.stop()
-	print(shaderT)
 	if shaderT > 1.0:
 		$Skeleton3D/Goblin.material_override.set_shader_parameter("ShaderTime", shaderT) #Update Shader on Skeleton
 		$ShaderTimer.start()
