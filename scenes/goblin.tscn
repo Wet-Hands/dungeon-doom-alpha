@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dp3up8083ajwt" path="res://assets/enemies/testGoblin2_t_goblin_base.png" id="1_q3whf"]
 [ext_resource type="Shader" uid="uid://bjuxt4tq5vkna" path="res://shaders/dissolveGoblin.tres" id="2_gtmwd"]
 [ext_resource type="AudioStream" uid="uid://b3hmtmq8s646y" path="res://assets/audio/Goblin Death2.mp3" id="4_kxktw"]
-[ext_resource type="AudioStream" uid="uid://dfj4egdywjc74" path="res://assets/audio/Goblin Hurt.mp3" id="6_w54d7"]
+[ext_resource type="AudioStream" uid="uid://8c58rgjxnxfa" path="res://assets/audio/goblinHurt3.mp3" id="5_521pm"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hqkb1"]
 points = PackedVector3Array(0, 1.59571, 0.674573, 0.233998, 1.78627, 0.299501, 0.186199, 2.00732, 0.194851, 0, 2.03559, 0.224602, -0.186307, 2.00732, 0.194851, -0.234106, 1.78627, 0.299501, -0.391191, 0.340139, -0.0585536, -0.272454, -0.00334464, 0.0452857, -0.207165, -0.00293791, 0.0503793, 0.207056, -0.00293791, 0.0503793, 0.272345, -0.00334464, 0.0452857, 0.391082, 0.340139, -0.0585536, 0.545343, 2.05837, -0.218769, -0.545451, 2.05837, -0.218769, -0.278972, -0.0159533, -0.120255, -0.554902, 0.835536, -0.444276, -0.157737, -0.0192071, -0.095482, 0.157628, -0.0192071, -0.095482, 0.278863, -0.0159533, -0.120255, 0.554902, 0.835536, -0.444276, 0.348932, 1.32849, -0.453074, -0.349041, 1.32849, -0.453074, -0.263655, -0.0135129, -0.221085, -0.141007, -0.0179869, -0.195154, -0.413896, 0.833299, -0.507945, 0.140898, -0.0179869, -0.195154, 0.263546, -0.0135129, -0.221085, 0.413787, 0.833299, -0.507945, 0, 0.609394, -0.436751)
@@ -932,7 +932,7 @@ stream = ExtResource("4_kxktw")
 volume_db = -20.0
 
 [node name="Ghurt" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("6_w54d7")
+stream = ExtResource("5_521pm")
 
 [connection signal="area_entered" from="IntArea" to="." method="_on_int_area_area_entered"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
