@@ -55,3 +55,23 @@ func _on_shader_timer_timeout():
 func _on_int_area_area_entered(area):
 	if area.is_in_group("player"):
 		active = true
+
+func _on_atk_area_area_entered(area):
+	if area.is_in_group("player"):
+		attack()
+
+func _on_atk_area_area_exited(area):
+	isAtk = false
+
+func attack():
+	isAtk = true
+	$AtkArea/CollisionShape.disabled = false
+	$AnimationPlayer.play("attack")
+
+func attackEnd():
+	$AtkArea/CollisionShape.disabled = true
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "attack":
+		if isAtk == true:
+			attack()

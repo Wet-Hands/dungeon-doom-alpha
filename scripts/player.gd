@@ -147,6 +147,9 @@ func _on_animation_player_animation_finished(anim_name): #plays after animation 
 
 var inLava = false
 func _on_hitbox_area_entered(area): #When Player Enters Area
+		if area.is_in_group("goblinAtk"):
+			print("GOBLIN HIT")
+			health(-10) #Lose 10 Health
 		if area.is_in_group("skeleAttack"): #If it's hit by Skeleton
 			health(-10) #Lose 10 Health
 		if area.is_in_group("lava"):

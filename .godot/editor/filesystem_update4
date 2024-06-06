@@ -33,3 +33,4 @@ res://scenes/sketchfab_scene.tscn
 res://levels/level3/level_3.tscn
 res://levels/level4/level_4.tscn
 res://levels/level5/level_5.tscn
+res://scripts/goblin.gd
