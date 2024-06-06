@@ -32,8 +32,8 @@ var shieldUp = false
 func _ready():
 	shield = false
 	Engine.max_fps = 60 #Set FPS to 60
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
+	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
 	currentHealth = maxHealth #Set Current Health to Max
 	$HUD/ProgressBar.max_value = maxHealth #Set Max Health Visually
 	$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health/heartFull16.png")
@@ -170,6 +170,7 @@ func _on_hitbox_area_exited(area):
 
 func nextLevel(): #Next Level Function
 	get_tree().change_scene_to_file(levels[$"/root/Global".level]) #Go to Next Level
+	#get_tree().change_scene_to_file("res://scenes/UI/level_menu.tscn")
 
 var levels = ["res://scenes/UI/main_menu.tscn", "res://level_2.tscn", "res://levels/level3/level_3.tscn", "res://levels/level4/level_4.tscn", "res://levels/level5/level_5.tscn"]
 

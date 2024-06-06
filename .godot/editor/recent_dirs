@@ -1,3 +1,4 @@
+res://scenes/UI
 res://assets/tileset
 res://assets
 res://scripts/projectiles
@@ -5,7 +6,6 @@ res://scenes/projectiles
 res://shaders
 res://scripts
 res://scenes
-res://scenes/UI
 res://assets/materials
 C:/Users/staci/Desktop
 res://

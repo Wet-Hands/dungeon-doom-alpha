@@ -1,4 +1,22 @@
-[gd_scene format=3 uid="uid://gh1e782cet7n"]
+[gd_scene load_steps=8 format=3 uid="uid://gh1e782cet7n"]
+
+[ext_resource type="Script" path="res://scenes/UI/level_menu.gd" id="1_sbwoq"]
+[ext_resource type="Texture2D" uid="uid://ca8d2n3vtbasc" path="res://assets/textures/tiles2/cobble_stoneTILE.png" id="1_xo2uv"]
+[ext_resource type="FontFile" uid="uid://d1xyt3113n0ug" path="res://assets/fonts/Pixtura12.ttf" id="2_4dbdf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7eual"]
+font = ExtResource("2_4dbdf")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_jqj3f"]
+font = ExtResource("2_4dbdf")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_jjrpn"]
+font = ExtResource("2_4dbdf")
+font_size = 18
+
+[sub_resource type="BoxMesh" id="BoxMesh_ls8yq"]
 
 [node name="LevelMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +25,98 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sbwoq")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+
+[node name="TextureRect9" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 192.0
+offset_top = 127.932
+offset_right = 256.0
+offset_bottom = 191.932
+texture = ExtResource("1_xo2uv")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect10" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 128.0
+offset_top = 127.932
+offset_right = 192.0
+offset_bottom = 191.932
+texture = ExtResource("1_xo2uv")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect11" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 64.0
+offset_top = 127.932
+offset_right = 128.0
+offset_bottom = 191.932
+texture = ExtResource("1_xo2uv")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect12" type="TextureRect" parent="MeshInstance2D"]
+offset_top = 127.932
+offset_right = 64.0
+offset_bottom = 191.932
+texture = ExtResource("1_xo2uv")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect5" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 192.0
+offset_top = 63.9659
+offset_right = 256.0
+offset_bottom = 127.966
+texture = ExtResource("1_xo2uv")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect6" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 128.0
+offset_top = 63.9659
+offset_right = 192.0
+offset_bottom = 127.966
+texture = ExtResource("1_xo2uv")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect7" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 64.0
+offset_top = 63.9659
+offset_right = 128.0
+offset_bottom = 127.966
+texture = ExtResource("1_xo2uv")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect8" type="TextureRect" parent="MeshInstance2D"]
+offset_top = 63.9659
+offset_right = 64.0
+offset_bottom = 127.966
+texture = ExtResource("1_xo2uv")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect4" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 192.0
+offset_right = 256.0
+offset_bottom = 64.0
+texture = ExtResource("1_xo2uv")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 128.0
+offset_right = 192.0
+offset_bottom = 64.0
+texture = ExtResource("1_xo2uv")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+texture = ExtResource("1_xo2uv")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="MeshInstance2D"]
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("1_xo2uv")
+metadata/_edit_use_anchors_ = true
 
 [node name="Text" type="Control" parent="."]
 anchors_preset = 0
@@ -15,30 +125,47 @@ offset_bottom = 960.0
 
 [node name="LevelText" type="Label" parent="Text"]
 layout_mode = 0
-offset_left = 90.0
+offset_left = 75.0
 offset_top = 20.0
-offset_right = 150.0
+offset_right = 165.0
 offset_bottom = 45.0
 text = "Level: X"
+label_settings = SubResource("LabelSettings_7eual")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Enemies" type="Label" parent="Text"]
 layout_mode = 0
-offset_left = 13.0
-offset_top = 60.0
-offset_right = 130.0
-offset_bottom = 85.0
+offset_left = 10.0
+offset_top = 70.0
+offset_right = 185.0
+offset_bottom = 95.0
 text = "Enemies Killed:"
-horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_jqj3f")
 vertical_alignment = 1
 
 [node name="Secrets" type="Label" parent="Text"]
 layout_mode = 0
-offset_left = 13.0
-offset_top = 91.0
-offset_right = 130.0
-offset_bottom = 116.0
+offset_left = 10.0
+offset_top = 110.0
+offset_right = 185.0
+offset_bottom = 135.0
 text = "Secrets Found:"
+label_settings = SubResource("LabelSettings_jqj3f")
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Text"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 140.0
+offset_right = 165.0
+offset_bottom = 165.0
+text = "5"
+label_settings = SubResource("LabelSettings_jjrpn")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+position = Vector2(120, 48.5)
+scale = Vector2(240, 97)
+mesh = SubResource("BoxMesh_ls8yq")
