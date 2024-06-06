@@ -38,3 +38,4 @@ res://scenes/UI/level_menu.gd
 res://scripts/goblin.gd
 res://scripts/door.gd
 res://levels/level1/level_1.gd
+res://scripts/main_menu.gd

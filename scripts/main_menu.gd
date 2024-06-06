@@ -4,6 +4,9 @@ func toggle():
 	visible = !visible
 	get_tree().paused = visible
 
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE #How mouse movement SHOULD work
+
 func _on_start_pressed():
 	toggle()
 	get_tree().change_scene_to_file("res://levels/level1/level_1.tscn")
