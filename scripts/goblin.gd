@@ -47,6 +47,7 @@ func _on_area_3d_area_entered(area):
 
 func _on_shader_timer_timeout():
 	$ShaderTimer.stop()
+	$AtkArea.remove_from_group("goblinAtk")
 	if shaderT > 1.0:
 		$Skeleton3D/Goblin.material_override.set_shader_parameter("ShaderTime", shaderT) #Update Shader on Skeleton
 		$ShaderTimer.start()
@@ -59,20 +60,21 @@ func _on_int_area_area_entered(area):
 
 func _on_atk_area_area_entered(area):
 	if area.is_in_group("player"):
-		attack()
+		if isDead == false:
+			$AnimationPlayer.play("attack")
+			isAtk = true
 
 func _on_atk_area_area_exited(area):
 	isAtk = false
 
 func attack():
+	$AtkArea/CollisionShape3D.disabled = true
 	isAtk = true
-	$AtkArea/CollisionShape.disabled = false
-	$AnimationPlayer.play("attack")
 
 func attackEnd():
-	$AtkArea/CollisionShape.disabled = true
+	$AtkArea/CollisionShape3D.disabled = false
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "attack":
-		if isAtk == true:
+		if isAtk == true && isDead == false:
 			attack()

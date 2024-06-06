@@ -129,10 +129,6 @@ bind/27/pose = Transform3D(0.0128528, -0.718156, -0.695763, -0.203814, -0.683095
 [sub_resource type="SphereShape3D" id="SphereShape3D_gvde3"]
 radius = 6.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ht0ie"]
-radius = 1.0
-height = 3.0
-
 [sub_resource type="Animation" id="Animation_sgl06"]
 resource_name = "Death"
 length = 3.0
@@ -681,6 +677,10 @@ _data = {
 "shaderOn": SubResource("Animation_52442")
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bl2tx"]
+radius = 1.0
+height = 3.0
+
 [node name="Goblin" type="CharacterBody3D"]
 transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
 script = ExtResource("1_d4o5n")
@@ -842,7 +842,7 @@ bones/21/parent = 20
 bones/21/rest = Transform3D(0.787977, 0.287599, -0.544407, 0.534638, 0.11894, 0.83667, 0.305377, -0.950337, -0.0600394, 0, 0.177639, -5.58794e-09)
 bones/21/enabled = true
 bones/21/position = Vector3(0, 0.177639, -5.58794e-09)
-bones/21/rotation = Quaternion(-0.704499, 0.0849327, 0.358999, 0.60629)
+bones/21/rotation = Quaternion(-0.657472, -0.312651, 0.0908901, 0.679499)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/name = "calve.L.001"
 bones/22/parent = 21
@@ -904,13 +904,6 @@ shape = SubResource("SphereShape3D_gvde3")
 visible = false
 shape = SubResource("ConvexPolygonShape3D_hqkb1")
 
-[node name="AtkArea" type="Area3D" parent="." groups=["goblinAtk"]]
-
-[node name="CollisionShape" type="CollisionShape3D" parent="AtkArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01814, 0)
-shape = SubResource("CapsuleShape3D_ht0ie")
-disabled = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_x41xi")
@@ -934,9 +927,15 @@ volume_db = -20.0
 [node name="Ghurt" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_521pm")
 
+[node name="AtkArea" type="Area3D" parent="." groups=["goblinAtk"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AtkArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05212, 0)
+shape = SubResource("CapsuleShape3D_bl2tx")
+
 [connection signal="area_entered" from="IntArea" to="." method="_on_int_area_area_entered"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
-[connection signal="area_entered" from="AtkArea" to="." method="_on_atk_area_area_entered"]
-[connection signal="area_exited" from="AtkArea" to="." method="_on_atk_area_area_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="ShaderTimer" to="." method="_on_shader_timer_timeout"]
+[connection signal="area_entered" from="AtkArea" to="." method="_on_atk_area_area_entered"]
+[connection signal="area_exited" from="AtkArea" to="." method="_on_atk_area_area_exited"]
