@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/goblin.gd" id="1_d4o5n"]
 [ext_resource type="Texture2D" uid="uid://dp3up8083ajwt" path="res://assets/enemies/testGoblin2_t_goblin_base.png" id="1_q3whf"]
 [ext_resource type="Shader" uid="uid://bjuxt4tq5vkna" path="res://shaders/dissolveGoblin.tres" id="2_gtmwd"]
-[ext_resource type="AudioStream" uid="uid://c36dhnhgd3lew" path="res://assets/audio/Goblin Death.mp3" id="5_4v60n"]
+[ext_resource type="AudioStream" uid="uid://b3hmtmq8s646y" path="res://assets/audio/Goblin Death2.mp3" id="4_kxktw"]
 [ext_resource type="AudioStream" uid="uid://dfj4egdywjc74" path="res://assets/audio/Goblin Hurt.mp3" id="6_w54d7"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hqkb1"]
@@ -928,7 +928,8 @@ path_height_offset = 0.5
 wait_time = 0.1
 
 [node name="Gdeath" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("5_4v60n")
+stream = ExtResource("4_kxktw")
+volume_db = -20.0
 
 [node name="Ghurt" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_w54d7")
