@@ -39,7 +39,7 @@ func health(num): #Goblin Health is Changed
 		$AnimationPlayer.play("Death") #Play Death Animation
 		$ShaderAnim.play("shaderOn") #Start Shader Animation
 		$Gdeath.play() #Play Death Sound Effect
-	else: #If Goblin Survives Hit
+	if isDead == false:
 		$Ghurt.play() #Play Hurt Sound Effect
 
 func _on_area_3d_area_entered(area): #If Goblin Hitbox Entered

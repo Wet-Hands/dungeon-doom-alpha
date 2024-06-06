@@ -22,10 +22,10 @@ func _ready():
 				instGoblin(Vector3i(x*1.5, 0, z*1.5))
 				grid.set_cell_item(Vector3i(x, 0, z), 2, io)
 			if i == 6:
-				instSkeleton(Vector3i(x*1.5, 0, z*1.5))
+				instSkeleton(Vector3(x*1.5+.5, 0, z*1.5+.5))
 				grid.set_cell_item(Vector3i(x, 0, z), 0, io)
 			if i == 7:
-				instGoblin(Vector3i(x*1.5, 0, z*1.5))
+				instGoblin(Vector3(x*1.5+.5, 0, z*1.5+.5))
 				grid.set_cell_item(Vector3i(x, 0, z), 0, io)
 
 func _physics_process(_delta):

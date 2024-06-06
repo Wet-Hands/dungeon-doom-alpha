@@ -9,6 +9,9 @@ extends Node3D
 func _ready(): #Called when the node enters the scene tree for the first time.
 	$InteractArea.add_to_group("door")
 	$InteractAreaBack.add_to_group("door")  
+	$KeyholeRed.visible = false
+	$KeyholeGreen.visible = false
+	$KeyholeBlue.visible = false
 	if key == "red":
 		$InteractArea.add_to_group("redLock")
 		$InteractAreaBack.add_to_group("redLock")
