@@ -35,3 +35,4 @@ res://levels/level4/level_4.tscn
 res://levels/level5/level_5.tscn
 res://scripts/global.gd
 res://scenes/UI/level_menu.gd
+res://scripts/goblin.gd
