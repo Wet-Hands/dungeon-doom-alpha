@@ -36,6 +36,7 @@ func health(num):
 		isDead = true
 		$Skeleton3D/Goblin.material_override.set_shader_parameter("LightStrength", 1) #Update Shader on Skeleton
 		$ShaderTimer.start()
+		$AnimationPlayer.play("Death")
 		$ShaderAnim.play("shaderOn")
 		$Gdeath.play()
 
