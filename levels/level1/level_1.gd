@@ -1,5 +1,6 @@
 extends Node3D
 
+var kills = 0
 @onready var player = $Player
 @onready var grid = $NavigationRegion3D/GridMap
 
@@ -11,6 +12,7 @@ extends Node3D
 
 @onready var magic = preload("res://scenes/projectiles/magic_ball.tscn")
 func _ready():
+	$"/root/Global".kills = 0
 	for z in range(-50, 50):
 		for x in range(-50, 50):
 			var i = grid.get_cell_item(Vector3i(x, 0, z))

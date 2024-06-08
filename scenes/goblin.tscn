@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://dvamwl4lv64ka"]
+[gd_scene load_steps=22 format=3 uid="uid://dvamwl4lv64ka"]
 
 [ext_resource type="Script" path="res://scripts/goblin.gd" id="1_d4o5n"]
 [ext_resource type="Texture2D" uid="uid://dp3up8083ajwt" path="res://assets/enemies/testGoblin2_t_goblin_base.png" id="1_q3whf"]
 [ext_resource type="Shader" uid="uid://bjuxt4tq5vkna" path="res://shaders/dissolveGoblin.tres" id="2_gtmwd"]
+[ext_resource type="Shader" uid="uid://bwsxxwg6e4unk" path="res://scenes/hurt.tres" id="4_cvmyw"]
 [ext_resource type="AudioStream" uid="uid://b3hmtmq8s646y" path="res://assets/audio/Goblin Death2.mp3" id="4_kxktw"]
 [ext_resource type="AudioStream" uid="uid://8c58rgjxnxfa" path="res://assets/audio/goblinHurt3.mp3" id="5_521pm"]
 
@@ -18,6 +19,11 @@ shader_parameter/LightColor = Color(0.796078, 0.121569, 0.988235, 1)
 shader_parameter/ShaderTime = 4.5
 shader_parameter/Speed = 1.0
 shader_parameter/Texture = ExtResource("1_q3whf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2j32"]
+render_priority = 0
+shader = ExtResource("4_cvmyw")
+shader_parameter/HurtTime = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_2xnqb"]
 resource_name = "testGoblin2_Goblin_Mesh"
@@ -127,7 +133,7 @@ bind/27/bone = -1
 bind/27/pose = Transform3D(0.0128528, -0.718156, -0.695763, -0.203814, -0.683095, 0.701314, -0.978925, 0.132792, -0.15515, -0.0863347, 0.111893, -0.229301)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gvde3"]
-radius = 6.0
+radius = 7.0
 
 [sub_resource type="Animation" id="Animation_sgl06"]
 resource_name = "Death"
@@ -687,8 +693,25 @@ tracks/0/keys = {
 "values": [4.5, 1.0]
 }
 
+[sub_resource type="Animation" id="Animation_6hy38"]
+resource_name = "hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:shaderT")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.75, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_54kr3"]
 _data = {
+"hurt": SubResource("Animation_6hy38"),
 "shaderOn": SubResource("Animation_52442")
 }
 
@@ -699,6 +722,7 @@ height = 3.0
 [node name="Goblin" type="CharacterBody3D"]
 transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
 script = ExtResource("1_d4o5n")
+shaderT = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_hqkb1")
@@ -904,6 +928,7 @@ bones/27/scale = Vector3(1, 1, 1)
 
 [node name="Goblin" type="MeshInstance3D" parent="Skeleton3D"]
 material_override = SubResource("ShaderMaterial_tga62")
+material_overlay = SubResource("ShaderMaterial_b2j32")
 mesh = SubResource("ArrayMesh_2xnqb")
 skin = SubResource("Skin_6tixl")
 
@@ -935,6 +960,9 @@ path_height_offset = 0.5
 [node name="ShaderTimer" type="Timer" parent="."]
 wait_time = 0.1
 
+[node name="HurtTimer" type="Timer" parent="."]
+wait_time = 0.05
+
 [node name="Gdeath" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_kxktw")
 volume_db = -20.0
@@ -954,6 +982,8 @@ shape = SubResource("CapsuleShape3D_bl2tx")
 [connection signal="area_entered" from="IntArea" to="." method="_on_int_area_area_entered"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="ShaderAnim" to="." method="_on_shader_anim_animation_finished"]
 [connection signal="timeout" from="ShaderTimer" to="." method="_on_shader_timer_timeout"]
+[connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]
 [connection signal="area_entered" from="AtkArea" to="." method="_on_atk_area_area_entered"]
 [connection signal="area_exited" from="AtkArea" to="." method="_on_atk_area_area_exited"]

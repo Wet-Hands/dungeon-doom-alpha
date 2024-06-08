@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://gh1e782cet7n"]
+[gd_scene load_steps=7 format=3 uid="uid://gh1e782cet7n"]
 
 [ext_resource type="Script" path="res://scenes/UI/level_menu.gd" id="1_sbwoq"]
 [ext_resource type="Texture2D" uid="uid://ca8d2n3vtbasc" path="res://assets/textures/tiles2/cobble_stoneTILE.png" id="1_xo2uv"]
@@ -15,8 +15,6 @@ font_size = 18
 [sub_resource type="LabelSettings" id="LabelSettings_jjrpn"]
 font = ExtResource("2_4dbdf")
 font_size = 18
-
-[sub_resource type="BoxMesh" id="BoxMesh_ls8yq"]
 
 [node name="LevelMenu" type="Control"]
 layout_mode = 3
@@ -165,7 +163,5 @@ label_settings = SubResource("LabelSettings_jjrpn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(120, 48.5)
-scale = Vector2(240, 97)
-mesh = SubResource("BoxMesh_ls8yq")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(241, 179)

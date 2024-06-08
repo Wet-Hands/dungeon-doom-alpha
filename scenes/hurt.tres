@@ -1,0 +1,40 @@
+[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://bwsxxwg6e4unk"]
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_cq2ik"]
+constant = Color(0.474797, 1.11302e-06, 3.60981e-07, 1)
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_abkfx"]
+parameter_name = "HurtTime"
+default_value_enabled = true
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform float HurtTime = 0;
+
+
+
+void fragment() {
+// ColorConstant:2
+	vec4 n_out2p0 = vec4(0.474797, 0.000001, 0.000000, 1.000000);
+
+
+// FloatParameter:3
+	float n_out3p0 = HurtTime;
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	ALPHA = n_out3p0;
+
+
+}
+"
+graph_offset = Vector2(-126.173, -16.3422)
+nodes/fragment/0/position = Vector2(600, 120)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorConstant_cq2ik")
+nodes/fragment/2/position = Vector2(153.614, 151.66)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_abkfx")
+nodes/fragment/3/position = Vector2(0, 260)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 0, 1)

@@ -1,9 +1,11 @@
 extends CharacterBody3D
 
 @export var shaderT = 4.5 #Length of the Death Shader (Seconds)
+@export var hurtT = 0.0 #Length of the Death Shader (Seconds)
 var maxHealth = 60 #Maximum Goblin Health
 var curHealth = maxHealth #Current Goblin Health
 var speed = 1.5 #Goblin Speed
+var curHurt = false
 
 @onready var navAgent = $NavigationAgent3D #Navigation for Goblin
 @onready var player #Player Reference
@@ -12,6 +14,8 @@ var speed = 1.5 #Goblin Speed
 var isDead = false #Is Goblin Dead? (No)
 var isAtk = false #Is Goblin Attacking? (No)
 var active = false #Is Goblin Active? (No)
+
+signal death
 
 func _ready():
 	$Skeleton3D/Goblin.material_override.set_shader_parameter("LightStrength", 0) #Disable Shader Light when Spawned
@@ -32,14 +36,18 @@ func _process(delta): #While Goblin Scene is in Game
 
 func health(num): #Goblin Health is Changed
 	curHealth += num #Add Health to Current Health (Usually 'num' is negative)
-	if curHealth <= 0: #If Current Health is at Zero
+	if curHealth <= 0 && isDead == false: #If Current Health is at Zero
 		isDead = true #Goblin Is Dead
+		$"/root/Global".kills += 1
 		$Skeleton3D/Goblin.material_override.set_shader_parameter("LightStrength", 1) #Turn on Shader Health
 		$ShaderTimer.start() #Start Shader Timer
 		$AnimationPlayer.play("Death") #Play Death Animation
 		$ShaderAnim.play("shaderOn") #Start Shader Animation
 		$Gdeath.play() #Play Death Sound Effect
 	if isDead == false:
+		curHurt = true
+		$HurtTimer.start()
+		$ShaderAnim.play("hurt")
 		$Ghurt.play() #Play Hurt Sound Effect
 
 func _on_area_3d_area_entered(area): #If Goblin Hitbox Entered
@@ -74,3 +82,11 @@ func attackEnd(): #When Goblin Attack Animation Ends
 		$AnimationPlayer.play("attack") #Play Goblin Attack Animation
 		$AtkArea/CollisionShape3D.disabled = false #Enable Goblin Attack Collision
 
+func _on_hurt_timer_timeout():
+	$HurtTimer.stop()
+	$Skeleton3D/Goblin.material_overlay.set_shader_parameter("HurtTime", hurtT) #Update Shader Amount on Goblin
+	$HurtTimer.start()
+
+func _on_shader_anim_animation_finished(anim_name):
+	if anim_name == "hurt":
+		curHurt = false

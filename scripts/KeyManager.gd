@@ -20,10 +20,12 @@ func _ready(): #Called when the node enters the scene tree for the first time.
 
 func _process(_delta): #Called every frame. 'delta' is the elapsed time since the previous frame.
 	if Input.is_action_pressed("interact"):#when backspace is pressed
-		$KeyArea/KeyCol.disabled = false
-		var group = $KeyArea.get_groups()
+		if $"..".shield == false:
+			$KeyArea/KeyCol.disabled = false
+			var group = $KeyArea.get_groups()
 	if Input.is_action_just_released("interact"):
-		$KeyArea/KeyCol.disabled = true
+		if $"..".shield == false:
+			$KeyArea/KeyCol.disabled = true
 
 func _on_key_area_area_entered(area):
 	if keyInv == "redInt":

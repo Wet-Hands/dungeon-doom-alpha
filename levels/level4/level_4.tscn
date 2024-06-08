@@ -46,11 +46,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.797
 chestItem = "blue"
 
 [node name="Chest2" parent="Objects" instance=ExtResource("4_8pcyo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0768713, 0.72488, -20.0252)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.077, 0.75, -20.025)
 chestItem = "red"
 
 [node name="Chest3" parent="Objects" instance=ExtResource("4_8pcyo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5439, 0.72488, -14.0718)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.544, 0.75, -14.072)
 chestItem = "green"
 
 [node name="Door" parent="Objects" instance=ExtResource("7_8bd3i")]

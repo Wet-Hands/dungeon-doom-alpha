@@ -2,7 +2,7 @@
 
 [sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_behll"]
 expanded_output_ports = [0]
-constant = Color(0.898039, 1, 0.290196, 1)
+constant = Color(0.796078, 0.121569, 0.988235, 1)
 
 [resource]
 code = "shader_type spatial;
@@ -13,7 +13,7 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_s
 
 void fragment() {
 // ColorConstant:2
-	vec4 n_out2p0 = vec4(0.898039, 1.000000, 0.290196, 1.000000);
+	vec4 n_out2p0 = vec4(0.796078, 0.121569, 0.988235, 1.000000);
 
 
 // Output:0

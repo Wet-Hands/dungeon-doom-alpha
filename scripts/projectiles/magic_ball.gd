@@ -19,9 +19,13 @@ func _on_area_entered(area):
 
 func _on_timer_timeout():
 	start = true
+	$ExpireTimer.start()
 
 func cancel():
 	if start == false:
 		remove_from_group("magi")
 		visible = false
 		$OmniLight3D.light_energy = 0
+
+func _on_expire_timer_timeout():
+	queue_free()

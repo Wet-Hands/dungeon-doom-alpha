@@ -25,6 +25,7 @@ var detected = false
 @onready var ob34 = $Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4/Skeleton3D/Object_34
 
 signal magic
+signal death
 
 func _ready():
 	ob34.material_override.set_shader_parameter("LightStrength", 0) #Update Shader on Skeleton
@@ -64,8 +65,9 @@ func _physics_process(_delta): #While Physics is happening (Always)
 
 func health(num): #Change Player health
 	curHealth += num #Update Current Health by num
-	if curHealth <= 0: #If Health reaches 0
+	if curHealth <= 0 && dead == false: #If Health reaches 0
 		dead = true #Skeleton Dead
+		$"/root/Global".kills += 1
 		$CollisionShape3D.position = Vector3(0, 100, 0) #sends collision shape to hell before the skeleton
 		call_deferred("_disableCol")
 		ob34.material_override.set_shader_parameter("LightStrength", 1) #Update Shader on Skeleton

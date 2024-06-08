@@ -58,11 +58,13 @@ func _input(event): #When any input is made, better than checking constantly wit
 	if Input.is_action_pressed("action2"): #If Right Mouse Click is pressed
 		shield = true
 		if shieldUp == false:
+			speedMulti = .33
 			$Head/ShieldAnimation.play("switch")
 			shieldUp = true
 	
 	if Input.is_action_just_released("action2"):
 		$Head/ShieldAnimation.play_backwards("switch")
+		speedMulti = 1
 		shield = false
 		shieldUp = false
 	if Input.is_action_just_pressed("fullScreen"): #If "f" or "f11" are pressed
@@ -148,7 +150,6 @@ func _on_animation_player_animation_finished(anim_name): #plays after animation 
 var inLava = false
 func _on_hitbox_area_entered(area): #When Player Enters Area
 		if area.is_in_group("goblinAtk"):
-			print("GOBLIN HIT")
 			health(-10) #Lose 10 Health
 		if area.is_in_group("skeleAttack"): #If it's hit by Skeleton
 			health(-10) #Lose 10 Health

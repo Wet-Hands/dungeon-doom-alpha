@@ -13,7 +13,7 @@ func _process(_delta):
 		animPlay.speed_scale = 1
 		animPlay.play("Death")
 	elif doAtk == true:
-		animPlay.speed_scale = 3
+		animPlay.speed_scale = 5
 		animPlay.play("Magic")
 	elif inLight == true && inEdgeLight == true:
 		animPlay.play("Backwards")
