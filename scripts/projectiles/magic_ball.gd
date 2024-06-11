@@ -13,9 +13,9 @@ func _process(delta):
 	if start == true:
 		position += transform.basis * Vector3(0, 0, -speed) * delta
 
-func _on_area_entered(area):
-	if area.is_in_group("player") && start == true:
-		queue_free()
+#func _on_area_entered(area):
+	#if start == true && area.is_in_group() != "chestopenArea" && area.is_in_group() != "doorIntArea":
+		#queue_free()
 
 func _on_timer_timeout():
 	start = true
@@ -29,3 +29,8 @@ func cancel():
 
 func _on_expire_timer_timeout():
 	queue_free()
+
+func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	if start == true:
+		queue_free()
+		print("grid removal?")

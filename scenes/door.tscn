@@ -116,13 +116,13 @@ libraries = {
 "": SubResource("AnimationLibrary_8cwr0")
 }
 
-[node name="InteractArea" type="Area3D" parent="."]
+[node name="InteractArea" type="Area3D" parent="." groups=["doorIntArea"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.875)
 shape = SubResource("BoxShape3D_7wbbo")
 
-[node name="InteractAreaBack" type="Area3D" parent="."]
+[node name="InteractAreaBack" type="Area3D" parent="." groups=["doorIntArea"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractAreaBack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.875)
