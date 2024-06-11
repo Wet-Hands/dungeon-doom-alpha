@@ -12,7 +12,7 @@ var anim_names #changed depending on what animation needs to be used (this is fo
 @onready var LightHitbox = $Head/Camera3D/Items/Shield/ShieldHitbox #hitbox for the Light
 
 var fs = false #Is fullscreen on or off
-var camSens = .75 #Camera Speed Sensitivity
+var camSens = .25 #Camera Speed Sensitivity
 
 @export var maxHealth = 100 #Max Health
 var currentHealth #Health Player is at

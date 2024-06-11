@@ -28,7 +28,7 @@ mesh = SubResource("SphereMesh_p4dlp")
 shape = SubResource("SphereShape3D_a7woq")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_color = Color(0.796078, 0.121569, 0.988235, 1)
+light_color = Color(0.619608, 0.121569, 0.988235, 1)
 light_indirect_energy = 0.5
 omni_range = 1.5
 

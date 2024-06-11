@@ -42,3 +42,6 @@ res://scripts/goblin.gd
 res://scripts/global.gd
 res://levels/level1/level_1.gd
 res://scripts/skeleton.gd
+res://scripts/main_menu.gd
+res://scenes/UI/PauseMenu.gd
+res://default_bus_layout.tres

@@ -1,9 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://dey8x4xm453xn"]
+[gd_scene load_steps=7 format=3 uid="uid://dey8x4xm453xn"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_f7mnl"]
 [ext_resource type="Texture2D" uid="uid://nwkb8rv414xq" path="res://assets/textures/tiles2/wall2.png" id="2_gpy5v"]
 [ext_resource type="Texture2D" uid="uid://ctomq5a2mdn0l" path="res://assets/Menus/pixil-frame-0 (6).png" id="3_m0568"]
 [ext_resource type="AudioStream" uid="uid://bxbxkike56ik8" path="res://assets/audio/gui.mp3" id="4_bb3ft"]
+[ext_resource type="Shader" path="res://shaders/crt.gdshader" id="5_hctds"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5huxc"]
+shader = ExtResource("5_hctds")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.174
+shader_parameter/scanlines_width = 0.193
+shader_parameter/grille_opacity = 0.017
+shader_parameter/resolution = Vector2(240, 180)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 0.934
+shader_parameter/roll_size = 8.0
+shader_parameter/roll_variation = 0.552
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.24
+shader_parameter/vignette_opacity = 0.5
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,6 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(5, 5)
 script = ExtResource("1_f7mnl")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
@@ -116,11 +142,11 @@ texture = ExtResource("3_m0568")
 
 [node name="Menu" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 92.0
-offset_top = 94.0
-offset_right = 162.0
-offset_bottom = 195.0
-scale = Vector2(0.8, 0.8)
+offset_left = 90.0
+offset_top = 91.0
+offset_right = 160.0
+offset_bottom = 192.0
+scale = Vector2(0.9, 0.9)
 
 [node name="Start" type="Button" parent="Menu"]
 layout_mode = 2
@@ -251,8 +277,10 @@ offset_bottom = 40.0
 
 [node name="Label" type="RichTextLabel" parent="Credits"]
 layout_mode = 0
-offset_right = 240.0
-offset_bottom = 180.0
+offset_left = 13.0
+offset_top = 5.0
+offset_right = 244.0
+offset_bottom = 187.0
 bbcode_enabled = true
 text = "[font_size=12]Game Developers:
 Ian Day
@@ -289,6 +317,15 @@ offset_right = 253.0
 offset_bottom = 184.0
 scale = Vector2(0.75, 0.75)
 text = "Back"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_5huxc")
+offset_right = 1280.0
+offset_bottom = 960.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Gui" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_bb3ft")
