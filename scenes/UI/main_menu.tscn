@@ -14,9 +14,9 @@ shader_parameter/scanlines_width = 0.193
 shader_parameter/grille_opacity = 0.017
 shader_parameter/resolution = Vector2(240, 180)
 shader_parameter/pixelate = false
-shader_parameter/roll = true
+shader_parameter/roll = false
 shader_parameter/roll_speed = 0.934
-shader_parameter/roll_size = 8.0
+shader_parameter/roll_size = 0.0
 shader_parameter/roll_variation = 0.552
 shader_parameter/distort_intensity = 0.05
 shader_parameter/noise_opacity = 0.4
@@ -205,7 +205,7 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_left = 60.0
 offset_top = 20.0
-offset_right = 180.0
+offset_right = 219.0
 offset_bottom = 100.0
 
 [node name="Labels" type="VBoxContainer" parent="Video/HBoxContainer"]
@@ -215,12 +215,32 @@ layout_mode = 2
 layout_mode = 2
 text = "Full Screen"
 
+[node name="Roll" type="Label" parent="Video/HBoxContainer/Labels"]
+layout_mode = 2
+text = "VHS Roll"
+
+[node name="Brightness" type="Label" parent="Video/HBoxContainer/Labels"]
+layout_mode = 2
+text = "Brightness"
+
 [node name="Checks" type="VBoxContainer" parent="Video/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Fullscreen" type="CheckBox" parent="Video/HBoxContainer/Checks"]
 layout_mode = 2
 button_pressed = true
+
+[node name="Roll" type="CheckBox" parent="Video/HBoxContainer/Checks"]
+layout_mode = 2
+
+[node name="BrightSlide" type="HSlider" parent="Video/HBoxContainer/Checks"]
+layout_mode = 2
+size_flags_vertical = 6
+min_value = 1.0
+max_value = 2.0
+step = 0.1
+value = 1.4
 
 [node name="VideoBack" type="Button" parent="Video"]
 layout_mode = 0
@@ -246,20 +266,54 @@ offset_bottom = 100.0
 [node name="Labels" type="VBoxContainer" parent="Audio/HBoxContainer2"]
 layout_mode = 2
 
-[node name="Volume" type="Label" parent="Audio/HBoxContainer2/Labels"]
+[node name="Master" type="Label" parent="Audio/HBoxContainer2/Labels"]
 layout_mode = 2
-text = "Volume"
+text = "Master"
+
+[node name="Music" type="Label" parent="Audio/HBoxContainer2/Labels"]
+layout_mode = 2
+text = "Music"
+
+[node name="In-Game" type="Label" parent="Audio/HBoxContainer2/Labels"]
+layout_mode = 2
+text = "In-Game"
+
+[node name="Monsters" type="Label" parent="Audio/HBoxContainer2/Labels"]
+layout_mode = 2
+text = "Monster"
 
 [node name="Checks" type="VBoxContainer" parent="Audio/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+alignment = 1
 
-[node name="Volume" type="HSlider" parent="Audio/HBoxContainer2/Checks"]
+[node name="Master" type="HSlider" parent="Audio/HBoxContainer2/Checks"]
 layout_mode = 2
 min_value = 0.1
 max_value = 2.0
 step = 0.1
-value = 0.1
+value = 2.0
+
+[node name="Music" type="HSlider" parent="Audio/HBoxContainer2/Checks"]
+layout_mode = 2
+min_value = 0.1
+max_value = 2.0
+step = 0.1
+value = 2.0
+
+[node name="In_Game" type="HSlider" parent="Audio/HBoxContainer2/Checks"]
+layout_mode = 2
+min_value = 0.1
+max_value = 2.0
+step = 0.1
+value = 2.0
+
+[node name="Monsters" type="HSlider" parent="Audio/HBoxContainer2/Checks"]
+layout_mode = 2
+min_value = 0.1
+max_value = 2.0
+step = 0.1
+value = 2.0
 
 [node name="AudioBack" type="Button" parent="Audio"]
 layout_mode = 0
@@ -337,8 +391,13 @@ stream = ExtResource("4_bb3ft")
 [connection signal="pressed" from="Settings/VBoxContainer/Audio" to="." method="_on_audio_pressed"]
 [connection signal="pressed" from="Settings/Settingsback" to="." method="_on_settingsback_pressed"]
 [connection signal="toggled" from="Video/HBoxContainer/Checks/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="Video/HBoxContainer/Checks/Roll" to="." method="_on_roll_toggled"]
+[connection signal="value_changed" from="Video/HBoxContainer/Checks/BrightSlide" to="." method="_on_bright_slide_value_changed"]
 [connection signal="pressed" from="Video/VideoBack" to="." method="_on_video_back_pressed"]
-[connection signal="value_changed" from="Audio/HBoxContainer2/Checks/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="value_changed" from="Audio/HBoxContainer2/Checks/Master" to="." method="_on_volume_value_changed"]
+[connection signal="value_changed" from="Audio/HBoxContainer2/Checks/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="Audio/HBoxContainer2/Checks/In_Game" to="." method="_on_in_game_value_changed"]
+[connection signal="value_changed" from="Audio/HBoxContainer2/Checks/Monsters" to="." method="_on_monsters_value_changed"]
 [connection signal="pressed" from="Audio/AudioBack" to="." method="_on_audio_back_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CreditsBackButton" to="." method="_on_credits_back_button_pressed"]

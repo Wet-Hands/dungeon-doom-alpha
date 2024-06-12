@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/goblin.gd" id="1_d4o5n"]
 [ext_resource type="Texture2D" uid="uid://dp3up8083ajwt" path="res://assets/enemies/testGoblin2_t_goblin_base.png" id="1_q3whf"]
 [ext_resource type="Shader" uid="uid://bjuxt4tq5vkna" path="res://shaders/dissolveGoblin.tres" id="2_gtmwd"]
-[ext_resource type="Shader" uid="uid://bwsxxwg6e4unk" path="res://scenes/hurt.tres" id="4_cvmyw"]
+[ext_resource type="Shader" path="res://shaders/pixelate.gdshader" id="4_6wks4"]
 [ext_resource type="AudioStream" uid="uid://b3hmtmq8s646y" path="res://assets/audio/Goblin Death2.mp3" id="4_kxktw"]
 [ext_resource type="AudioStream" uid="uid://8c58rgjxnxfa" path="res://assets/audio/goblinHurt3.mp3" id="5_521pm"]
 
@@ -22,8 +22,8 @@ shader_parameter/Texture = ExtResource("1_q3whf")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b2j32"]
 render_priority = 0
-shader = ExtResource("4_cvmyw")
-shader_parameter/HurtTime = 0.0
+shader = ExtResource("4_6wks4")
+shader_parameter/pixel_size = 8
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_2xnqb"]
 resource_name = "testGoblin2_Goblin_Mesh"
@@ -677,22 +677,6 @@ _data = {
 "walk": SubResource("Animation_lmv3l")
 }
 
-[sub_resource type="Animation" id="Animation_52442"]
-resource_name = "shaderOn"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:shaderT")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [4.5, 1.0]
-}
-
 [sub_resource type="Animation" id="Animation_6hy38"]
 resource_name = "hurt"
 length = 0.5
@@ -707,6 +691,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.75, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_52442"]
+resource_name = "shaderOn"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:shaderT")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [4.5, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_54kr3"]
@@ -881,7 +881,7 @@ bones/21/parent = 20
 bones/21/rest = Transform3D(0.787977, 0.287599, -0.544407, 0.534638, 0.11894, 0.83667, 0.305377, -0.950337, -0.0600394, 0, 0.177639, -5.58794e-09)
 bones/21/enabled = true
 bones/21/position = Vector3(0, 0.177639, -5.58794e-09)
-bones/21/rotation = Quaternion(-0.657472, -0.312651, 0.0908901, 0.679499)
+bones/21/rotation = Quaternion(-0.522381, -0.560872, -0.122434, 0.630516)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/name = "calve.L.001"
 bones/22/parent = 21
@@ -966,12 +966,17 @@ wait_time = 0.05
 [node name="Gdeath" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_kxktw")
 volume_db = -20.0
+bus = &"Monster"
 
 [node name="GAtk" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0)
+volume_db = -5.0
+bus = &"Monster"
 
 [node name="Ghurt" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_521pm")
+volume_db = -10.0
+bus = &"Monster"
 
 [node name="AtkArea" type="Area3D" parent="." groups=["goblinAtk"]]
 

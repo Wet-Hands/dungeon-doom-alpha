@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://hyrnu4vwj65t"]
+[gd_scene load_steps=23 format=3 uid="uid://hyrnu4vwj65t"]
 
 [ext_resource type="Material" uid="uid://bkkqw3fxpgnke" path="res://assets/materials/doorMat.tres" id="1_egio5"]
 [ext_resource type="Script" path="res://scripts/door.gd" id="1_x0jer"]
+[ext_resource type="Shader" path="res://shaders/pixelate.gdshader" id="2_4oaar"]
 [ext_resource type="Texture2D" uid="uid://nwkb8rv414xq" path="res://assets/textures/tiles2/wall2.png" id="3_uanx3"]
 [ext_resource type="Texture2D" uid="uid://i6r8n3yad5dp" path="res://assets/textures/tiles2/cobble_stoneTILE_n.png" id="4_h4shn"]
 [ext_resource type="AudioStream" uid="uid://2dbkw3amuh0h" path="res://assets/audio/key.mp3" id="5_jgplk"]
@@ -76,6 +77,11 @@ size = Vector3(2, 2, 1.125)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xa1v"]
 albedo_color = Color(1, 0.101961, 0.0862745, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8cues"]
+render_priority = 0
+shader = ExtResource("2_4oaar")
+shader_parameter/pixel_size = 8
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_jtswl"]
 top_radius = 0.25
 bottom_radius = 0.25
@@ -132,17 +138,20 @@ shape = SubResource("BoxShape3D_4wnyf")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.25, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_0xa1v")
+material_overlay = SubResource("ShaderMaterial_8cues")
 mesh = SubResource("CylinderMesh_jtswl")
 
 [node name="KeyholeGreen" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.25, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_0shpa")
+material_overlay = SubResource("ShaderMaterial_8cues")
 mesh = SubResource("CylinderMesh_jtswl")
 
 [node name="KeyholeBlue" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.25, 0)
 material_override = SubResource("StandardMaterial3D_hvoo8")
+material_overlay = SubResource("ShaderMaterial_8cues")
 mesh = SubResource("CylinderMesh_jtswl")
 
 [node name="Timer" type="Timer" parent="."]
@@ -153,9 +162,11 @@ mesh = SubResource("BoxMesh_h87yw")
 
 [node name="Key" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_jgplk")
+bus = &"In-Game"
 
 [node name="KeyFail" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_y4ovg")
+bus = &"In-Game"
 
 [node name="LeftTurnPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 0)
@@ -163,6 +174,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 0)
 [node name="LeftSide" type="MeshInstance3D" parent="LeftTurnPoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
 material_override = ExtResource("1_egio5")
+material_overlay = SubResource("ShaderMaterial_8cues")
 mesh = SubResource("BoxMesh_p104j")
 skeleton = NodePath("../..")
 
@@ -178,6 +190,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 0)
 [node name="RightSide" type="MeshInstance3D" parent="RightTurnPoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0)
 material_override = ExtResource("1_egio5")
+material_overlay = SubResource("ShaderMaterial_8cues")
 mesh = SubResource("BoxMesh_c6eea")
 skeleton = NodePath("../..")
 

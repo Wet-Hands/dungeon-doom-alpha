@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dhhjd0v7u8svu"]
+[gd_scene load_steps=16 format=3 uid="uid://dhhjd0v7u8svu"]
 
 [ext_resource type="Script" path="res://scripts/skeleton.gd" id="1_owd63"]
 [ext_resource type="PackedScene" uid="uid://cvjj3e4cd54fk" path="res://scenes/sketchfab_scene.tscn" id="2_t8h8n"]
 [ext_resource type="Shader" uid="uid://c8tvxq5apnsv5" path="res://shaders/dissolve.tres" id="3_qtwvq"]
 [ext_resource type="Texture2D" uid="uid://d3584a82vy3m8" path="res://assets/enemies/textures/skeleton_baseColor.png" id="4_ljppu"]
+[ext_resource type="Shader" path="res://shaders/pixelate.gdshader" id="5_eqhhp"]
 [ext_resource type="AudioStream" uid="uid://b7h6y8ou2ytq7" path="res://assets/audio/death1.mp3" id="5_u11no"]
 [ext_resource type="AudioStream" uid="uid://cj4qxocnh8sgl" path="res://assets/audio/hurtSkeleton.mp3" id="6_xpg5c"]
 
@@ -16,6 +17,11 @@ shader_parameter/LightColor = Color(0.796078, 0.121569, 0.988235, 1)
 shader_parameter/ShaderTime = 4.5
 shader_parameter/Speed = 1.0
 shader_parameter/Texture = ExtResource("4_ljppu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iina7"]
+render_priority = 0
+shader = ExtResource("5_eqhhp")
+shader_parameter/pixel_size = 8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ehm7o"]
 radius = 0.1
@@ -86,6 +92,7 @@ bones/26/scale = Vector3(1, 1, 1)
 [node name="Object_34" parent="Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, -2.65397e-11, 0, 1, 0, -2.67164e-12, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_7ckic")
+material_overlay = SubResource("ShaderMaterial_iina7")
 
 [node name="Hitbox" type="Area3D" parent="." groups=["skeleton"]]
 
@@ -127,10 +134,12 @@ shape = SubResource("SphereShape3D_wfius")
 [node name="Death1" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_u11no")
 volume_db = -5.0
+bus = &"Monster"
 
 [node name="Hurt" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_xpg5c")
 volume_db = -10.0
+bus = &"Monster"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]

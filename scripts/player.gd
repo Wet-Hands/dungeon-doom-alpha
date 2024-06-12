@@ -30,6 +30,13 @@ var shield = false
 var shieldUp = false
 
 func _ready():
+	$CanvasLayer/ColorRect.material.set_shader_parameter("roll", $"/root/Global".roll)
+	$CanvasLayer/ColorRect.material.set_shader_parameter("brightness", $"/root/Global".brightness)
+	
+	if $"/root/Global".roll == false:
+		$CanvasLayer/ColorRect.material.set_shader_parameter("roll_size", 0)
+	else:
+		$CanvasLayer/ColorRect.material.set_shader_parameter("roll_size", 9.34)
 	shield = false
 	Engine.max_fps = 60 #Set FPS to 60
 	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine

@@ -1,7 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpyc5pjqb3o1d"]
+[gd_scene load_steps=8 format=3 uid="uid://bpyc5pjqb3o1d"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/magic_ball.gd" id="1_qu08c"]
 [ext_resource type="Shader" uid="uid://cjvknema1om3c" path="res://shaders/magicBall.tres" id="1_yeern"]
+[ext_resource type="Shader" path="res://shaders/pixelate.gdshader" id="2_35d3g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e23l0"]
+render_priority = 0
+shader = ExtResource("2_35d3g")
+shader_parameter/pixel_size = 8
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wbw8q"]
 render_priority = 0
@@ -22,6 +28,7 @@ script = ExtResource("1_qu08c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_overlay = SubResource("ShaderMaterial_e23l0")
 mesh = SubResource("SphereMesh_p4dlp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

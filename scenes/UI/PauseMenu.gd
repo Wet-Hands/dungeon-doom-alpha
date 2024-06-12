@@ -30,3 +30,6 @@ func _on_resume_button_pressed():
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _on_setting_button_pressed():
+	pass # Replace with function body.

@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://cavtxc7hw0rjj"]
+[gd_scene load_steps=21 format=3 uid="uid://cavtxc7hw0rjj"]
 
 [ext_resource type="Script" path="res://scripts/chest.gd" id="1_hwv8j"]
 [ext_resource type="Texture2D" uid="uid://c1nd7bcskdgly" path="res://assets/textures/tiles2/woodTile2Chest.png" id="2_mafqi"]
 [ext_resource type="Texture2D" uid="uid://batds7i5yv3un" path="res://assets/textures/tiles2/woodTile2_n.png" id="4_0mnbw"]
 [ext_resource type="PackedScene" uid="uid://5ddiqwwo58lh" path="res://scenes/item.tscn" id="4_78ort"]
+[ext_resource type="Shader" path="res://shaders/pixelate.gdshader" id="4_w2cxp"]
 [ext_resource type="AudioStream" uid="uid://2dbkw3amuh0h" path="res://assets/audio/key.mp3" id="5_a6r6r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kirp7"]
@@ -12,6 +13,11 @@ normal_enabled = true
 normal_texture = ExtResource("4_0mnbw")
 uv1_scale = Vector3(3, 1, 1)
 uv1_triplanar = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_30mup"]
+render_priority = 0
+shader = ExtResource("4_w2cxp")
+shader_parameter/pixel_size = 8
 
 [sub_resource type="PrismMesh" id="PrismMesh_jssoc"]
 lightmap_size_hint = Vector2i(24, 25)
@@ -121,6 +127,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="ChestTop/TopTurnPoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0.5)
 material_override = SubResource("StandardMaterial3D_kirp7")
+material_overlay = SubResource("ShaderMaterial_30mup")
 mesh = SubResource("PrismMesh_jssoc")
 skeleton = NodePath("../../..")
 
@@ -128,27 +135,32 @@ skeleton = NodePath("../../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ChestBottom"]
 material_override = SubResource("StandardMaterial3D_8yssb")
+material_overlay = SubResource("ShaderMaterial_30mup")
 mesh = SubResource("PlaneMesh_l61qi")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="ChestBottom"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.25, -0.5)
 material_override = SubResource("StandardMaterial3D_sejmp")
+material_overlay = SubResource("ShaderMaterial_30mup")
 mesh = SubResource("PlaneMesh_xpq6h")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="ChestBottom"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.25, 0.5)
 material_override = SubResource("StandardMaterial3D_sejmp")
+material_overlay = SubResource("ShaderMaterial_30mup")
 mesh = SubResource("PlaneMesh_xpq6h")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="ChestBottom"]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.75, 0.25, 0)
 material_override = SubResource("StandardMaterial3D_sejmp")
+material_overlay = SubResource("ShaderMaterial_30mup")
 mesh = SubResource("PlaneMesh_n2it4")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="ChestBottom"]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.75, 0.25, 0)
 material_override = SubResource("StandardMaterial3D_sejmp")
+material_overlay = SubResource("ShaderMaterial_30mup")
 mesh = SubResource("PlaneMesh_n2it4")
 
 [node name="ChestAnim" type="AnimationPlayer" parent="."]
@@ -179,6 +191,7 @@ shape = SubResource("BoxShape3D_ape5p")
 [node name="Keyhole" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.45767, 0.435379)
 material_override = SubResource("StandardMaterial3D_ohuwi")
+material_overlay = SubResource("ShaderMaterial_30mup")
 mesh = SubResource("CylinderMesh_jphu1")
 
 [node name="Item" parent="." instance=ExtResource("4_78ort")]
@@ -186,6 +199,7 @@ mesh = SubResource("CylinderMesh_jphu1")
 [node name="Key" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_a6r6r")
 max_db = 1.0
+bus = &"In-Game"
 
 [connection signal="chItem" from="." to="Item" method="_on_chest_ch_item"]
 [connection signal="timeout" from="TestTimer" to="." method="_on_test_timer_timeout"]

@@ -1,13 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://6skxxgqvb10x"]
+[gd_scene load_steps=26 format=3 uid="uid://6skxxgqvb10x"]
 
 [ext_resource type="Material" uid="uid://jxhq8654tmrv" path="res://assets/materials/endDoorMat.tres" id="1_d211r"]
 [ext_resource type="Script" path="res://scripts/end_door.gd" id="1_jfvo4"]
+[ext_resource type="Shader" path="res://shaders/pixelate.gdshader" id="3_2c4lr"]
 [ext_resource type="Shader" uid="uid://dcmwtebyys6hc" path="res://assets/portal/portalShader.tres" id="3_2yaua"]
 [ext_resource type="Texture2D" uid="uid://nwkb8rv414xq" path="res://assets/textures/tiles2/wall2.png" id="4_hudrl"]
 [ext_resource type="AudioStream" uid="uid://2dbkw3amuh0h" path="res://assets/audio/key.mp3" id="5_5eefu"]
 [ext_resource type="Texture2D" uid="uid://i6r8n3yad5dp" path="res://assets/textures/tiles2/cobble_stoneTILE_n.png" id="5_wd4j0"]
 [ext_resource type="AudioStream" uid="uid://cw7shmynb7adx" path="res://assets/audio/keyFail.mp3" id="7_r1hhq"]
 [ext_resource type="AudioStream" uid="uid://bvrxeygadeqwo" path="res://assets/audio/portalLoop.mp3" id="8_txg2y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qou8c"]
+render_priority = 0
+shader = ExtResource("3_2c4lr")
+shader_parameter/pixel_size = 8
 
 [sub_resource type="BoxMesh" id="BoxMesh_p104j"]
 size = Vector3(1, 2, 0.5)
@@ -99,6 +105,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, 0)
 [node name="LeftSide" type="MeshInstance3D" parent="LeftTurnPoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
 material_override = ExtResource("1_d211r")
+material_overlay = SubResource("ShaderMaterial_qou8c")
 mesh = SubResource("BoxMesh_p104j")
 skeleton = NodePath("../..")
 
@@ -113,6 +120,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -1, 0)
 [node name="RightSide" type="MeshInstance3D" parent="RightTurnPoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 0)
 material_override = ExtResource("1_d211r")
+material_overlay = SubResource("ShaderMaterial_qou8c")
 mesh = SubResource("BoxMesh_c6eea")
 skeleton = NodePath("../..")
 
@@ -136,24 +144,28 @@ shape = SubResource("BoxShape3D_7wbbo")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, -0.25, -0.125)
 visible = false
 material_override = SubResource("StandardMaterial3D_0xa1v")
+material_overlay = SubResource("ShaderMaterial_qou8c")
 mesh = SubResource("CylinderMesh_jtswl")
 
 [node name="KeyholeGreen" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, -0.25, -0.125)
 visible = false
 material_override = SubResource("StandardMaterial3D_0shpa")
+material_overlay = SubResource("ShaderMaterial_qou8c")
 mesh = SubResource("CylinderMesh_jtswl")
 
 [node name="KeyholeBlue" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, -0.25, -0.125)
 visible = false
 material_override = SubResource("StandardMaterial3D_hvoo8")
+material_overlay = SubResource("ShaderMaterial_qou8c")
 mesh = SubResource("CylinderMesh_jtswl")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="WhiteBack" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, 0, -0.0222708)
+material_overlay = SubResource("ShaderMaterial_qou8c")
 mesh = SubResource("PlaneMesh_wjyh8")
 
 [node name="WallFix" type="MeshInstance3D" parent="."]
@@ -162,12 +174,15 @@ mesh = SubResource("BoxMesh_uldff")
 
 [node name="Key" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_5eefu")
+bus = &"In-Game"
 
 [node name="KeyFail" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_r1hhq")
+bus = &"In-Game"
 
 [node name="SFX" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_txg2y")
+bus = &"In-Game"
 
 [node name="Portal" type="Area3D" parent="."]
 
