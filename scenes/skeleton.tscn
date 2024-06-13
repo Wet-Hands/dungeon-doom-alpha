@@ -90,7 +90,7 @@ bones/25/scale = Vector3(1, 1, 1)
 bones/26/scale = Vector3(1, 1, 1)
 
 [node name="Object_34" parent="Sketchfab_Scene/Sketchfab_model/skeleton_fbx/RootNode/rig/Object_4/Skeleton3D" index="0"]
-transform = Transform3D(1, 0, -2.65397e-11, 0, 1, 0, -2.67164e-12, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, -3.38156e-11, 0, 1, 0, -2.67164e-12, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_7ckic")
 material_overlay = SubResource("ShaderMaterial_iina7")
 
