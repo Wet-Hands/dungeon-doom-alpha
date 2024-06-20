@@ -20,7 +20,7 @@ shader_parameter/ShaderTime = 4.5
 shader_parameter/Speed = 1.0
 shader_parameter/Texture = ExtResource("1_q3whf")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2j32"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqpdh"]
 render_priority = 0
 shader = ExtResource("4_6wks4")
 shader_parameter/pixel_size = 8
@@ -928,7 +928,7 @@ bones/27/scale = Vector3(1, 1, 1)
 
 [node name="Goblin" type="MeshInstance3D" parent="Skeleton3D"]
 material_override = SubResource("ShaderMaterial_tga62")
-material_overlay = SubResource("ShaderMaterial_b2j32")
+material_overlay = SubResource("ShaderMaterial_mqpdh")
 mesh = SubResource("ArrayMesh_2xnqb")
 skin = SubResource("Skin_6tixl")
 

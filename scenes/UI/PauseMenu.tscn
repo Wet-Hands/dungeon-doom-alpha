@@ -35,6 +35,7 @@ layout_mode = 2
 text = "Resume"
 
 [node name="SettingButton" type="Button" parent="Panel/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Settings"
 

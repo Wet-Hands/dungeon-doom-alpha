@@ -46,7 +46,6 @@ func health(num): #Goblin Health is Changed
 		$Gdeath.play() #Play Death Sound Effect
 	if isDead == false:
 		curHurt = true
-		$HurtTimer.start()
 		$ShaderAnim.play("hurt")
 		$Ghurt.play() #Play Hurt Sound Effect
 
@@ -81,11 +80,6 @@ func attackEnd(): #When Goblin Attack Animation Ends
 	if isAtk == true && isDead == false: #If Player is in Attack Range and Goblin is Alive
 		$AnimationPlayer.play("attack") #Play Goblin Attack Animation
 		$AtkArea/CollisionShape3D.disabled = false #Enable Goblin Attack Collision
-
-func _on_hurt_timer_timeout():
-	$HurtTimer.stop()
-	$Skeleton3D/Goblin.material_overlay.set_shader_parameter("HurtTime", hurtT) #Update Shader Amount on Goblin
-	$HurtTimer.start()
 
 func _on_shader_anim_animation_finished(anim_name):
 	if anim_name == "hurt":
