@@ -146,6 +146,10 @@ func health(num): #Change Player health
 		if currentHealth >= 100:
 			currentHealth = 100
 		$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health2/health" + str(currentHealth) + ".png") #Update Health Meter
+		if num < 0:
+			$PlayerHurt.play()
+	if shield == true && num < 0:
+		$ShieldHit.play()
 
 func fuel(num):
 	currentFuel += num
