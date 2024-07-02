@@ -1,9 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://dvamwl4lv64ka"]
+[gd_scene load_steps=20 format=3 uid="uid://dvamwl4lv64ka"]
 
 [ext_resource type="Script" path="res://scripts/goblin.gd" id="1_d4o5n"]
 [ext_resource type="Texture2D" uid="uid://dp3up8083ajwt" path="res://assets/enemies/testGoblin2_t_goblin_base.png" id="1_q3whf"]
 [ext_resource type="Shader" uid="uid://bjuxt4tq5vkna" path="res://shaders/dissolveGoblin.tres" id="2_gtmwd"]
-[ext_resource type="Shader" path="res://shaders/pixelate.gdshader" id="4_6wks4"]
 [ext_resource type="AudioStream" uid="uid://b3hmtmq8s646y" path="res://assets/audio/Goblin Death2.mp3" id="4_kxktw"]
 [ext_resource type="AudioStream" uid="uid://8c58rgjxnxfa" path="res://assets/audio/goblinHurt3.mp3" id="5_521pm"]
 
@@ -19,11 +18,6 @@ shader_parameter/LightColor = Color(0.796078, 0.121569, 0.988235, 1)
 shader_parameter/ShaderTime = 4.5
 shader_parameter/Speed = 1.0
 shader_parameter/Texture = ExtResource("1_q3whf")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqpdh"]
-render_priority = 0
-shader = ExtResource("4_6wks4")
-shader_parameter/pixel_size = 8
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_2xnqb"]
 resource_name = "testGoblin2_Goblin_Mesh"
@@ -881,7 +875,7 @@ bones/21/parent = 20
 bones/21/rest = Transform3D(0.787977, 0.287599, -0.544407, 0.534638, 0.11894, 0.83667, 0.305377, -0.950337, -0.0600394, 0, 0.177639, -5.58794e-09)
 bones/21/enabled = true
 bones/21/position = Vector3(0, 0.177639, -5.58794e-09)
-bones/21/rotation = Quaternion(-0.522381, -0.560872, -0.122434, 0.630516)
+bones/21/rotation = Quaternion(-0.478229, -0.611811, -0.17335, 0.605751)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/name = "calve.L.001"
 bones/22/parent = 21
@@ -928,7 +922,6 @@ bones/27/scale = Vector3(1, 1, 1)
 
 [node name="Goblin" type="MeshInstance3D" parent="Skeleton3D"]
 material_override = SubResource("ShaderMaterial_tga62")
-material_overlay = SubResource("ShaderMaterial_mqpdh")
 mesh = SubResource("ArrayMesh_2xnqb")
 skin = SubResource("Skin_6tixl")
 
@@ -941,7 +934,6 @@ shape = SubResource("SphereShape3D_gvde3")
 [node name="Area3D" type="Area3D" parent="." groups=["goblin"]]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
-visible = false
 shape = SubResource("ConvexPolygonShape3D_hqkb1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -965,17 +957,17 @@ wait_time = 0.05
 
 [node name="Gdeath" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_kxktw")
-volume_db = -20.0
+volume_db = -30.0
 bus = &"Monster"
 
 [node name="GAtk" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1.53846, 0, 0, 0, 1.53846, 0, 0, 0, 1.53846, 0, 0, 0)
-volume_db = -5.0
+volume_db = -10.0
 bus = &"Monster"
 
 [node name="Ghurt" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_521pm")
-volume_db = -10.0
+volume_db = -20.0
 bus = &"Monster"
 
 [node name="AtkArea" type="Area3D" parent="." groups=["goblinAtk"]]

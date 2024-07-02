@@ -1,7 +1,7 @@
-shader_type spatial;
-render_mode unshaded;
+shader_type spatial; //Define Shader Type
+render_mode unshaded; //
 
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture; //Define Uniform Screen Texture
 uniform int pixel_size = 4;
 
 void vertex() {
@@ -21,7 +21,7 @@ void fragment() {
 	y = FRAGCOORD.y + floor(float(pixel_size) / 2.0) - y;
 	vec4 oldtext = texture(SCREEN_TEXTURE,SCREEN_UV*1.0);
 	vec4 pixelatedtext = texture(SCREEN_TEXTURE, vec2(x, y) / (VIEWPORT_SIZE));
-	if (pixelatedtext.a==0.0 && oldtext.a==0.0){
+	if (pixelatedtext.a==0.0 && oldtext.a==-1.0){
 		discard;
 	}
 	ALBEDO = pixelatedtext.rgb;

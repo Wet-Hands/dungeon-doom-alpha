@@ -49,12 +49,18 @@ func _ready():
 	$Head/Camera3D/Items/Shield.position.y = -1.25
 	switched = false
 
+func _process(delta):
+	print(cam.rotation_degrees)
 @onready var magicBall = preload("res://scenes/projectiles/magic_ball.tscn")
 func _input(event): #When any input is made, better than checking constantly with _process
 	if event is InputEventMouseMotion: #If mouse is moving
 		$Head.rotate_y(-event.relative.x * camSens * get_process_delta_time()) #Look left and right
 		cam.rotate_x(-event.relative.y * camSens * get_process_delta_time()) #Look up and down
 		cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-50), deg_to_rad(60)) #Stop turning so player's neck doesn't break
+		cam.rotation.y = 0
+		cam.rotation.z = 0
+		if cam.rotation.x <= -60 || cam.rotation.x >= 65:
+			cam.rotation.x == 0
 	if Input.is_action_just_pressed("action1"): #If Left Mouse Click is pressed
 		if shield == false:
 			swordAnim.play("Attack") #Play Attack Animation

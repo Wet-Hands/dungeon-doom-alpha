@@ -25,8 +25,9 @@ func _on_hitbox_area_entered(area):
 		updateText("Unlock Using Key [e]")
 	if area.is_in_group("blueLock"):
 		updateText("Unlock Using Key [e]")
-
-func _on_hitbox_area_exited(area):
+	if area.is_in_group("healCol"):
+		updateText("Collect Heart [e]")
+func _on_hitbox_area_exited(_area):
 	$Label2.text = " "
 
 func _on_player_damage(num):

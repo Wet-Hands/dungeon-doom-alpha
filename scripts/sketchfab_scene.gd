@@ -28,5 +28,5 @@ func magPlay():
 	inst.position = $MagicPoint.position
 	$Balls.add_child(inst)
 
-func _on_movement_anim_animation_finished(anim_name):
+func _on_movement_anim_animation_finished(_anim_name):
 	animPlay.speed_scale = 1

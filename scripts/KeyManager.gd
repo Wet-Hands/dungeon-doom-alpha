@@ -22,7 +22,6 @@ func _process(_delta): #Called every frame. 'delta' is the elapsed time since th
 	if Input.is_action_pressed("interact"):#when backspace is pressed
 		if $"..".shield == false:
 			$KeyArea/KeyCol.disabled = false
-			var group = $KeyArea.get_groups()
 	if Input.is_action_just_released("interact"):
 		if $"..".shield == false:
 			$KeyArea/KeyCol.disabled = true

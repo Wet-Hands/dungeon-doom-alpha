@@ -19,7 +19,7 @@ shader_parameter/pixel_size = 8
 size = Vector3(1, 2, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tvw8l"]
-size = Vector3(1, 2, 0.5)
+size = Vector3(1, 2, 0.730469)
 
 [sub_resource type="BoxMesh" id="BoxMesh_c6eea"]
 size = Vector3(1, 2, 0.5)
@@ -110,6 +110,7 @@ mesh = SubResource("BoxMesh_p104j")
 skeleton = NodePath("../..")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="LeftTurnPoint/LeftSide"]
+freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftTurnPoint/LeftSide/RigidBody3D"]
 shape = SubResource("BoxShape3D_tvw8l")
@@ -125,6 +126,7 @@ mesh = SubResource("BoxMesh_c6eea")
 skeleton = NodePath("../..")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="RightTurnPoint/RightSide"]
+freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightTurnPoint/RightSide/RigidBody3D"]
 shape = SubResource("BoxShape3D_tvw8l")

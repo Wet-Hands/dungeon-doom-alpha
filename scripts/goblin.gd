@@ -22,7 +22,7 @@ func _ready():
 	shaderT = 4.5 #Set Shader Time
 	active = false #Disable Goblin
 
-func _process(delta): #While Goblin Scene is in Game
+func _process(_delta): #While Goblin Scene is in Game
 	velocity = Vector3.ZERO #Initial Velocity at Zero
 	navAgent.set_target_position(player.global_transform.origin) #Set Target Position
 	var nextNavPoint = navAgent.get_next_path_position() #Next Target Position
@@ -38,6 +38,8 @@ func health(num): #Goblin Health is Changed
 	curHealth += num #Add Health to Current Health (Usually 'num' is negative)
 	if curHealth <= 0 && isDead == false: #If Current Health is at Zero
 		isDead = true #Goblin Is Dead
+		speed /= 2
+		call_deferred("disableCol")
 		$"/root/Global".kills += 1
 		$Skeleton3D/Goblin.material_override.set_shader_parameter("LightStrength", 1) #Turn on Shader Health
 		$ShaderTimer.start() #Start Shader Timer
@@ -48,6 +50,11 @@ func health(num): #Goblin Health is Changed
 		curHurt = true
 		$ShaderAnim.play("hurt")
 		$Ghurt.play() #Play Hurt Sound Effect
+
+func disableCol():
+	$IntArea/CollisionShape3D.disabled = true
+	$IntArea.monitoring = false
+	$CollisionShape3D.disabled = true
 
 func _on_area_3d_area_entered(area): #If Goblin Hitbox Entered
 	if area.is_in_group("sword"): #If Goblin is hit by Player's Sword
@@ -72,7 +79,7 @@ func _on_atk_area_area_entered(area): #If Goblin Attack Range is Entered
 			$AnimationPlayer.play("attack") #Play Attack Animation
 			isAtk = true #Goblin Is Attacking
 
-func _on_atk_area_area_exited(area): #If Goblin Attack Range is Exited
+func _on_atk_area_area_exited(_area): #If Goblin Attack Range is Exited
 	isAtk = false #Goblin Isn't Attacking
 
 func attackEnd(): #When Goblin Attack Animation Ends

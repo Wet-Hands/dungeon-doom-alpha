@@ -37,16 +37,16 @@ func _ready(): #Called when the node enters the scene tree for the first time.
 
 func openFunc():
 	if open == false:
+		$Portal.add_to_group("portal")
+		$InteractArea.add_to_group("endDoorOpen")
 		$Key.play()
 		$DoorAnim.play("open")
-		$Portal.add_to_group("portal")
 		$SFX.play()
 		$WhiteBack.visible = true
 		open = true
 		print("DOOR OPEN")
 		$InteractArea.remove_from_group("door")
 		$InteractArea.remove_from_group("endDoor")
-		$InteractArea.add_to_group("endDoorOpen")
 
 func _on_interact_area_area_entered(area):
 	if area.is_in_group("redInt"):
