@@ -2,4 +2,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Sprite2D.texture = $"/root/Global".view
+	pass
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://levels/level1/level_1.tscn")

@@ -49,11 +49,9 @@ func _ready():
 	$Head/Camera3D/Items/Shield.position.y = -1.25
 	switched = false
 
-func _process(delta):
-	print(cam.rotation_degrees)
 @onready var magicBall = preload("res://scenes/projectiles/magic_ball.tscn")
 func _input(event): #When any input is made, better than checking constantly with _process
-	if event is InputEventMouseMotion: #If mouse is moving
+	if event is InputEventMouseMotion && dead == false: #If mouse is moving
 		$Head.rotate_y(-event.relative.x * camSens * get_process_delta_time()) #Look left and right
 		cam.rotate_x(-event.relative.y * camSens * get_process_delta_time()) #Look up and down
 		cam.rotation.x = clamp(cam.rotation.x, deg_to_rad(-50), deg_to_rad(60)) #Stop turning so player's neck doesn't break
@@ -61,21 +59,21 @@ func _input(event): #When any input is made, better than checking constantly wit
 		cam.rotation.z = 0
 		if cam.rotation.x <= -60 || cam.rotation.x >= 65:
 			cam.rotation.x == 0
-	if Input.is_action_just_pressed("action1"): #If Left Mouse Click is pressed
+	if Input.is_action_just_pressed("action1") && dead == false: #If Left Mouse Click is pressed
 		if shield == false:
 			swordAnim.play("Attack") #Play Attack Animation
 			$Swing.play() #Swing Sound Plays
 			anim_names = "Attack"
 			$Head/Camera3D/Items/Sword/SwordMesh/SwordHitbox/CollisionShape3D.disabled = false #Enable swordHitbox
 			SwordHitbox.monitoring = true #turns the hitbox monitoring on
-	if Input.is_action_pressed("action2"): #If Right Mouse Click is pressed
+	if Input.is_action_pressed("action2") && dead == false: #If Right Mouse Click is pressed
 		shield = true
 		if shieldUp == false:
 			speedMulti = .33
 			$Head/ShieldAnimation.play("switch")
 			shieldUp = true
 	
-	if Input.is_action_just_released("action2"):
+	if Input.is_action_just_released("action2") && dead == false:
 		$Head/ShieldAnimation.play_backwards("switch")
 		speedMulti = 1
 		shield = false
@@ -136,13 +134,17 @@ func playFootStep(): #Footstep sound for Headbob animation
 	$Footstep.pitch_scale = randf_range(0.8, 1.0) #Change Pitch so you don't sound like you're banging your head against the wall
 	$Footstep.play() #Play Footstep sound
 
+var dead = false
 func health(num): #Change Player health
 	if shield == false || num > 0:
 		currentHealth += num #Update Current Health by num
 		emit_signal("damage", num) #Play Damage Flash
 		if currentHealth <= 0: #If Player Dies
-			position = initPos #Return to Start
-			currentHealth = 100 #Reset Health back to Full
+			dead = true
+			$HUD/DamageAnim.play("death")
+			$DeathTimer.start()
+			$HUD/HeartRect.visible = !$HUD/HeartRect.visible
+			$HUD/KeyRect.visible = !$HUD/KeyRect.visible
 		if currentHealth >= 100:
 			currentHealth = 100
 		$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health2/health" + str(currentHealth) + ".png") #Update Health Meter
@@ -167,9 +169,11 @@ func _on_animation_player_animation_finished(anim_name): #plays after animation 
 var inLava = false
 func _on_hitbox_area_entered(area): #When Player Enters Area
 		if area.is_in_group("goblinAtk"):
-			health(-10) #Lose 10 Health
+			if dead == false:
+				health(-10) #Lose 10 Health
 		if area.is_in_group("skeleAttack"): #If it's hit by Skeleton
-			health(-10) #Lose 10 Health
+			if dead == false:
+				health(-10) #Lose 10 Health
 		if area.is_in_group("lava"):
 			inLava = true
 			$LavaTimer.start()
@@ -202,3 +206,14 @@ var sTime = 0
 func _on_timer_timeout():
 	$SoundTimer.stop()
 	sTime += 1
+
+func _on_death_timer_timeout():
+	currentHealth = 100
+	$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health2/health" + str(currentHealth) + ".png") #Update Health Meter
+	dead = false
+	$DeathTimer.stop()
+	position = initPos
+	$Head.position.y = 0.24
+	$HUD/Damage.color = Color(1, 1, 1, 0)
+	$HUD/HeartRect.visible = !$HUD/HeartRect.visible
+	$HUD/KeyRect.visible = !$HUD/KeyRect.visible

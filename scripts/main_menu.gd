@@ -12,7 +12,7 @@ func _ready():
 var levels = ["res://levels/level1/level_1.tscn", "res://level_2.tscn", "res://levels/level3/level_3.tscn", "res://levels/level4/level_4.tscn", "res://levels/level5/level_5.tscn"]
 func _on_start_pressed():
 	toggle()
-	get_tree().change_scene_to_file(levels[$"/root/Global".level]) #Go to Next Level
+	get_tree().change_scene_to_file("res://scenes/UI/level_menu.tscn") #Go to Next Level
 
 func menuUpdate(first, second):
 	first.show()
