@@ -1,7 +1,8 @@
 extends Control
 
+@onready var label = $"../CanvasLayer/SubViewportContainer/SubViewport/Label2"
 func _ready():
-	$Label2.text = " "
+	label.text = " "
 
 #func _on_area_3d_area_entered(area):
 	#print("Area Entered")
@@ -28,7 +29,7 @@ func _on_hitbox_area_entered(area):
 	if area.is_in_group("healCol"):
 		updateText("Collect Heart [e]")
 func _on_hitbox_area_exited(_area):
-	$Label2.text = " "
+	label.text = " "
 
 func _on_player_damage(num):
 	if num < 0:
@@ -40,7 +41,7 @@ func _on_player_damage(num):
 	##$Label.text = str(Vector3i($"..".global_position))
 
 func updateText(string):
-	$Label2.text = "[font=res://assets/fonts/Pixtura12.ttf][font_size=64][center]" + str(string)
+	label.text = "[font=res://assets/fonts/Pixtura12.ttf][font_size=64][center]" + str(string)
 	#var fullString = ""
 	#for i in string.length():
 		#fullString[i] = string[i]
@@ -48,4 +49,4 @@ func updateText(string):
 			#fullString[i].add("[font_size=52]")
 			#fullString[i+2].add("[font_size=86]")
 	#$Label.text = "[center][font=res://assets/fonts/Pixtura12.ttf][font_size=86][outline_size=32][outline_color=black]" + string
-	$Label2.position.x = ((1280-$Label2.size.x)/2)
+	label.position.x = ((1280-label.size.x)/2)

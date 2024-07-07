@@ -6,6 +6,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") #Gravity
 
 var anim_names #changed depending on what animation needs to be used (this is for my sanity in checking what animation is currently playing there is probably a better way but its late and I'm tired)
 @onready var cam = $Head/Camera3D #Camera Variable
+@onready var subCam = %SubCam
 @onready var swordAnim = $Head/SwordAnimation #movement animation variable
 
 @onready var SwordHitbox = $Head/Camera3D/Items/Sword/SwordMesh/SwordHitbox #hitbox of the sword
@@ -90,6 +91,8 @@ func _input(event): #When any input is made, better than checking constantly wit
 	if Input.is_action_just_pressed("pause"):#when backspace is pressed
 		emit_signal("pause")
 
+func _process(delta):
+	%SubCam.set_global_transform(cam.global_transform)
 func _physics_process(delta): #If physics is happening (always)
 	if not is_on_floor(): #If in the air
 		velocity.y -= gravity * delta #Apply Gravity
