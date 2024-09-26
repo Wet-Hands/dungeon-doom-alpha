@@ -1,16 +1,15 @@
-res://default_bus_layout.tres
-res://scenes/player.tscn
+res://scenes/UI/level_menu.tscn
 res://shaders/magicBall.tres
 res://shaders/pixelate.gdshader
-res://shaders/dissolve.tres
-res://shaders/dissolveGoblin.tres
-res://assets/materials/doorMat.tres
-res://assets/materials/endDoorMat.tres
-res://assets/portal/portalShader.tres
 res://shaders/psxCam.gdshader
 res://shaders/pixelScreen.gdshader
 res://shaders/crt.gdshader
 res://assets/tileset/tileset.tres
+res://shaders/dissolve.tres
+res://assets/materials/doorMat.tres
+res://assets/materials/endDoorMat.tres
+res://assets/portal/portalShader.tres
+res://shaders/dissolveGoblin.tres
 res://levels/env.tres
 res://assets/tileset/tileset4.tres
 res://assets/materials/metal.tres
@@ -18,6 +17,8 @@ res://shaders/lava.tres
 res://shaders/psxModel.gdshader
 res://scenes/hurt.tres
 res://shaders/psxCam2.gdshader
+res://scenes/UI/level_menu.gd
+res://scenes/player.tscn
 res://scenes/gd_screen.tscn
 res://scenes/test_world.tscn
 res://scenes/end_door.tscn
@@ -31,7 +32,6 @@ res://scenes/spike_wall_trap.tscn
 res://scenes/door.tscn
 res://scenes/lava.tscn
 res://scenes/UI/main_menu.tscn
-res://scenes/UI/level_menu.tscn
 res://scenes/UI/PauseMenu.tscn
 res://scenes/tileset_2.tscn
 res://scenes/projectiles/magic_ball.tscn
@@ -39,5 +39,3 @@ res://scenes/sketchfab_scene.tscn
 res://levels/level3/level_3.tscn
 res://levels/level4/level_4.tscn
 res://levels/level5/level_5.tscn
-res://scripts/player.gd
-res://scripts/HUD.gd
