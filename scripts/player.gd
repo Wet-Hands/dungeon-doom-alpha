@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
-const speed = 4 #Movement Velocity? [THIS IS A JOKE, unless if i was right]
-var speedMulti = 1.0 #Movement Multiplier
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") #Gravity from Project Settings (9.81)
+const speed : int = 4 #Movement Velocity? [THIS IS A JOKE, unless if i was right]
+var speedMulti : float = 1.0 #Movement Multiplier
+var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") #Gravity from Project Settings (9.81)
 
 var anim_names #changed depending on what animation needs to be used (this is for my sanity in checking what animation is currently playing there is probably a better way but its late and I'm tired)
 @onready var cam = $Head/Camera3D #Camera Variable
@@ -12,13 +12,11 @@ var anim_names #changed depending on what animation needs to be used (this is fo
 @onready var SwordHitbox = $Head/Camera3D/Items/Sword/SwordMesh/SwordHitbox #hitbox of the sword
 @onready var LightHitbox = $Head/Camera3D/Items/Shield/ShieldHitbox #hitbox for the Light
 
-var fs = false #Is fullscreen on or off
-var camSens = .25 #Camera Speed Sensitivity
+var fs : bool = false #Is fullscreen on or off
+var camSens : float = 0.25 #Camera Speed Sensitivity
 
-@export var maxHealth = 100 #Max Health
-var currentHealth #Health Player is at
-var maxFuel = 100 #Max Fuel
-var currentFuel #Fuel Player is at
+@export var maxHealth : float = 100 #Max Health
+var currentHealth : float#Health Player is at
 
 var initPos #Initial Position of Player
 
@@ -156,12 +154,6 @@ func health(num): #Change Player health
 	if shield == true && num < 0:
 		$ShieldHit.play()
 
-func fuel(num):
-	currentFuel += num
-	var cf = currentFuel #100, 91, 78, 65, 52, 39, 26, 13, 0
-	if cf == 100 || cf == 92 || cf == 78 || cf == 64 || cf == 52 || cf == 38 || cf == 26 || cf == 12 || cf == 0:
-		$HUD/FuelRect.texture = ResourceLoader.load("res://assets/hud/Fuel/Fuel" + str(cf) + ".png")
-
 func _on_animation_player_animation_finished(anim_name): #plays after animation is finished
 	if anim_name == "Attack": #if the annimation is "Attack" 
 		swordAnim.play("Idle") #set animation to "Walk"
@@ -199,7 +191,7 @@ func nextLevel(): #Next Level Function
 
 var levels = ["res://scenes/UI/main_menu.tscn", "res://level_2.tscn", "res://levels/level3/level_3.tscn", "res://levels/level4/level_4.tscn", "res://levels/level5/level_5.tscn"]
 
-var switched
+var switched : bool
 
 func _on_lava_timer_timeout():
 	if inLava == true:
