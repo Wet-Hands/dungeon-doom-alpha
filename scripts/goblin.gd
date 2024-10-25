@@ -38,7 +38,7 @@ func health(num): #Goblin Health is Changed
 	curHealth += num #Add Health to Current Health (Usually 'num' is negative)
 	if curHealth <= 0 && isDead == false: #If Current Health is at Zero
 		isDead = true #Goblin Is Dead
-		speed /= 2
+		speed /= 5
 		call_deferred("disableCol")
 		$"/root/Global".kills += 1
 		$Skeleton3D/Goblin.material_override.set_shader_parameter("LightStrength", 1) #Turn on Shader Health

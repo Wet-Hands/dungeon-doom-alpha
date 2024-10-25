@@ -5,18 +5,18 @@ var speedMulti : float = 1.0 #Movement Multiplier
 var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") #Gravity from Project Settings (9.81)
 
 var anim_names #changed depending on what animation needs to be used (this is for my sanity in checking what animation is currently playing there is probably a better way but its late and I'm tired)
-@onready var cam = $Head/Camera3D #Camera Variable
-@onready var subCam = %SubCam
-@onready var swordAnim = $Head/SwordAnimation #movement animation variable
+@onready var cam : Camera3D = $Head/Camera3D #Camera Variable
+@onready var subCam : Camera3D = %SubCam
+@onready var swordAnim : AnimationPlayer = $Head/SwordAnimation #movement animation variable
 
-@onready var SwordHitbox = $Head/Camera3D/Items/Sword/SwordMesh/SwordHitbox #hitbox of the sword
-@onready var LightHitbox = $Head/Camera3D/Items/Shield/ShieldHitbox #hitbox for the Light
+@onready var SwordHitbox : Area3D = $Head/Camera3D/Items/Sword/SwordMesh/SwordHitbox #hitbox of the sword
+@onready var LightHitbox : Area3D = $Head/Camera3D/Items/Shield/ShieldHitbox #hitbox for the Light
 
 var fs : bool = false #Is fullscreen on or off
 var camSens : float = 0.25 #Camera Speed Sensitivity
 
 @export var maxHealth : float = 100 #Max Health
-var currentHealth : float#Health Player is at
+var currentHealth : float #Health Player is at
 
 var initPos #Initial Position of Player
 
@@ -25,8 +25,9 @@ signal damage
 signal magic
 
 var light #Is lantern on or off
-var shield = false
-var shieldUp = false
+var shield : bool = false
+var shieldUp : bool = false
+var parrying : bool = false
 
 func _ready():
 	$CanvasLayer/ColorRect.material.set_shader_parameter("roll", $"/root/Global".roll)
@@ -38,8 +39,8 @@ func _ready():
 		$CanvasLayer/ColorRect.material.set_shader_parameter("roll_size", 9.34)
 	shield = false
 	Engine.max_fps = 60 #Set FPS to 60
-	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
 	currentHealth = maxHealth #Set Current Health to Max
 	$HUD/ProgressBar.max_value = maxHealth #Set Max Health Visually
 	$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health/heartFull16.png")
@@ -89,6 +90,16 @@ func _input(event): #When any input is made, better than checking constantly wit
 	if Input.is_action_just_pressed("pause"):#when backspace is pressed
 		emit_signal("pause")
 
+func parry():
+	parrying = true
+	print("PARRYING ENABLED")
+	$ParryTimer.start()
+
+func _on_parry_timer_timeout() -> void:
+	$ParryTimer.stop()
+	parrying = false
+	print("PARRYING DISABLED")
+
 func _process(delta):
 	%SubCam.set_global_transform(cam.global_transform)
 func _physics_process(delta): #If physics is happening (always)
@@ -137,7 +148,7 @@ func playFootStep(): #Footstep sound for Headbob animation
 
 var dead = false
 func health(num): #Change Player health
-	if shield == false || num > 0:
+	if (shield == false || num > 0) && dead == false:
 		currentHealth += num #Update Current Health by num
 		emit_signal("damage", num) #Play Damage Flash
 		if currentHealth <= 0: #If Player Dies
@@ -173,7 +184,13 @@ func _on_hitbox_area_entered(area): #When Player Enters Area
 			inLava = true
 			$LavaTimer.start()
 		if area.is_in_group("magi"): #If Player Hit by Magic
-			health(-20) #Lose 20 Health per Ball
+			print("SKELE ATTACK")
+			if parrying == true:
+				print("PARRY BEGIN")
+				area.reversed = true
+			if parrying == false:
+				print("PLAYER HIT")
+				health(-20) #Lose 20 Health per Ball
 		if area.is_in_group("portal"): #If Players Enters Portal
 			$"/root/Global".level += 1 #Level Var +1
 			if $"/root/Global".level == 5: #If Game is Beaten

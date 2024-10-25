@@ -1,8 +1,8 @@
 extends Node3D
 
-var kills = 0
-@onready var player = $Player
-@onready var grid = $NavigationRegion3D/GridMap
+var kills : int = 0
+@onready var player : CharacterBody3D = $Player
+@onready var grid : GridMap = $NavigationRegion3D/GridMap
 
 @onready var skeleton = preload("res://scenes/skeleton.tscn")
 @onready var goblin = preload("res://scenes/goblin.tscn")

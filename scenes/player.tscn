@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://378kl0b07lmb"]
+[gd_scene load_steps=52 format=4 uid="uid://378kl0b07lmb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_luw3v"]
 [ext_resource type="Texture2D" uid="uid://dtjy56skapd5g" path="res://assets/hud/shieldTest2.png" id="2_a7bpg"]
@@ -32,14 +32,14 @@ shader = ExtResource("5_f6spc")
 shader_parameter/enable_fog = true
 shader_parameter/fog_color = Color(0, 0, 0, 1)
 shader_parameter/noise_color = Color(0.25098, 0.25098, 0.25098, 1)
-shader_parameter/fog_distance = 10.0
-shader_parameter/fog_fade_range = 3.0
+shader_parameter/fog_distance = 12.0
+shader_parameter/fog_fade_range = 5.0
 shader_parameter/enable_noise = false
 shader_parameter/noise_time_fac = 4.0
 shader_parameter/enable_color_limitation = true
 shader_parameter/color_levels = 128
 shader_parameter/enable_dithering = true
-shader_parameter/dither_strength = 0.1
+shader_parameter/dither_strength = 0.075
 
 [sub_resource type="QuadMesh" id="QuadMesh_il1gy"]
 material = SubResource("ShaderMaterial_fyihc")
@@ -305,6 +305,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0.785398), Vector3(4.4409e-16, 0, 8.94465e-19)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"parry"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3gxmy"]
 _data = {
@@ -456,6 +470,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0.240095, 0), Vector3(0, -0.5, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CanvasLayer/SubViewportContainer/SubViewport/Damage:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 0, 0, 0.235294)]
+}
 
 [sub_resource type="Animation" id="Animation_8b3am"]
 resource_name = "dmg"
@@ -471,6 +497,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.235294), Color(1, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CanvasLayer/SubViewportContainer/SubViewport/Damage:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 0, 0, 0.235294), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_myqff"]
@@ -488,9 +526,37 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 0, 0, 0), Color(0, 1, 0, 0.141176), Color(1, 0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CanvasLayer/SubViewportContainer/SubViewport/Damage:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 1, 0, 0.141176), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5mblc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/SubViewportContainer/SubViewport/Damage:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j5g2i"]
 _data = {
+"RESET": SubResource("Animation_5mblc"),
 "death": SubResource("Animation_5oh3x"),
 "dmg": SubResource("Animation_8b3am"),
 "hlt": SubResource("Animation_myqff")
@@ -666,6 +732,11 @@ render_target_update_mode = 4
 unique_name_in_owner = true
 cull_mask = 524288
 
+[node name="Damage" type="ColorRect" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+offset_right = 1280.0
+offset_bottom = 960.0
+color = Color(1, 1, 1, 0)
+
 [node name="Label2" type="RichTextLabel" parent="CanvasLayer/SubViewportContainer/SubViewport"]
 offset_left = 240.0
 offset_top = 700.0
@@ -735,7 +806,7 @@ text = "[font_size=48][center]Press [E] to Open Chest"
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 960.0
-color = Color(1, 1, 1, 0)
+color = Color(1, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="HUD"]
 
@@ -761,6 +832,9 @@ pitch_scale = 2.0
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="ParryTimer" type="Timer" parent="."]
+wait_time = 0.25
+
 [connection signal="damage" from="." to="HUD" method="_on_player_damage"]
 [connection signal="pause" from="." to="PauseMenu" method="_on_player_pause"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
@@ -783,3 +857,4 @@ wait_time = 2.0
 [connection signal="timeout" from="SoundTimer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="HUD/Area3D" to="HUD" method="_on_area_3d_area_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="ParryTimer" to="." method="_on_parry_timer_timeout"]

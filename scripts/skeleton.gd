@@ -103,7 +103,11 @@ func _on_hitbox_area_entered(area): #If hit by sword
 		if curHit == false: #If the swing hasn't already damaged the skeleton
 			health(-25) #Lose 25 Health
 			curHit = true #Skeleton Been Hit in Swing
-			
+	if area.is_in_group("magi"): #If it's hit by sword
+		if curHit == false && area.reversed == true: #If the swing hasn't already damaged the skeleton
+			health(-50) #Lose 25 Health
+			curHit = true #Skeleton Been Hit in Swing
+			print("parried attack")
 			$HitTimer.start() #Start Timer 'til next swing
 	if area.is_in_group("trap"):
 		health(-20)

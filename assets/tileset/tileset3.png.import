@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqiwkan8xibup"
-path.s3tc="res://.godot/imported/testGoblin_t_goblin_base.png-f6a3f2d099854996b72439cdbc5ea1cb.s3tc.ctex"
+uid="uid://ct2rq4qo3kg0i"
+path.s3tc="res://.godot/imported/tileset3.png-a3739ebaaaca82955aa457152c66d740.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/enemies/testGoblin_t_goblin_base.png"
-dest_files=["res://.godot/imported/testGoblin_t_goblin_base.png-f6a3f2d099854996b72439cdbc5ea1cb.s3tc.ctex"]
+source_file="res://assets/tileset/tileset3.png"
+dest_files=["res://.godot/imported/tileset3.png-a3739ebaaaca82955aa457152c66d740.s3tc.ctex"]
 
 [params]
 

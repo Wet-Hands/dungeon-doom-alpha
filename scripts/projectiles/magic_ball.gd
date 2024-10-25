@@ -1,9 +1,10 @@
 extends Area3D
 
-const speed = 10
+var speed = 10
 
 @onready var mesh = $MeshInstance3D
 var start = false
+var reversed = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready():
 	print(rotation_degrees)
@@ -32,5 +33,12 @@ func _on_expire_timer_timeout():
 
 func _on_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
 	if start == true:
-		queue_free()
+		await get_tree().create_timer(.1)
+		if reversed == false:
+			queue_free()
+		if reversed == true:
+			print("PARRY TIME")
+			speed = -10
+			$ExpireTimer.stop()
+			$ExpireTimer.start()
 		print("grid removal?")
