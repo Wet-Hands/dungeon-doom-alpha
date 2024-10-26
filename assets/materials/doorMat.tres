@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://byiewcgfm20v4" path="res://assets/textures/wood_n.png" id="2_j7cld"]
 
 [resource]
+albedo_color = Color(0.94902, 0.721569, 0.203922, 1)
 albedo_texture = ExtResource("1_mxbgh")
 metallic_specular = 1.0
 normal_enabled = true

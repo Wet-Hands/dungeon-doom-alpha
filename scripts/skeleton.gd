@@ -64,6 +64,7 @@ func _physics_process(_delta): #While Physics is happening (Always)
 		look_at(player.global_position) #Look at Player
 
 func health(num): #Change Player health
+	print("HURT")
 	curHealth += num #Update Current Health by num
 	if curHealth <= 0 && dead == false: #If Health reaches 0
 		dead = true #Skeleton Dead
@@ -103,24 +104,19 @@ func _on_hitbox_area_entered(area): #If hit by sword
 		if curHit == false: #If the swing hasn't already damaged the skeleton
 			health(-25) #Lose 25 Health
 			curHit = true #Skeleton Been Hit in Swing
+			$HitTimer.start() #Start Timer 'til next swing
 	if area.is_in_group("magi"): #If it's hit by sword
 		if curHit == false && area.reversed == true: #If the swing hasn't already damaged the skeleton
 			health(-50) #Lose 25 Health
-			curHit = true #Skeleton Been Hit in Swing
 			print("parried attack")
 			$HitTimer.start() #Start Timer 'til next swing
+			curHit = true
 	if area.is_in_group("trap"):
 		health(-20)
 
 func _on_hit_timer_timeout(): #SWINGIN' TIME!
 	$HitTimer.stop() #Stop Timer when complete
 	curHit = false #Skeleton can be hit
-
-func _on_hitbox_area_exited(area): #checks if anything has left the skeleton's hitbox
-	if area.is_in_group("Light"): #if the skele leaves the Light area
-		inLight = false #sets skeleton in light to false
-	if area.is_in_group("EdgeLight"): #if the skele leaves the edge of the light
-		inEdgeLight = false #sets skeleotn in edge of light to false
 
 func _on_attack_cooldown_timeout(): #When Cooldown is Over
 	$attackCooldown.stop() #Stop Timee

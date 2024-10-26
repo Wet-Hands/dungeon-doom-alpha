@@ -1,6 +1,7 @@
 extends Area3D
 
 var speed = 10
+var sfxS = true
 
 @onready var mesh = $MeshInstance3D
 var start = false
@@ -37,8 +38,11 @@ func _on_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_in
 		if reversed == false:
 			queue_free()
 		if reversed == true:
-			print("PARRY TIME")
+			if sfxS == true:
+				$ShieldHit.play()
 			speed = -10
 			$ExpireTimer.stop()
 			$ExpireTimer.start()
-		print("grid removal?")
+
+func _on_shield_hit_finished() -> void:
+	sfxS = false

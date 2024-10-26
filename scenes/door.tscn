@@ -116,6 +116,7 @@ size = Vector3(1, 2, 0.5)
 [node name="Door" type="Node3D"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.5, 0)
 script = ExtResource("1_x0jer")
+locked = false
 
 [node name="DoorAnim" type="AnimationPlayer" parent="."]
 libraries = {
@@ -150,6 +151,7 @@ mesh = SubResource("CylinderMesh_jtswl")
 
 [node name="KeyholeBlue" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.25, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_hvoo8")
 material_overlay = SubResource("ShaderMaterial_8cues")
 mesh = SubResource("CylinderMesh_jtswl")

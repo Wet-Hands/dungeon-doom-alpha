@@ -47,6 +47,7 @@ chestItem = "heal"
 
 [node name="Door" parent="Objects" instance=ExtResource("6_fnphk")]
 transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 17, 2.25, -4.5)
+locked = true
 key = "blue"
 
 [node name="Chest2" parent="Objects" instance=ExtResource("5_vai1t")]

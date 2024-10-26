@@ -39,8 +39,8 @@ func _ready():
 		$CanvasLayer/ColorRect.material.set_shader_parameter("roll_size", 9.34)
 	shield = false
 	Engine.max_fps = 60 #Set FPS to 60
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
+	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN #Temp Fix for working on Virtual Machine
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED #How mouse movement SHOULD work
 	currentHealth = maxHealth #Set Current Health to Max
 	$HUD/ProgressBar.max_value = maxHealth #Set Max Health Visually
 	$HUD/HeartRect.texture = ResourceLoader.load("res://assets/hud/health/heartFull16.png")
@@ -206,7 +206,7 @@ func nextLevel(): #Next Level Function
 	get_tree().change_scene_to_file(levels[$"/root/Global".level]) #Go to Next Level
 	#get_tree().change_scene_to_file("res://scenes/UI/level_menu.tscn")
 
-var levels = ["res://scenes/UI/main_menu.tscn", "res://level_2.tscn", "res://levels/level3/level_3.tscn", "res://levels/level4/level_4.tscn", "res://levels/level5/level_5.tscn"]
+var levels = ["res://scenes/UI/end_screen.tscn", "res://level_2.tscn", "res://levels/level4/level_4.tscn", "res://levels/level3/level_3.tscn", "res://levels/level5/level_5.tscn"]
 
 var switched : bool
 
@@ -227,5 +227,6 @@ func _on_death_timer_timeout():
 	position = initPos
 	$Head.position.y = 0.24
 	$HUD/Damage.color = Color(1, 1, 1, 0)
+	$CanvasLayer/SubViewportContainer/SubViewport/Damage.color = Color(1, 1, 1, 0)
 	$HUD/HeartRect.visible = !$HUD/HeartRect.visible
 	$HUD/KeyRect.visible = !$HUD/KeyRect.visible

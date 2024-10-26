@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dey8x4xm453xn"]
+[gd_scene load_steps=8 format=3 uid="uid://dey8x4xm453xn"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_f7mnl"]
 [ext_resource type="Texture2D" uid="uid://ca8d2n3vtbasc" path="res://assets/textures/tiles2/cobble_stoneTILE.png" id="2_oih7l"]
 [ext_resource type="Texture2D" uid="uid://ctomq5a2mdn0l" path="res://assets/Menus/pixil-frame-0 (6).png" id="3_m0568"]
+[ext_resource type="Texture2D" uid="uid://ldoy0vg8138s" path="res://assets/Menus/VALID_Proto1k_OUTLINE.png" id="3_x40s6"]
 [ext_resource type="AudioStream" uid="uid://bxbxkike56ik8" path="res://assets/audio/gui.mp3" id="4_bb3ft"]
 [ext_resource type="Shader" path="res://shaders/crt.gdshader" id="5_hctds"]
 
@@ -130,6 +131,11 @@ offset_right = 64.0
 offset_bottom = 64.0
 texture = ExtResource("2_oih7l")
 metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MeshInstance2D"]
+position = Vector2(37.8, 156.6)
+scale = Vector2(0.035246, 0.035246)
+texture = ExtResource("3_x40s6")
 
 [node name="TitleRect" type="TextureRect" parent="."]
 layout_mode = 0

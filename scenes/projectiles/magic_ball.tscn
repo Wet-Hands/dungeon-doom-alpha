@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpyc5pjqb3o1d"]
+[gd_scene load_steps=9 format=3 uid="uid://bpyc5pjqb3o1d"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/magic_ball.gd" id="1_qu08c"]
 [ext_resource type="Shader" uid="uid://cjvknema1om3c" path="res://shaders/magicBall.tres" id="1_yeern"]
 [ext_resource type="Shader" path="res://shaders/pixelate.gdshader" id="2_35d3g"]
+[ext_resource type="AudioStream" uid="uid://2dbkw3amuh0h" path="res://assets/audio/key.mp3" id="4_ut4h0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e23l0"]
 render_priority = 0
@@ -47,7 +48,12 @@ autostart = true
 wait_time = 3.0
 autostart = true
 
+[node name="ShieldHit" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_ut4h0")
+pitch_scale = 5.0
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="ExpireTimer" to="." method="_on_expire_timer_timeout"]
+[connection signal="finished" from="ShieldHit" to="." method="_on_shield_hit_finished"]

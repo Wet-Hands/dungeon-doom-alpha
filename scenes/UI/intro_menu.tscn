@@ -1,0 +1,257 @@
+[gd_scene load_steps=10 format=3 uid="uid://gh1e782cet7n"]
+
+[ext_resource type="Script" path="res://scenes/UI/intro_menu.gd" id="1_4td0d"]
+[ext_resource type="Texture2D" uid="uid://ca8d2n3vtbasc" path="res://assets/textures/tiles2/cobble_stoneTILE.png" id="2_x8q6g"]
+[ext_resource type="FontFile" uid="uid://d1xyt3113n0ug" path="res://assets/fonts/Pixtura12.ttf" id="3_yon2p"]
+[ext_resource type="Shader" path="res://shaders/crt.gdshader" id="4_yxct0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7eual"]
+font = ExtResource("3_yon2p")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_wvdxf"]
+font = ExtResource("3_yon2p")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_jqj3f"]
+font = ExtResource("3_yon2p")
+
+[sub_resource type="Theme" id="Theme_ubxae"]
+default_font = ExtResource("3_yon2p")
+default_font_size = 18
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l70eu"]
+shader = ExtResource("4_yxct0")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.174
+shader_parameter/scanlines_width = 0.193
+shader_parameter/grille_opacity = 0.017
+shader_parameter/resolution = Vector2(240, 180)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 0.552
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.01
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.24
+shader_parameter/vignette_opacity = 0.5
+
+[node name="IntroMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+script = ExtResource("1_4td0d")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+
+[node name="TextureRect9" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 192.0
+offset_top = 127.932
+offset_right = 256.0
+offset_bottom = 191.932
+texture = ExtResource("2_x8q6g")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect10" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 128.0
+offset_top = 127.932
+offset_right = 192.0
+offset_bottom = 191.932
+texture = ExtResource("2_x8q6g")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect11" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 64.0
+offset_top = 127.932
+offset_right = 128.0
+offset_bottom = 191.932
+texture = ExtResource("2_x8q6g")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect12" type="TextureRect" parent="MeshInstance2D"]
+offset_top = 127.932
+offset_right = 64.0
+offset_bottom = 191.932
+texture = ExtResource("2_x8q6g")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect5" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 192.0
+offset_top = 63.9659
+offset_right = 256.0
+offset_bottom = 127.966
+texture = ExtResource("2_x8q6g")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect6" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 128.0
+offset_top = 63.9659
+offset_right = 192.0
+offset_bottom = 127.966
+texture = ExtResource("2_x8q6g")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect7" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 64.0
+offset_top = 63.9659
+offset_right = 128.0
+offset_bottom = 127.966
+texture = ExtResource("2_x8q6g")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect8" type="TextureRect" parent="MeshInstance2D"]
+offset_top = 63.9659
+offset_right = 64.0
+offset_bottom = 127.966
+texture = ExtResource("2_x8q6g")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect4" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 192.0
+offset_right = 256.0
+offset_bottom = 64.0
+texture = ExtResource("2_x8q6g")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 128.0
+offset_right = 192.0
+offset_bottom = 64.0
+texture = ExtResource("2_x8q6g")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="MeshInstance2D"]
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+texture = ExtResource("2_x8q6g")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="MeshInstance2D"]
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_x8q6g")
+metadata/_edit_use_anchors_ = true
+
+[node name="Text1" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 960.0
+
+[node name="LevelText" type="Label" parent="Text1"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 20.0
+offset_right = 165.0
+offset_bottom = 45.0
+text = "Notice!"
+label_settings = SubResource("LabelSettings_7eual")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enemies" type="Label" parent="Text1"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 28.0
+offset_right = 185.0
+offset_bottom = 77.0
+text = "Message from Ian:"
+label_settings = SubResource("LabelSettings_wvdxf")
+vertical_alignment = 1
+
+[node name="Secrets" type="Label" parent="Text1"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 61.0
+offset_right = 243.0
+offset_bottom = 151.0
+text = "We have improved
+much since Nationals. This is
+not reflective of our current
+skill level of Gave Dev."
+label_settings = SubResource("LabelSettings_jqj3f")
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Text1"]
+layout_mode = 0
+offset_left = 80.5
+offset_top = 144.0
+offset_right = 159.5
+offset_bottom = 175.0
+theme = SubResource("Theme_ubxae")
+theme_override_colors/font_color = Color(0.752941, 0, 0, 1)
+text = "Continue"
+
+[node name="Text2" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 960.0
+
+[node name="LevelText" type="Label" parent="Text2"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 20.0
+offset_right = 165.0
+offset_bottom = 45.0
+text = "Controls:"
+label_settings = SubResource("LabelSettings_7eual")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enemies" type="Label" parent="Text2"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 70.0
+offset_right = 185.0
+offset_bottom = 95.0
+text = "Attack: Left Mouse Click"
+label_settings = SubResource("LabelSettings_jqj3f")
+vertical_alignment = 1
+
+[node name="Secrets" type="Label" parent="Text2"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 110.0
+offset_right = 185.0
+offset_bottom = 135.0
+text = "Shield: Right Mouse Click"
+label_settings = SubResource("LabelSettings_jqj3f")
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Text2"]
+layout_mode = 0
+offset_left = 80.5
+offset_top = 144.0
+offset_right = 159.5
+offset_bottom = 175.0
+theme = SubResource("Theme_ubxae")
+theme_override_colors/font_color = Color(0.752941, 0, 0, 1)
+text = "Continue"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(241, 179)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_l70eu")
+offset_right = 1280.0
+offset_bottom = 960.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Text1/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Text2/Button" to="." method="_on_button_pressed"]
