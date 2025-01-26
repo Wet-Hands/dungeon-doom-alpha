@@ -78,6 +78,7 @@ func _on_credits_button_pressed():
 	$CreditsButton.hide()
 	$TitleRect.hide()
 	$CreditsBackButton.show()
+	$MeshInstance2D/Sprite2D.hide()
 
 func _on_credits_back_button_pressed():
 	$Gui.play()
@@ -85,6 +86,7 @@ func _on_credits_back_button_pressed():
 	$CreditsButton.show()
 	$TitleRect.show()
 	$CreditsBackButton.hide()
+	$MeshInstance2D/Sprite2D.show()
 
 func _on_roll_toggled(toggled_on):
 	$Gui.play()

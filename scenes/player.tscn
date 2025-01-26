@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://378kl0b07lmb"]
+[gd_scene load_steps=49 format=4 uid="uid://378kl0b07lmb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_luw3v"]
 [ext_resource type="Texture2D" uid="uid://dtjy56skapd5g" path="res://assets/hud/shieldTest2.png" id="2_a7bpg"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scripts/KeyManager.gd" id="5_11h2x"]
 [ext_resource type="Shader" path="res://shaders/psxCam.gdshader" id="5_f6spc"]
 [ext_resource type="PackedScene" uid="uid://6kfogt2jbret" path="res://scenes/UI/PauseMenu.tscn" id="6_gx2dt"]
-[ext_resource type="Shader" path="res://shaders/pixelScreen.gdshader" id="6_ipq13"]
 [ext_resource type="Shader" path="res://shaders/crt.gdshader" id="6_xtsol"]
 [ext_resource type="AudioStream" uid="uid://bb8dbfw03ki4b" path="res://assets/audio/testSwing.mp3" id="8_cegbu"]
 [ext_resource type="AudioStream" uid="uid://dh5lfuq6pynre" path="res://assets/audio/playerHurt.mp3" id="12_0on75"]
@@ -45,14 +44,6 @@ shader_parameter/dither_strength = 0.075
 material = SubResource("ShaderMaterial_fyihc")
 flip_faces = true
 size = Vector2(2, 2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_83imy"]
-render_priority = 0
-shader = ExtResource("6_ipq13")
-shader_parameter/pixel_size = 8
-
-[sub_resource type="QuadMesh" id="QuadMesh_vcm34"]
-material = SubResource("ShaderMaterial_83imy")
 
 [sub_resource type="Animation" id="Animation_xvrh8"]
 resource_name = "Attack"
@@ -432,7 +423,7 @@ shader_parameter/roll_variation = 0.552
 shader_parameter/distort_intensity = 0.05
 shader_parameter/noise_opacity = 0.4
 shader_parameter/noise_speed = 5.0
-shader_parameter/static_noise_intensity = 0.06
+shader_parameter/static_noise_intensity = 0.03
 shader_parameter/aberration = 0.01
 shader_parameter/brightness = 1.4
 shader_parameter/discolor = true
@@ -645,12 +636,8 @@ disabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 1.25056e-10, 0, -4.56112e-10, 1, 0, 0, 0, 1, 0, 0, -0.11)
-mesh = SubResource("QuadMesh_il1gy")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Head/Camera3D"]
-transform = Transform3D(1, 1.25056e-10, 0, -4.56112e-10, 1, 0, 0, 0, 1, 0, 0, -0.11)
 visible = false
-mesh = SubResource("QuadMesh_vcm34")
+mesh = SubResource("QuadMesh_il1gy")
 
 [node name="SwordAnimation" type="AnimationPlayer" parent="Head"]
 root_node = NodePath("../..")
