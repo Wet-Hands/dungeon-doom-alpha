@@ -45,12 +45,11 @@ func _process(delta): #If Game is runnong
 			velocity = new_velocity * 0
 		else: #checks if the skeleton is on the edge of the Light
 			velocity = new_velocity #sets skeleton's velocity to default
-			
 		if detected == true && doAtk == false:
 			$attack/MeshInstance3D.visible = false
 			$attack/MeshInstance3D/skeleAtkHitbox/skeleAtkCollision.disabled = true
 			atkHitbox.monitoring = false
-			doAtk = true
+			doAtk = true 
 			stop = true
 			$attackCooldown.start()
 		move_and_slide()
